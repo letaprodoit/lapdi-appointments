@@ -10,7 +10,7 @@ Appointments for CS-Cart software allows users to order services that require an
 * Admins can notify customers of appoiintment changes.
 
 For up-to-date installation and setup notes, visit the FAQ:
-http://lab.thesoftwarepeople.com/tracker/wiki/cscart-apa-MainPage
+[http://lab.thesoftwarepeople.com/tracker/wiki/cscart-apa-MainPage] (http://lab.thesoftwarepeople.com/tracker/wiki/cscart-apa-MainPage)
 
 
 ## GENERAL INSTALLATION NOTES
@@ -73,20 +73,10 @@ In order to create a product that is an event you will need to perform the follo
 
 Thank you for downloading Appointments for CS-Cart 1.0
 If you find any issues, please report them in the issue tracker on our website:
-http://lab.thesoftwarepeople.com/tracker/cscart-apa
+[http://lab.thesoftwarepeople.com/tracker/cscart-apa](http://lab.thesoftwarepeople.com/tracker/cscart-apa)
 
 ## COPYRIGHT AND LICENSE
 
 Copyright 2013 The Software People, LLC
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this work except in compliance with the License.
-You may obtain a copy of the License in the LICENSE file, or at:
-
-  [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+Software is available under the Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License; additional terms may apply. See  [http://creativecommons.org/licenses/by-nc-nd/3.0/](Terms of Use) for details.
