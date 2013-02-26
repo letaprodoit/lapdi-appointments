@@ -10,7 +10,7 @@ Appointments for CS-Cart software allows users to order services that require an
 * Admins can notify customers of appoiintment changes.
 
 For up-to-date installation and setup notes, visit the FAQ:
-[http://lab.thesoftwarepeople.com/tracker/wiki/cscart-apa-MainPage] (http://lab.thesoftwarepeople.com/tracker/wiki/cscart-apa-MainPage)
+[http://lab.thesoftwarepeople.com/tracker/wiki/cscart-apa-MainPage](http://lab.thesoftwarepeople.com/tracker/wiki/cscart-apa-MainPage)
 
 
 ## GENERAL INSTALLATION NOTES
@@ -79,4 +79,4 @@ If you find any issues, please report them in the issue tracker on our website:
 
 Copyright 2013 The Software People, LLC
 
-Software is available under the Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License; additional terms may apply. See  [http://creativecommons.org/licenses/by-nc-nd/3.0/](Terms of Use) for details.
+Software is available under the Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License; additional terms may apply. See [http://creativecommons.org/licenses/by-nc-nd/3.0/](Terms of Use) for details.
