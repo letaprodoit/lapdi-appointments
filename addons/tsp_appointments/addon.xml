@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+	<id>tsp_appointments</id>
+	<name>The Software People - Appointments</name>
+	<description>The Software People (TSP) Appointments allows you to add appointments to services in the store and allow you to monitor the appointments in the admin area. For more details visit us online at www.thesoftwarepeople.com</description>
+	<version>1.0</version>
+	<priority>1111000001</priority>
+	<position>0</position>
+	<status>active</status>
+	<default_language>EN</default_language>
+	<auto_install>COMMUNITY,PROFESSIONAL,MULTIVENDOR,ULTIMATE</auto_install>
+	<language_variables>
+		<item lang="EN" id="tsp_appointments">The Software People - Appointments</item>	
+		<item lang="EN" id="tspa_appointment">Appointment</item>	
+		<item lang="EN" id="tspa_appointment_notification">Appointment Notification</item>
+		<item lang="EN" id="tspa_appointment_notification_msg">We wanted to inform you that your appointment status has been updated for [product_name] (Order #[order_id]). Please see details below:\n\n[appointment_info]</item>
+		<item lang="EN" id="tspa_appointments">Appointments</item>	
+		<item lang="EN" id="tspa_appointments_menu_description">List of appointments created by your clients.</item>	
+		<item lang="EN" id="tspa_editing_appointment">Editing Appointment</item>
+		<item lang="EN" id="tspa_meeting_details">Meeting Details</item>
+		<item lang="EN" id="tspa_meeting_date">Meeting Date</item>
+		<item lang="EN" id="tspa_meeting_time">Meeting Time</item>
+		<item lang="EN" id="tspa_meeting_duration">Meeting Duration</item>
+		<item lang="EN" id="tspa_meeting_location">Meeting Location</item>
+		<item lang="EN" id="tspa_meeting_info">Additional Information</item>
+		<item lang="EN" id="tspa_scheduled">Scheduled</item>	
+	</language_variables>
+	<settings>
+		<sections>
+			<section id="Settings">
+				<!-- Tab name in the default language -->
+				<name>Basic Settings</name>		
+				<translations>
+					<item lang="ES" for="name">Basic Settings</item>
+					<item lang="FR" for="name">Basic Settings</item>
+				</translations>
+	
+				<items>
+					<item id="delete_appointment_data">
+						<name>Delete Appointment Data on Uninstall</name>
+						<type>selectbox</type>
+						<default_value>N</default_value>
+						<variants>
+							<item id="N">
+								<name>No</name>
+							</item>
+							<item id="Y">
+								<name>Yes</name>
+							</item>
+						</variants>
+					</item>
+				</items>
+			</section>
+		</sections>
+	</settings>
+	<queries>
+		<!-- If parameter "for" equals "install" or is not set, the query is executed during the add-on installation -->
+		<!-- If the "editions" attribute is given, the request will be executed only for the editions that are defined in it (separated with commas) -->
+		<item for="install">
+			CREATE TABLE `?:addon_tsp_appointments`	(
+					`id` mediumint(8) NOT NULL AUTO_INCREMENT,
+					`status` char(1) NOT NULL DEFAULT 'O',
+					`order_id` mediumint(8) NOT NULL,
+					`product_id` mediumint(8) NOT NULL,
+					`user_id` mediumint(8) NOT NULL,
+					`date_created` int(11) NOT NULL,
+					`date_completed` int(11) NOT NULL,
+				PRIMARY KEY (`id`)
+			) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+		</item>
+		<item for="install">
+			CREATE TABLE `?:addon_tsp_appointments_product_metadata`	(
+					`product_id` mediumint(8) NOT NULL,
+					`field_name` varchar(255) NOT NULL,
+					`value` text NOT NULL,
+				PRIMARY KEY (`product_id`,`field_name`)
+			) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+		</item>
+		<item for="install">
+			CREATE TABLE `?:addon_tsp_appointments_product_field_metadata` (
+				`id` mediumint NOT NULL auto_increment,
+				`key` varchar(255) NOT NULL,
+	  			`option_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
+	  			`variant_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
+				PRIMARY KEY  (`id`)
+			) ENGINE=MyISAM DEFAULT CHARSET=UTF8
+		</item>
+		<item table="privilege_descriptions" lang="EN" editions="COMMUNITY,PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:privilege_descriptions (privilege, description, lang_code, section_id) VALUES ('manage_appointments', 'Manage Appointments', 'EN', '1');</item>
+		<item editions="COMMUNITY,PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:privileges (privilege, is_default) VALUES ('manage_appointments', 'Y');</item>
+		<item for="uninstall" editions="COMMUNITY,PROFESSIONAL,MULTIVENDOR,ULTIMATE">DELETE FROM ?:privileges WHERE privilege LIKE 'manage_appointments'</item>
+		<item for="uninstall" editions="COMMUNITY,PROFESSIONAL,MULTIVENDOR,ULTIMATE">DELETE FROM ?:privilege_descriptions WHERE privilege LIKE 'manage_appointments'</item>
+	</queries>
+	<functions>
+		<item for="install">fn_tspa_install_product_fields</item>
+		<item for="uninstall">fn_tspa_uninstall_product_metadata</item>
+		<item for="uninstall">fn_tspa_uninstall_product_field_metadata</item>
+		<item for="uninstall">fn_tspa_uninstall_languages</item>
+	</functions>
+</addon>
