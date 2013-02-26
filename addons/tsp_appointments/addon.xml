@@ -13,7 +13,7 @@
 		<item lang="EN" id="tsp_appointments">The Software People - Appointments</item>	
 		<item lang="EN" id="tspa_appointment">Appointment</item>	
 		<item lang="EN" id="tspa_appointment_notification">Appointment Notification</item>
-		<item lang="EN" id="tspa_appointment_notification_msg">We wanted to inform you that your appointment status has been updated for [product_name] (Order #[order_id]). Please see details below:\n\n[appointment_info]</item>
+		<item lang="EN" id="tspa_appointment_notification_msg">We wanted to inform you that your appointment status has been updated to [appointment_status] for [product_name] (Order #[order_id]). Please see details below: [appointment_info]</item>
 		<item lang="EN" id="tspa_appointments">Appointments</item>	
 		<item lang="EN" id="tspa_appointments_menu_description">List of appointments created by your clients.</item>	
 		<item lang="EN" id="tspa_editing_appointment">Editing Appointment</item>
