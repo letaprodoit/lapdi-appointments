@@ -17,15 +17,17 @@ For up-to-date installation and setup notes, visit the FAQ:
 
 * Download from repository
 * Unzip the zip file
-* Open addons/ folder and copy the tsp_the_bug_genie_for_cscart to [your cscart install dir]/addons/
-* Open the basic/ folder and copy admin/, customer/ and mail/ folders to all the necessary skins INCLUDING basic
+* Open addons/ folder and copy the tsp_appointments to [your cscart install dir]/addons/
+* Open the basic/admin/addons/ folder and copy the tsp_appointments/ folder to [your cscart install dir]/var/skins_repository/basic/admin/addons/ folder
+* Open the basic/customer/addons/ folder and copy the tsp_appointments/ folder to [your cscart install dir]/var/skins_repository/basic/customer/addons/ folder
+* Open the basic/mail/addons/folder and copy the tsp_appointments/ folder to [your cscart install dir]/var/skins_repository/basic/mail/addons/ folder
 * Open CS-Cart Administration Control Panel
 * Navigate to Settings-> Addons
 * Find the "The Software People: Appointments" addon and click "Install"
 * After Install, from the Addons listing click on Settings for "The Software People: Appointments"
 * Update The Appointment settings
 
-## USING THE MODULE
+## USING THE ADDON
 
 The Appointments module, upon install, adds product global options to the database and adds settings to products.
 
