@@ -10,7 +10,7 @@ Appointments for CS-Cart software allows users to order services that require an
 * Admins can notify customers of appoiintment changes.
 
 For up-to-date installation and setup notes, visit the FAQ:
-[http://lab.thesoftwarepeople.com/tracker/wiki/Appointments+for+CS-Cart](http://lab.thesoftwarepeople.com/tracker/wiki/Appointments+for+CS-Cart)
+[http://lab.thesoftwarepeople.com/tracker/wiki/Cscart-apa:MainPage](http://lab.thesoftwarepeople.com/tracker/wiki/Cscart-apa:MainPage)
 
 
 ## GENERAL INSTALLATION NOTES
