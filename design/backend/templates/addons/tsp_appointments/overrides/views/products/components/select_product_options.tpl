@@ -62,7 +62,7 @@
     {elseif $po.option_type == "D"} {*Date*}
         <div class="clear">
             {include file="common_templates/calendar.tpl" date_id="option_`$id`_`$po.option_id`" date_name="`$name`[`$id`][product_options][`$po.option_id`]" date_val=$po.value|default:$smarty.const.TIME start_year="`$smarty.const.TIME`"}
-	</div>
+	    </div>
     {* END ADD DATE TSP *}
     {elseif $po.option_type == "I"} {*Input*}
         <input id="option_{$id}_{$po.option_id}" type="text" name="{$name}[{$id}][product_options][{$po.option_id}]" value="{$po.value|default:$po.inner_hint}" {if $cp.exclude_from_calculate && !$product.aoc}disabled="disabled"{/if} class="input-text {if $po.inner_hint}cm-hint{/if}" {if $po.inner_hint}title="{$po.inner_hint}"{/if} />

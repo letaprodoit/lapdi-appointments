@@ -1,147 +1,107 @@
-{if $display == "text"}
-	<span class="view-status">
-		{if $status == "O"}
-			{__("open")}
-		{elseif $status == "S"}
-			{__("tspa_scheduled")}
-		{elseif $status == "X"}
-			{__("cancelled")}
-		{elseif $status == "C"}
-			{__("completed")}
-		{/if}
-	</span>
+{if $non_editable || $display == "text"}
+    <span class="view-status">
+        {if $status == "A"}
+            {__("active")}
+        {elseif $status == "H"}
+            {__("hidden")}
+        {elseif $status == "D"}
+            {__("disabled")}
+        {elseif $status == "P"}
+            {__("pending")}
+        {elseif $status == "N"}
+            {__("new")}
+        {elseif $status == "O"}
+            {__("open")}
+        {elseif $status == "S"}
+            {__("tspa_scheduled")}
+        {elseif $status == "X"}
+            {__("cancelled")}
+        {elseif $status == "C"}
+            {__("completed")}
+        {/if}
+    </span>
 {else}
-	{assign var="prefix" value=$prefix|default:"select"}
-	<div class="select-popup-container {$popup_additional_class}">
-		{if !$hide_for_vendor}
-		<div {if $id}id="sw_{$prefix}_{$id}_wrap"{/if} class="{if $statuses[$status].color}selected-status-base{else}selected-status status-{if $suffix}{$suffix}-{/if}{$status|lower}{/if}{if $id} cm-combo-on cm-combination{/if}">
-			<a {if $id}class="cm-combo-on{if !$popup_disabled} cm-combination{/if}"{/if}>
-		{/if}
-			{if $items_status}
-				{if !$items_status|is_array}
-					{assign var="items_status" value=$items_status|fn_from_json}
-				{/if}
-				{$items_status.$status}
-			{else}
-				{if $status == "O"}
-					{__("open")}
-				{elseif $status == "S"}
-					{__("tspa_scheduled")}
-				{elseif $status == "X"}
-					{__("cancelled")}
-				{elseif $status == "C"}
-					{__("completed")}
-				{/if}
-			{/if}
-		{if !$hide_for_vendor}
-			</a>
-			{if $statuses[$status].color}
-			<span class="selected-status-icon" style="background-color: #{$statuses[$status].color}">&nbsp;</span>
-			{/if}
-
-		</div>
-		{/if}
-		{if $id && !$hide_for_vendor}
-			{assign var="_update_controller" value=$update_controller|default:"tools"}
-			{if $table && $object_id_name}{capture name="_extra"}&amp;table={$table}&amp;id_name={$object_id_name}{/capture}{/if}
-			<div id="{$prefix}_{$id}_wrap" class="popup-tools cm-popup-box cm-smart-position hidden">
-				<div class="status-scroll-y">
-				<ul class="cm-select-list">
-				{if $items_status}
-					{foreach from=$items_status item="val" key="st"}
-					<li><a class="{if $confirm}cm-confirm {/if}status-link-{$st|lower} {if $status == $st}cm-active{else}cm-ajax{/if}"{if $status_rev} rev="{$status_rev}"{/if} href="{"`$_update_controller`.update_status?id=`$id`&amp;status=`$st``$smarty.capture._extra``$extra`"|fn_url}" onclick="return fn_check_object_status(this, '{$st|lower}', '{if $statuses}{$statuses[$st].color|default:''}{/if}');" name="update_object_status_callback">{$val}</a></li>
-					{/foreach}
-				{else}
-					<li><a class="{if $confirm}cm-confirm {/if}status-link-o {if $status == "O"}cm-active{else}cm-ajax{/if}"{if $status_rev} rev="{$status_rev}"{/if} href="{"`$_update_controller`.update_status?`$object_id_name`=`$id`&amp;status=O`$dynamic_object`"|fn_url}" onclick="return fn_check_object_status(this, 'o', '');" name="update_object_status_callback">{__("open")}</a></li>
-					<li><a class="{if $confirm}cm-confirm {/if}status-link-u {if $status == "S"}cm-active{else}cm-ajax{/if}"{if $status_rev} rev="{$status_rev}"{/if} href="{"`$_update_controller`.update_status?`$object_id_name`=`$id`&amp;status=S`$dynamic_object`"|fn_url}" onclick="return fn_check_object_status(this, 'u', '');" name="update_object_status_callback">{__("tspa_scheduled")}</a></li>
-					<li><a class="{if $confirm}cm-confirm {/if}status-link-d {if $status == "X"}cm-active{else}cm-ajax{/if}"{if $status_rev} rev="{$status_rev}"{/if} href="{"`$_update_controller`.update_status?`$object_id_name`=`$id`&amp;status=X`$dynamic_object`"|fn_url}" onclick="return fn_check_object_status(this, 'd', '');" name="update_object_status_callback">{__("cancelled")}</a></li>
-					<li><a class="{if $confirm}cm-confirm {/if}status-link-s {if $status == "C"}cm-active{else}cm-ajax{/if}"{if $status_rev} rev="{$status_rev}"{/if} href="{"`$_update_controller`.update_status?`$object_id_name`=`$id`&amp;status=C`$dynamic_object`"|fn_url}" onclick="return fn_check_object_status(this, 's', '');" name="update_object_status_callback">{__("completed")}</a></li>
- 				{/if}
-				</ul>
-				</div>
-				{capture name="list_items"}
-				{if $notify}
-					<li class="select-field">
-						<input type="checkbox" name="__notify_user" id="{$prefix}_{$id}_notify" value="Y" class="checkbox" checked="checked" onclick="$('input[name=__notify_user]').attr('checked', this.checked);" />
-						<label for="{$prefix}_{$id}_notify">{$notify_text|default:$lang.notify_customer}</label>
-					</li>
-				{/if}
-				{if $notify_department}
-					<li class="select-field notify-department">
-						<input type="checkbox" name="__notify_department" id="{$prefix}_{$id}_notify_department" value="Y" class="checkbox" checked="checked" onclick="$('input[name=__notify_department]').attr('checked', this.checked);" />
-						<label for="{$prefix}_{$id}_notify_department">{__("notify_orders_department")}</label>
-					</li>
-				{/if}
-				
-				{if $notify_supplier}
-					<li class="select-field notify-department">
-						<input type="checkbox" name="__notify_supplier" id="{$prefix}_{$id}_notify_supplier" value="Y" class="checkbox" checked="checked" onclick="$('input[name=__notify_supplier]').attr('checked', this.checked);" />
-						<label for="{$prefix}_{$id}_notify_supplier">{if $smarty.const.PRODUCT_TYPE == "MULTIVENDOR" || $smarty.const.PRODUCT_TYPE == "ULTIMATE"}{__("notify_vendor")}{else}{__("notify_supplier")}{/if}</label>
-					</li>
-				{/if}
-				
-				{/capture}
-				
-				{if $smarty.capture.list_items|trim}
-				<ul class="cm-select-list select-list-tools">
-					{$smarty.capture.list_items}
-				</ul>
-				{/if}
-			</div>
-			{if !$smarty.capture.avail_box}
-			<script type="text/javascript">
-			//<![CDATA[
-			{literal}
-			function fn_check_object_status(obj, status, color) 
-			{
-				if ($(obj).hasClass('cm-active')) {
-					$(obj).removeClass('cm-ajax');
-					return false;
-				}
-				fn_update_object_status(obj, status, color);
-				return true;
-			}
-			function fn_update_object_status_callback(data, params) 
-			{
-				if (data.return_status && params.obj) {
-					var color = data.color ? data.color : '';
-					fn_update_object_status(params.obj, data.return_status.toLowerCase(), color);
-				}
-			}
-			function fn_update_object_status(obj, status, color)
-			{
-				var upd_elm_id = $(obj).parents('.cm-popup-box:first').attr('id');
-				var upd_elm = $('#' + upd_elm_id);
-				upd_elm.hide();
-				$(obj).attr('href', fn_query_remove($(obj).attr('href'), ['notify_user', 'notify_department']));
-				if ($('input[name=__notify_user]:checked', upd_elm).length) {
-					$(obj).attr('href', $(obj).attr('href') + '&notify_user=Y');
-				}
-				if ($('input[name=__notify_department]:checked', upd_elm).length) {
-					$(obj).attr('href', $(obj).attr('href') + '&notify_department=Y');
-				}
-				
-				if ($('input[name=__notify_supplier]:checked', upd_elm).length) {
-					$(obj).attr('href', $(obj).attr('href') + '&notify_supplier=Y');
-				}
-				
-				$('.cm-select-list li a', upd_elm).removeClass('cm-active').addClass('cm-ajax');
-				$('.status-link-' + status, upd_elm).addClass('cm-active');
-				$('#sw_' + upd_elm_id + ' a').text($('.status-link-' + status, upd_elm).text());
-				if (color) {
-					$('#sw_' + upd_elm_id).removeAttr('class').addClass('selected-status-base ' + $('#sw_' + upd_elm_id + ' a').attr('class'));
-					$('#sw_' + upd_elm_id).children('.selected-status-icon:first').css('background-color', '#' + color);
-				} else {
-					{/literal}
-					$('#sw_' + upd_elm_id).removeAttr('class').addClass('selected-status status-{if $suffix}{$suffix}-{/if}' + status + ' ' + $('#sw_' + upd_elm_id + ' a').attr('class'));
-					{literal}
-				}
-			}
-			{/literal}
-			//]]>
-			</script>
-			{capture name="avail_box"}Y{/capture}
-			{/if}
-		{/if}
-	</div>
+{assign var="prefix" value=$prefix|default:"select"}
+{assign var="btn_meta" value=$btn_meta|default:"btn-text"}
+{assign var="popup_additional_class" value=$popup_additional_class}
+<div class="cm-popup-box {if !$hide_for_vendor}dropdown{/if} {$popup_additional_class}">
+    {if !$hide_for_vendor}
+        <a {if $id}id="sw_{$prefix}_{$id}_wrap"{/if} class="{if $btn_meta}{$btn_meta}{/if} dropdown-toggle {*if $statuses[$status].color}{$statuses[$status].color}{else}selected-status status-{if $suffix}{$suffix}-{/if}{$status|lower}{/if*}{if $id} cm-combo-on cm-combination{/if}" data-toggle="dropdown">
+    {/if}
+        {if $items_status}
+            {$items_status.$status}
+        {else}
+            {if $status == "A"}
+                {__("active")}
+            {elseif $status == "D"}
+                {__("disabled")}
+            {elseif $status == "H"}
+                {__("hidden")}
+            {elseif $status == "P"}
+                {__("pending")}
+            {elseif $status == "N"}
+                {__("new")}
+            {elseif $status == "O"}
+                {__("open")}
+            {elseif $status == "S"}
+                {__("tspa_scheduled")}
+            {elseif $status == "X"}
+                {__("cancelled")}
+            {elseif $status == "C"}
+                {__("completed")}
+            {/if}
+        {/if}
+     {if !$hide_for_vendor}
+        <span class="caret"></span>
+        </a>
+    {/if}
+    {if $id && !$hide_for_vendor}
+        {assign var="_update_controller" value=$update_controller|default:"tools"}
+        {if $table && $object_id_name}{capture name="_extra"}&table={$table}&id_name={$object_id_name}{/capture}{/if}
+            <ul class="dropdown-menu">
+            {if !$items_status}
+            {assign var="items_status" value=$status|fn_tspa_get_appointment_default_statuses:$hidden}
+            {assign var="extra_params" value="&table=`$table`&id_name=`$object_id_name`"}
+            {else}
+            {assign var="extra_params" value="`$smarty.capture._extra``$extra`"}
+            {/if}
+            {if $items_status}
+                {foreach from=$items_status item="val" key="st"}
+                <li {if $status == $st}class="disabled"{/if}><a class="{if $confirm}cm-confirm {/if}status-link-{$st|lower} {if $status == $st}cm-active{else}cm-ajax{/if} {if $status_meta}{$status_meta}{/if}"{if $status_target_id} data-ca-target-id="{$status_target_id}"{/if} href="{"`$_update_controller`.update_status?appointment_id=`$id`&status=`$st``$extra_params``$dynamic_object`"|fn_url}" onclick="return fn_check_object_status(this, '{$st|lower}', '{if $statuses}{$statuses[$st].params.color|default:''}{/if}');" data-ca-event="ce.update_object_status_callback">{$val}</a></li>
+                {/foreach}
+            {/if}
+            {capture name="list_items"}
+            {if $notify}
+                <li><a href="#"><label for="{$prefix}_{$id}_notify">
+                    <input type="checkbox" name="__notify_user" id="{$prefix}_{$id}_notify" value="Y" class="checkbox" checked="checked" onclick="Tygh.$('input[name=__notify_user]').prop('checked', this.checked);" />
+                    {$notify_text|default:__("notify_customer")}</label></a>
+                </li>
+            {/if}
+            {if $notify_department}
+                <li><a href="#"><label for="{$prefix}_{$id}_notify_department">
+                    <input type="checkbox" name="__notify_department" id="{$prefix}_{$id}_notify_department" value="Y" class="checkbox" checked="checked" onclick="Tygh.$('input[name=__notify_department]').prop('checked', this.checked);" />
+                    {__("notify_orders_department")}</label></a>
+                </li>
+            {/if}
+            {if "MULTIVENDOR"|fn_allowed_for && $notify_vendor}
+                <li><a href="#"><label for="{$prefix}_{$id}_notify_vendor">
+                    <input type="checkbox" name="__notify_vendor" id="{$prefix}_{$id}_notify_vendor" value="Y" class="checkbox" checked="checked" onclick="Tygh.$('input[name=__notify_vendor]').prop('checked', this.checked);" />
+                    {__("notify_vendor")}</label></a>
+                </li>
+            {/if}
+            {/capture}
+            
+            {if $smarty.capture.list_items|trim}
+            <li class="divider"></li>
+            <li>
+                {$smarty.capture.list_items nofilter}
+            </li>
+            {/if}
+        </ul>
+        {if !$smarty.capture.avail_box}
+        {script src="js/tygh/select_popup.js"}
+        {capture name="avail_box"}Y{/capture}
+        {/if}
+    {/if}
+</div>
 {/if}
