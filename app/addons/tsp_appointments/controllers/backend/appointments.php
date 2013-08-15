@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
 	fn_trusted_vars('appointment_data', 'appointments', 'delete');
 	$suffix = '';
-	if ($runtime.mode == 'do_delete') 
+	if ($mode == 'do_delete') 
 	{
 		if (!empty($_REQUEST['appointment_ids'])) 
 		{
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
 		$suffix = '.manage';
 	} 
-	elseif ($runtime.mode == 'update')
+	elseif ($mode == 'update')
 	{
 		$appointment_id = $_POST['appointment_id'];
 		$data = $_POST['appointment_data'];
@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	return array(CONTROLLER_STATUS_OK, "appointments$suffix");
 }//endif
 
-if ($runtime.mode == 'manage') 
+if ($mode == 'manage') 
 {
 	list($appointments, $search) = fn_tspa_get_appointments($_REQUEST);
 
@@ -79,7 +79,7 @@ if ($runtime.mode == 'manage')
 	Registry::get('view')->assign('user_list', $_user_list);
 
 }//endif
-elseif ($runtime.mode == 'update' && !empty($_REQUEST['appointment_id'])) 
+elseif ($mode == 'update' && !empty($_REQUEST['appointment_id'])) 
 {
 	$appointment = db_get_row("SELECT * FROM ?:addon_tsp_appointments WHERE id = ?i", $_REQUEST['appointment_id']);
 	
@@ -124,7 +124,7 @@ elseif ($runtime.mode == 'update' && !empty($_REQUEST['appointment_id']))
 	Registry::get('view')->assign('appointment', $appointment);
 
 }//endelseif
-elseif ($runtime.mode == 'update_status' && !empty($_REQUEST['appointment_id'])) 
+elseif ($mode == 'update_status' && !empty($_REQUEST['appointment_id'])) 
 {
 
 	$status = $_REQUEST['status'];
@@ -145,7 +145,7 @@ elseif ($runtime.mode == 'update_status' && !empty($_REQUEST['appointment_id']))
 	return array(CONTROLLER_STATUS_REDIRECT, "appointments.manage");
 
 }//endelseif
-elseif ($runtime.mode == 'delete') 
+elseif ($mode == 'delete') 
 {
 	if (!empty($_REQUEST['appointment_id'])) 
 	{
