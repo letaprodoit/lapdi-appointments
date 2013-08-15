@@ -102,34 +102,34 @@ function fn_tspa_install_product_fields ()
  ***********/
 function fn_tspa_uninstall_product_field_metadata () 
 {
-	// Get the product options
-	$product_options = db_get_fields("SELECT `option_id` FROM ?:addon_tsp_appointments_product_field_metadata");
-	
-	if (!empty($product_options) && is_array($product_options))
-	{
-		// Delete the product options from all tables
-		foreach ($product_options as $val)
-		{
-			db_query("DELETE FROM ?:product_options WHERE `option_id` = ?i", $val);
-			db_query("DELETE FROM ?:product_options_descriptions WHERE `option_id` = ?i", $val);
-		}//endforeach
-	}//endif
-	
-	// Get the Product options variants
-	$product_option_variants = db_get_fields("SELECT `variant_id` FROM ?:addon_tsp_appointments_product_field_metadata");
-	
-	if (!empty($product_option_variants) && is_array($product_option_variants))
-	{
-		// Delete the product options variants from all tables
-		foreach ($product_option_variants as $val)
-		{
-			db_query("DELETE FROM ?:product_option_variants WHERE `variant_id` = ?i", $val);
-			db_query("DELETE FROM ?:product_option_variants_descriptions WHERE `variant_id` = ?i", $val);
-		}//endforeach
-	}//endif
-		
 	if (Registry::get('addons.tsp_appointments.delete_appointment_data') == 'Y')
 	{
+		// Get the product options
+		$product_options = db_get_fields("SELECT `option_id` FROM ?:addon_tsp_appointments_product_field_metadata");
+		
+		if (!empty($product_options) && is_array($product_options))
+		{
+			// Delete the product options from all tables
+			foreach ($product_options as $val)
+			{
+				db_query("DELETE FROM ?:product_options WHERE `option_id` = ?i", $val);
+				db_query("DELETE FROM ?:product_options_descriptions WHERE `option_id` = ?i", $val);
+			}//endforeach
+		}//endif
+		
+		// Get the Product options variants
+		$product_option_variants = db_get_fields("SELECT `variant_id` FROM ?:addon_tsp_appointments_product_field_metadata");
+		
+		if (!empty($product_option_variants) && is_array($product_option_variants))
+		{
+			// Delete the product options variants from all tables
+			foreach ($product_option_variants as $val)
+			{
+				db_query("DELETE FROM ?:product_option_variants WHERE `variant_id` = ?i", $val);
+				db_query("DELETE FROM ?:product_option_variants_descriptions WHERE `variant_id` = ?i", $val);
+			}//endforeach
+		}//endif
+		
 		// After all data removed drop the storage table
 		db_query("DROP TABLE IF EXISTS `?:addon_tsp_appointments_product_field_metadata`");
 	}//endif
@@ -175,9 +175,10 @@ function fn_tspa_add_appointment_data_to_array(&$appointments,$key)
 	foreach ($appointments as $appt_id => $appt)
 	{	
 		$order_info = fn_get_order_info($appt['order_id']);
-		$key = 'products';
+		$order_key = 'products';
+
 		// Search through ordered items to find the product that has an appointment
-		foreach ($order_info[$key] as $order_id => $product)
+		foreach ($order_info[$order_key] as $order_id => $product)
 		{		
 			$data = "";
 			
@@ -190,16 +191,15 @@ function fn_tspa_add_appointment_data_to_array(&$appointments,$key)
 				foreach ($product_options as $option_id => $option_value)
 				{
 					list ($description, $value) = fn_tspa_get_product_option_info($option_id, $option_value);
-					$data .= "<strong>$description:</strong>  $value<br>\n";
+					$data .= "<small><strong>$description:</strong>  $value</small><br>\n";
 										
 				}//endforeach;
 			
 			}//endif
 			
-			$appointments[$appt_id][$key] = $data;
+			$appointments[$appt_id][$key] = htmlentities($data);
 								
-		}//endforeach;	
-		
+		}//endforeach;		
 	}//endforeach;
 }
 
@@ -260,10 +260,10 @@ function fn_tspa_create_appointment($order_info)
 	$user_id = $order_info['user_id'];
 	$order_id = $order_info['order_id'];
 	
-	$key = 'products';
+	$order_key = 'products';
 	
 	// Search through ordered items to find the product that has an appointment
-	foreach ($order_info[$key] as $item_id => $product)
+	foreach ($order_info[$order_key] as $item_id => $product)
 	{	
 		$product_id = $product['product_id'];
 		
@@ -417,6 +417,26 @@ function fn_tspa_get_appointments($params, $items_per_page = 0)
 	return array($appointments, $params);
 }//end fn_tspa_get_appointments
 
+/**
+ * Gets list of default statuses
+ *
+ * @param string $status current object status
+ * @param boolean $add_hidden includes 'hiden' status
+ * @param string $lang_code 2-letter language code (e.g. 'en', 'ru', etc.)
+ * @return array statuses list
+ */
+function fn_tspa_get_appointment_default_statuses($status, $add_hidden, $lang_code = CART_LANGUAGE)
+{
+	$statuses = array (
+			'O' => __('open', '', $lang_code),
+			'S' => __('tspa_scheduled', '', $lang_code),
+			'X' => __('cancelled', '', $lang_code),
+			'C' => __('completed', '', $lang_code),
+	);
+
+	return $statuses;
+}
+
 /***********
  *
  * There are 3 fields that are required for any appointment and they are
@@ -455,10 +475,10 @@ function fn_tspa_get_product_option_data($order_id, $product_id, $option_id, $va
 	$value = "";
 	
 	$order_info = fn_get_order_info($order_id);
-	$key = 'products';
+	$order_key = 'products';
 	
 	// Search through ordered items to find the product that has an appointment
-	foreach ($order_info[$key] as $order_id => $product)
+	foreach ($order_info[$order_key] as $order_id => $product)
 	{	
 		// if the appointment product ID equals this product id and the product has options
 		// continue

@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
 	fn_trusted_vars('appointment_data', 'appointments', 'delete');
 	$suffix = '';
-	if ($mode == 'do_delete') 
+	if ($mode == 'm_delete') 
 	{
 		if (!empty($_REQUEST['appointment_ids'])) 
 		{
