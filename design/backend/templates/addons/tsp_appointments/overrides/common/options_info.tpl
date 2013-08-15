@@ -1,18 +1,26 @@
 {if $product_options}
-<span>{__("options")}: </span>
+<strong>{__("options")}: </strong><br />
 {strip}
+<ul class="unstyled">
 {foreach from=$product_options item=po name=po_opt}
-	{assign var="value" value=$po.variant_name}
-	{if !$value}
-		{assign var="value" value=$po.value}
-	{/if}
+    {if ($po.option_type == "S" || $po.option_type == "R") && !$po.value}
+        {continue}
+    {/if}
 	
-	&nbsp;{$po.option_name}:&nbsp;{$value}
+    {* BEGIN CHANGE TSP *}
+    {assign var="value" value=$po.variant_name}
+    {if !$value}
+        {assign var="value" value=$po.value}
+    {/if}
+    {* END CHANGE TSP *}
+
+	<li>	   
+        <strong>{$po.option_name}: </strong>{$value} {* CHANGED TSP *}
 	
 	{if $oi.extra.custom_files[$po.option_id] || $cp.extra.custom_files[$po.option_id]}
 		{foreach from=$oi.extra.custom_files[$po.option_id] item="file" name="po_files"}
 			{assign var="filename" value=$file.name|rawurlencode}
-			<a href="{"orders.get_custom_file?order_id=`$order_info.order_id`&amp;file=`$file.file`&amp;filename=`$filename`"|fn_url}">{$file.name}</a>
+            <a href="{"orders.get_custom_file?order_id=`$order_info.order_id`&file=`$file.file`&filename=`$filename`"|fn_url}">{$file.name}</a>
 			{if !$smarty.foreach.po_files.last},&nbsp;{/if}
 		{foreachelse}
 			{foreach from=$cp.extra.custom_files[$po.option_id] item="file" name="po_files"}
@@ -27,8 +35,11 @@
 			&nbsp;({include file="common/modifier.tpl" mod_type=$po.modifier_type mod_value=$po.modifier display_sign=true})
 		{/if}
 	{/if}
-	{if !$smarty.foreach.po_opt.last},{/if}
+	{$option_displayed = true}
+	</li>
+	
 {/foreach}
+</ul>
 {/strip}
 {else}
 	&nbsp;

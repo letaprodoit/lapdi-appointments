@@ -2,9 +2,10 @@
 
 {capture name="mainbox"}
 
-{include file="addons/tsp_appointments/views/appointments/components/appointments_search.tpl"}
-
 <div id="tspa_appointments">
+
+    {include file="addons/tsp_appointments/views/appointments/components/appointments_search.tpl"}
+
     <form action="{""|fn_url}" method="post" name="appointments_form">
     
     {include file="common/pagination.tpl"}
@@ -28,22 +29,22 @@
     	<th>&nbsp;</th>
     </tr>
     {if $appointments}
-    {foreach from=$appointments key="id" item="appointments"}
+    {foreach from=$appointments key="id" item="appointment"}
     <tr {cycle values="class=\"table-row\", "}>
     	<td width="1%" class="center">
-    		<input type="checkbox" name="appointment_ids[]" value="{$appointments.id}" class="checkbox cm-item" /></td>
-    	<td><a href="{"profiles.update?user_id=`$appointments.user_id`"|fn_url}">{$appointments.lastname} {$appointments.firstname}</a></td>
-    	<td>{$appointments.info|unescape}</td>
-    	<td class="center">{if $appointments.date_created}{$appointments.date_created|date_format:"`$settings.Appearance.date_format` `$settings.Appearance.time_format`"}{/if}</td>
-    	<td class="center">{if $appointments.date_completed}{$appointments.date_completed|date_format:"`$settings.Appearance.date_format` `$settings.Appearance.time_format`"}{/if}</td>
+    		<input type="checkbox" name="appointment_ids[]" value="{$appointment.id}" class="checkbox cm-item" /></td>
+    	<td><a href="{"profiles.update?user_id=`$appointment.user_id`"|fn_url}">{$appointment.lastname} {$appointment.firstname}</a></td>
+    	<td>{$appointment.info|unescape}</td>
+    	<td class="center">{if $appointment.date_created}{$appointment.date_created|date_format:"`$settings.Appearance.date_format` `$settings.Appearance.time_format`"}{/if}</td>
+    	<td class="center">{if $appointment.date_completed}{$appointment.date_completed|date_format:"`$settings.Appearance.date_format` `$settings.Appearance.time_format`"}{/if}</td>
     	<td>
     		{assign var="notify" value=true}
-    		{include file="addons/tsp_appointments/overrides/common/select_popup.tpl" id=$appointments.id status=$appointments.status object_id_name="appointment_id" hide_for_vendor="COMPANY_ID"|defined update_controller="appointments" notify=$notify}
+    		{include file="addons/tsp_appointments/overrides/common/select_popup.tpl" id=$appointment.id status=$appointment.status object_id_name="appointment_id" hide_for_vendor=$runtime.company_id update_controller="appointments" notify=$notify}
     	</td>
     	<td class="nowrap">
     		{capture name="tools_items"}
-    		<li><a class="text-button-edit" href="{"appointments.update?appointment_id=`$appointments.id`"|fn_url}">{__("edit")}</a></li>
-    		<li><a class="cm-confirm text-button-edit" href="{"appointments.delete?appointment_id=`$appointments.id`"|fn_url}">{__("delete")}</a></li>
+    		<li><a class="text-button-edit" href="{"appointments.update?appointment_id=`$appointment.id`"|fn_url}">{__("edit")}</a></li>
+    		<li><a class="cm-confirm text-button-edit" href="{"appointments.delete?appointment_id=`$appointment.id`"|fn_url}">{__("delete")}</a></li>
     		{/capture}
     		{include file="common/table_tools_list.tpl" prefix=$id tools_list=$smarty.capture.tools_items href="appointments.update?appointment_id=`$id`" link_text=$lang.view}
     	</td>

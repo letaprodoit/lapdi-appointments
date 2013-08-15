@@ -19,6 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	return;
 }//endif
 
+use Tygh\Registry;
+
 $product_id = $_REQUEST['product_id'];
 $params = $_REQUEST;
 
