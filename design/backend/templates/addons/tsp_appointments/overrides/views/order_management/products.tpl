@@ -1,7 +1,7 @@
 {script src="js/exceptions.js"}
 
 {notes}
-{$lang.text_om_checkbox_notice}
+{__("text_om_checkbox_notice")}
 {/notes}
 
 {capture name="mainbox"}
@@ -13,13 +13,13 @@
 <table cellpadding="0" cellspacing="0" border="0" width="100%" class="table">
 <tr>
 	<th class="center">
-		<input type="checkbox" name="check_all" value="Y" title="{$lang.check_uncheck_all}" class="checkbox cm-check-items" /></th>
-	<th width="100%">{$lang.product}</th>
-	<th>{$lang.price}</th>
+		<input type="checkbox" name="check_all" value="Y" title="{__("check_uncheck_all")}" class="checkbox cm-check-items" /></th>
+	<th width="100%">{__("product")}</th>
+	<th>{__("price")}</th>
 	{if $cart.use_discount}
-	<th width="10%">{$lang.discount}</th>
+	<th width="10%">{__("discount")}</th>
 	{/if}
-	<th class="right">{$lang.quantity}</th>
+	<th class="right">{__("quantity")}</th>
 	<th>&nbsp;</th>
 </tr>
 
@@ -36,7 +36,7 @@
 		<a href="{"products.update?product_id=`$cp.product_id`"|fn_url}">{$cp.product|unescape} {include file="views/companies/components/company_name.tpl" company_name=$cp.company_name company_id=$cp.company_id}</a></td>
 	<td class="no-padding">
 	{if $cp.exclude_from_calculate}
-		{$lang.free}
+		{__("free")}
 	{else}
 		<table cellpadding="0" cellspacing="0" border="0" class="table-fixed" width="135">
 		<col width="35" />
@@ -84,7 +84,7 @@
 	</td>
 	<td class="nowrap">
 		{capture name="tools_items"}
-		<li><a class="cm-confirm" href="{"order_management.delete?cart_id=`$key`"|fn_url}">{$lang.delete}</a></li>
+		<li><a class="cm-confirm" href="{"order_management.delete?cart_id=`$key`"|fn_url}">{__("delete")}</a></li>
 		{/capture}
 		{include file="common/table_tools_list.tpl" prefix=$cp.product_id tools_list=$smarty.capture.tools_items href="products.update?product_id=`$cp.product_id`"}
 	</td>
@@ -94,7 +94,7 @@
 	<td>&nbsp;</td>
 	<td colspan="{if $cart.use_discount}5{else}4{/if}">
 		<div class="float-left">{include file="addons/tsp_appointments/overrides/views/products/components/select_product_options.tpl" product_options=$cp.product_options name="cart_products" id=$key use_exceptions="Y" product=$cp additional_class="option-item"}</div>
-		<div id="warning_{$key}" class="float-left notification-title-e hidden">&nbsp;&nbsp;&nbsp;{$lang.nocombination}</div>
+		<div id="warning_{$key}" class="float-left notification-title-e hidden">&nbsp;&nbsp;&nbsp;{__("nocombination")}</div>
 
 	</td>
 </tr>
@@ -103,7 +103,7 @@
 {foreachelse}
 	{if $smarty.capture.extra_items|trim == ""}
 		<tr class="no-items">
-			<td colspan="{if $cart.use_discount}6{else}5{/if}"><p>{$lang.no_items}</p></td>
+			<td colspan="{if $cart.use_discount}6{else}5{/if}"><p>{__("no_items")}</p></td>
 		</tr>
 	{/if}
 {/foreach}
@@ -112,7 +112,7 @@
 </table>
 
 {if $cart.subtotal}
-<p class="right"><span>{$lang.subtotal}:</span>&nbsp;{include file="common/price.tpl" value=$cart.subtotal}</p>
+<p class="right"><span>{__("subtotal")}:</span>&nbsp;{include file="common/price.tpl" value=$cart.subtotal}</p>
 {/if}
 
 
@@ -121,7 +121,7 @@
 		<div class="float-left">
 			{capture name="tools_list"}
 			<ul>
-				<li><a name="dispatch[order_management.delete]" class="cm-process-items cm-confirm" rev="om_cart_products">{$lang.delete_selected}</a></li>
+				<li><a name="dispatch[order_management.delete]" class="cm-process-items cm-confirm" rev="om_cart_products">{__("delete_selected")}</a></li>
 			</ul>
 			{/capture}
 			{include file="buttons/button.tpl" but_text=$lang.recalculate but_name="dispatch[order_management.update]" but_role="button_main"}

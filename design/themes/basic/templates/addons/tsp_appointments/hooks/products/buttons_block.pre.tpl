@@ -13,14 +13,14 @@
 						<input id="product_{$field.name}" type="text" name="product_data[{$field.name}]" {if $field.width}style="width: {$field.width};"{/if} value="{$field.value}" class="valign input-text {if $field.hint}cm-hint{/if}" title="{$field.hint}"/>
 					{elseif $field.type == 'S'}
 						<select id="product_{$field.name}" name="product_data[{$field.name}]">
-						<option value="">{$lang.please_select_one}</option>
+						<option value="">{__("please_select_one")}</option>
 							{foreach from=$field.options item="option"}
 								<option value="{$option}" {if $field.value == $option}selected="selected"{/if}>{$option}</option>
 							{/foreach}
 						</select>
 					{elseif $field.type == 'H'}
 						<select id="product_{$field.name}" name="product_data[{$field.name}]">
-						<option value="">{$lang.please_select_one}</option>
+						<option value="">{__("please_select_one")}</option>
 							{foreach from=$field.options key=k item=v name="option"}
 								<option value="{$k}" {if $field.value == $k}selected="selected"{/if}>{$v}</option>
 							{/foreach}

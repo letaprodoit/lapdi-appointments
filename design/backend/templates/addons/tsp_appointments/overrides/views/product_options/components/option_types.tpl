@@ -1,12 +1,12 @@
 {strip}
 {if $display == "view"}
-	{if $value == "S"}{$lang.selectbox}
-	{elseif $value == "R"}{$lang.radiogroup}
-	{elseif $value == "C"}{$lang.checkbox}
-	{elseif $value == "D"}{$lang.date}
-	{elseif $value == "I"}{$lang.text}
-	{elseif $value == "T"}{$lang.textarea}
-	{elseif $value == "F"}{$lang.file}
+	{if $value == "S"}{__("selectbox")}
+	{elseif $value == "R"}{__("radiogroup")}
+	{elseif $value == "C"}{__("checkbox")}
+	{elseif $value == "D"}{__("date")}
+	{elseif $value == "I"}{__("text")}
+	{elseif $value == "T"}{__("textarea")}
+	{elseif $value == "F"}{__("file")}
 	{/if}
 {else}
 
@@ -26,25 +26,25 @@
 
 <select id="{$tag_id}" name="{$name}" {if $check}onchange="fn_check_option_type(this.value, this.id);"{/if}>
 {if !$app_types || ($app_types && $app_types|strpos:"S" !== false)}
-<option value="S" {if $value == "S"}selected="selected"{/if}>{$lang.selectbox}</option>
+<option value="S" {if $value == "S"}selected="selected"{/if}>{__("selectbox")}</option>
 {/if}
 {if !$app_types || ($app_types && $app_types|strpos:"R" !== false)}
-<option value="R" {if $value == "R"}selected="selected"{/if}>{$lang.radiogroup}</option>
+<option value="R" {if $value == "R"}selected="selected"{/if}>{__("radiogroup")}</option>
 {/if}
 {if !$app_types || ($app_types && $app_types|strpos:"C" !== false)}
-<option value="C" {if $value == "C"}selected="selected"{/if}>{$lang.checkbox}</option>
+<option value="C" {if $value == "C"}selected="selected"{/if}>{__("checkbox")}</option>
 {/if}
 {if !$app_types || ($app_types && $app_types|strpos:"D" !== false)}
-<option value="D" {if $value == "D"}selected="selected"{/if}>{$lang.date}</option>
+<option value="D" {if $value == "D"}selected="selected"{/if}>{__("date")}</option>
 {/if}
 {if !$app_types || ($app_types && $app_types|strpos:"I" !== false)}
-<option value="I" {if $value == "I"}selected="selected"{/if}>{$lang.text}</option>
+<option value="I" {if $value == "I"}selected="selected"{/if}>{__("text")}</option>
 {/if}
 {if !$app_types || ($app_types && $app_types|strpos:"T" !== false)}
-<option value="T" {if $value == "T"}selected="selected"{/if}>{$lang.textarea}</option>
+<option value="T" {if $value == "T"}selected="selected"{/if}>{__("textarea")}</option>
 {/if}
 {if !$app_types || ($app_types && $app_types|strpos:"F" !== false)}
-<option value="F" {if $value == "F"}selected="selected"{/if}>{$lang.file}</option>
+<option value="F" {if $value == "F"}selected="selected"{/if}>{__("file")}</option>
 {/if}
 </select>
 

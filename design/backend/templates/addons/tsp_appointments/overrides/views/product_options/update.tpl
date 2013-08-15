@@ -19,9 +19,9 @@
 
 <div class="tabs cm-j-tabs">
 	<ul>
-		<li id="tab_option_details_{$id}" class="cm-js cm-active"><a>{$lang.general}</a></li>
+		<li id="tab_option_details_{$id}" class="cm-js cm-active"><a>{__("general")}</a></li>
 		{if $option_data.option_type == "S" || $option_data.option_type == "R" || $option_data.option_type == "C" || !$option_data}
-			<li id="tab_option_variants_{$id}" class="cm-js"><a>{$lang.variants}</a></li>
+			<li id="tab_option_variants_{$id}" class="cm-js"><a>{__("variants")}</a></li>
 		{/if}
 	</ul>
 </div>
@@ -30,17 +30,17 @@
 	<fieldset>
 		<div class="form-field">
 			<input class="cm-no-hide-input" type="hidden" value="{$object}" name="object">
-			<label for="name_{$id}" class="cm-required">{$lang.name}:</label>
+			<label for="name_{$id}" class="cm-required">{__("name")}:</label>
 			<input type="text" name="option_data[option_name]" id="name_{$id}" value="{$option_data.option_name}" class="input-text-large main-input" />
 		</div>
 
 		<div class="form-field">
-			<label for="position_{$id}">{$lang.position}:</label>
+			<label for="position_{$id}">{__("position")}:</label>
 			<input type="text" name="option_data[position]" id="position_{$id}" value="{$option_data.position}" size="3" class="input-text-short" />
 		</div>
 
 		<div class="form-field">
-			<label for="inventory_{$id}">{$lang.inventory}:</label>
+			<label for="inventory_{$id}">{__("inventory")}:</label>
 			<input type="hidden" name="option_data[inventory]" value="N" />
 			{if "SRC"|strpos:$option_data.option_type !== false}
 				<input type="checkbox" name="option_data[inventory]" id="inventory_{$id}" value="Y" {if $option_data.inventory == "Y"}checked="checked"{/if} class="checkbox" />
@@ -53,34 +53,34 @@
 
 
 		<div class="form-field">
-			<label for="option_type_{$id}">{$lang.type}:</label>
+			<label for="option_type_{$id}">{__("type")}:</label>
 			{include file="addons/tsp_appointments/overrides/views/product_options/components/option_types.tpl"  name="option_data[option_type]" value=$option_data.option_type display="select" tag_id="option_type_`$id`" check=true}
 		</div>
 		
 		<div class="form-field">
-			<label for="description_{$id}">{$lang.description}:</label>
+			<label for="description_{$id}">{__("description")}:</label>
 			<textarea id="description_{$id}" name="option_data[description]" cols="55" rows="8" class="cm-wysiwyg input-textarea-long">{$option_data.description}</textarea>
 			
 		</div>
 		
 		<div class="form-field">
-			<label for="comment_{$id}">{$lang.comment}:</label>
+			<label for="comment_{$id}">{__("comment")}:</label>
 			<input type="text" name="option_data[comment]" id="comment_{$id}" value="{$option_data.comment}" class="input-text-large" />
-			<p class="description">{$lang.comment_hint}</p>
+			<p class="description">{__("comment_hint")}</p>
 		</div>
 		
 		<div class="form-field">
-			<label for="file_required_{$id}">{$lang.required}:</label>
+			<label for="file_required_{$id}">{__("required")}:</label>
 			<input type="hidden" name="option_data[required]" value="N" /><input type="checkbox" id="file_required_{$id}" name="option_data[required]" value="Y" {if $option_data.required == "Y"}checked="checked"{/if} class="checkbox" />
 		</div>
 		
 		{if !$option_data.option_type || "SRC"|strpos:$option_data.option_type !== false}
 			<div class="form-field">
-				<label for="file_required_{$id}">{$lang.missing_variants_handling}:</label>
+				<label for="file_required_{$id}">{__("missing_variants_handling")}:</label>
 				{if "SRC"|strpos:$option_data.option_type !== false}
 					<select name="option_data[missing_variants_handling]">
-						<option value="M" {if $option_data.missing_variants_handling == "M"}selected="selected"{/if}>{$lang.display_message}</option>
-						<option value="H" {if $option_data.missing_variants_handling == "H"}selected="selected"{/if}>{$lang.hide_option_completely}</option>
+						<option value="M" {if $option_data.missing_variants_handling == "M"}selected="selected"{/if}>{__("display_message")}</option>
+						<option value="H" {if $option_data.missing_variants_handling == "H"}selected="selected"{/if}>{__("hide_option_completely")}</option>
 					</select>
 				{else}
 					&nbsp;-&nbsp;
@@ -90,35 +90,35 @@
 		
 		<div id="extra_options_{$id}" {if $option_data.option_type != "I" && $option_data.option_type != "T"}class="hidden"{/if}>
 			<div class="form-field">
-				<label for="regexp_{$id}">{$lang.regexp}:</label>
+				<label for="regexp_{$id}">{__("regexp")}:</label>
 				<input type="text" name="option_data[regexp]" id="regexp_{$id}" value="{$option_data.regexp|unescape}" class="input-text-large" />
-				<p class="description">{$lang.regexp_hint}</p>
+				<p class="description">{__("regexp_hint")}</p>
 			</div>
 			
 			<div class="form-field">
-				<label for="inner_hint_{$id}">{$lang.inner_hint}:</label>
+				<label for="inner_hint_{$id}">{__("inner_hint")}:</label>
 				<input type="text" name="option_data[inner_hint]" id="inner_hint_{$id}" value="{$option_data.inner_hint}" class="input-text-large" />
 			</div>
 			
 			<div class="form-field">
-				<label for="incorrect_message_{$id}">{$lang.incorrect_filling_message}:</label>
+				<label for="incorrect_message_{$id}">{__("incorrect_filling_message")}:</label>
 				<input type="text" name="option_data[incorrect_message]" id="incorrect_message_{$id}" value="{$option_data.incorrect_message}" class="input-text-large" />
 			</div>
 		</div>
 		
 		<div id="file_options_{$id}" {if $option_data.option_type != "F"}class="hidden"{/if}>
 			<div class="form-field">
-				<label for="allowed_extensions_{$id}">{$lang.allowed_extensions}:</label>
+				<label for="allowed_extensions_{$id}">{__("allowed_extensions")}:</label>
 				<input type="text" name="option_data[allowed_extensions]" id="allowed_extensions_{$id}" value="{$option_data.allowed_extensions}" class="input-text-large" />
-				<p class="description">{$lang.allowed_extensions_hint}</p>
+				<p class="description">{__("allowed_extensions_hint")}</p>
 			</div>
 			<div class="form-field">
-				<label for="max_uploading_file_size_{$id}">{$lang.max_uploading_file_size}:</label>
+				<label for="max_uploading_file_size_{$id}">{__("max_uploading_file_size")}:</label>
 				<input type="text" name="option_data[max_file_size]" id="max_uploading_file_size_{$id}" value="{$option_data.max_file_size}" class="input-text-large" />
-				<p class="description">{$lang.max_uploading_file_size_hint}</p>
+				<p class="description">{__("max_uploading_file_size_hint")}</p>
 			</div>
 			<div class="form-field">
-				<label for="multiupload_{$id}">{$lang.multiupload}:</label>
+				<label for="multiupload_{$id}">{__("multiupload")}:</label>
 				<input type="hidden" name="option_data[multiupload]" value="N" /><input type="checkbox" id="multiupload_{$id}" name="option_data[multiupload]" value="Y" {if $option_data.multiupload == "Y"}checked="checked"{/if} class="checkbox" />
 			</div>
 		</div>
@@ -133,12 +133,12 @@
 		<table cellpadding="0" cellspacing="0" class="table">
 		<tbody>
 		<tr class="first-sibling">
-			<th class="cm-non-cb{if $option_data.option_type == "C"} hidden{/if}">{$lang.position_short}</th>
-			<th class="cm-non-cb{if $option_data.option_type == "C"} hidden{/if}">{$lang.name}</th>
-			<th>{$lang.modifier}&nbsp;/&nbsp;{$lang.type}</th>
-			<th>{$lang.weight_modifier}&nbsp;/&nbsp;{$lang.type}</th>
-			<th class="cm-non-cb{if $option_data.option_type == "C"} hidden{/if}">{$lang.status}</th>
-			<th><img src="{$images_dir}/plus_minus.gif" width="13" height="12" border="0" name="plus_minus" id="on_st_{$id}" alt="{$lang.expand_collapse_list}" title="{$lang.expand_collapse_list}" class="hand cm-combinations-options-{$id}" /><img src="{$images_dir}/minus_plus.gif" width="13" height="12" border="0" name="minus_plus" id="off_st_{$id}" alt="{$lang.expand_collapse_list}" title="{$lang.expand_collapse_list}" class="hand hidden cm-combinations-options-{$id}" /></th>
+			<th class="cm-non-cb{if $option_data.option_type == "C"} hidden{/if}">{__("position_short")}</th>
+			<th class="cm-non-cb{if $option_data.option_type == "C"} hidden{/if}">{__("name")}</th>
+			<th>{__("modifier")}&nbsp;/&nbsp;{__("type")}</th>
+			<th>{__("weight_modifier")}&nbsp;/&nbsp;{__("type")}</th>
+			<th class="cm-non-cb{if $option_data.option_type == "C"} hidden{/if}">{__("status")}</th>
+			<th><img src="{$images_dir}/plus_minus.gif" width="13" height="12" border="0" name="plus_minus" id="on_st_{$id}" alt="{__("expand_collapse_list")}" title="{__("expand_collapse_list")}" class="hand cm-combinations-options-{$id}" /><img src="{$images_dir}/minus_plus.gif" width="13" height="12" border="0" name="minus_plus" id="off_st_{$id}" alt="{__("expand_collapse_list")}" title="{__("expand_collapse_list")}" class="hand hidden cm-combinations-options-{$id}" /></th>
 			<th class="cm-non-cb{if $option_data.option_type == "C"} hidden{/if}">&nbsp;</th>
 		</tr>
 		</tbody>
@@ -166,7 +166,7 @@
 			<td class="cm-non-cb{if $option_data.option_type == "C"} hidden{/if}">
 				{include file="common/select_status.tpl" input_name="option_data[variants][`$num`][status]" display="select" obj=$vr}</td>
 			<td class="nowrap">
-				<img src="{$images_dir}/plus.gif" width="14" height="9" border="0" name="plus_minus" id="on_extra_option_variants_{$id}_{$num}" alt="{$lang.expand_collapse_list}" title="{$lang.expand_collapse_list}" class="hand cm-combination-options-{$id}" /><img src="{$images_dir}/minus.gif" width="14" height="9" border="0" name="minus_plus" id="off_extra_option_variants_{$id}_{$num}" alt="{$lang.expand_collapse_list}" title="{$lang.expand_collapse_list}" class="hand hidden cm-combination-options-{$id}" /><a id="sw_extra_option_variants_{$id}_{$num}" class="cm-combination-options-{$id}">{$lang.extra}</a>
+				<img src="{$images_dir}/plus.gif" width="14" height="9" border="0" name="plus_minus" id="on_extra_option_variants_{$id}_{$num}" alt="{__("expand_collapse_list")}" title="{__("expand_collapse_list")}" class="hand cm-combination-options-{$id}" /><img src="{$images_dir}/minus.gif" width="14" height="9" border="0" name="minus_plus" id="off_extra_option_variants_{$id}_{$num}" alt="{__("expand_collapse_list")}" title="{__("expand_collapse_list")}" class="hand hidden cm-combination-options-{$id}" /><a id="sw_extra_option_variants_{$id}_{$num}" class="cm-combination-options-{$id}">{__("extra")}</a>
 				<input type="hidden" name="option_data[variants][{$num}][variant_id]" value="{$vr.variant_id}" class="{$cm_no_hide_input}" />
 			 </td>
 			 <td class="right cm-non-cb{if $option_data.option_type == "C"} hidden{/if}">
@@ -177,7 +177,7 @@
 			<td colspan="7">
 				{hook name="product_options:edit_product_options"}
 				<div class="form-field cm-non-cb{if $option_data.option_type == "C"} hidden{/if}">
-					<label>{$lang.icon}:</label>
+					<label>{__("icon")}:</label>
 					{include file="common/attach_images.tpl" image_name="variant_image" image_key=$num hide_titles=true no_detailed=true image_object_type="variant_image" image_type="V" image_pair=$vr.image_pair prefix=$id}
 				</div>
 				{/hook}
@@ -210,7 +210,7 @@
 			<td class="cm-non-cb{if $option_data.option_type == "C"} hidden{/if}">
 				{include file="common/select_status.tpl" input_name="option_data[variants][`$num`][status]" display="select"}</td>
 			<td>
-				<img src="{$images_dir}/plus.gif" width="14" height="9" border="0" name="plus_minus" id="on_extra_option_variants_{$id}_{$num}" alt="{$lang.expand_collapse_list}" title="{$lang.expand_collapse_list}" class="hand cm-combination-options-{$id}" /><img src="{$images_dir}/minus.gif" width="14" height="9" border="0" name="minus_plus" id="off_extra_option_variants_{$id}_{$num}" alt="{$lang.expand_collapse_list}" title="{$lang.expand_collapse_list}" class="hand hidden cm-combination-options-{$id}" /><a id="sw_extra_option_variants_{$id}_{$num}" class="cm-combination-options-{$id}">{$lang.extra}</a>
+				<img src="{$images_dir}/plus.gif" width="14" height="9" border="0" name="plus_minus" id="on_extra_option_variants_{$id}_{$num}" alt="{__("expand_collapse_list")}" title="{__("expand_collapse_list")}" class="hand cm-combination-options-{$id}" /><img src="{$images_dir}/minus.gif" width="14" height="9" border="0" name="minus_plus" id="off_extra_option_variants_{$id}_{$num}" alt="{__("expand_collapse_list")}" title="{__("expand_collapse_list")}" class="hand hidden cm-combination-options-{$id}" /><a id="sw_extra_option_variants_{$id}_{$num}" class="cm-combination-options-{$id}">{__("extra")}</a>
 			</td>
 			<td class="right cm-non-cb{if $option_data.option_type == "C"} hidden{/if}">
 				{include file="buttons/multiple_buttons.tpl" item_id="add_variant_`$id`" tag_level="2"}
@@ -220,7 +220,7 @@
 			<td colspan="7">
 				{hook name="product_options:edit_product_options"}
 				<div class="form-field cm-non-cb">
-					<label>{$lang.icon}:</label>
+					<label>{__("icon")}:</label>
 					{include file="common/attach_images.tpl" image_name="variant_image" image_key=$num hide_titles=true no_detailed=true image_object_type="variant_image" image_type="V" prefix=$id}
 				</div>
 				{/hook}

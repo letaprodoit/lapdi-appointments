@@ -7,7 +7,7 @@
 <table cellpadding="0" cellspacing="0" border="0" class="search-header">
 <tr>
 	<td class="search-field">
-		<label for="elm_user_id">{$lang.user}:</label>
+		<label for="elm_user_id">{__("user")}:</label>
 		<div class="break">
 			<select name="user_id" id="elm_user_id">
 				<option value="0" {if !$search.user_id}selected="selected"{/if}> -- </option>
@@ -16,14 +16,14 @@
 		</div>
 	</td>
 	<td class="search-field">
-		<label for="elm_status">{$lang.status}:</label>
+		<label for="elm_status">{__("status")}:</label>
 		<div class="break">
 			<select name="status" id="elm_status">
 				<option value=""> -- </option>
-				<option value="O" {if $search.status == "O"}selected="selected"{/if}>{$lang.open}</option>
-				<option value="S" {if $search.status == "S"}selected="selected"{/if}>{$lang.tspa_scheduled}</option>
-				<option value="X" {if $search.status == "X"}selected="selected"{/if}>{$lang.cancelled}</option>
-				<option value="C" {if $search.status == "C"}selected="selected"{/if}>{$lang.completed}</option>
+				<option value="O" {if $search.status == "O"}selected="selected"{/if}>{__("open")}</option>
+				<option value="S" {if $search.status == "S"}selected="selected"{/if}>{__("tspa_scheduled")}</option>
+				<option value="X" {if $search.status == "X"}selected="selected"{/if}>{__("cancelled")}</option>
+				<option value="C" {if $search.status == "C"}selected="selected"{/if}>{__("completed")}</option>
 			</select>
 		</div>
 	</td></td>
@@ -36,7 +36,7 @@
 {capture name="advanced_search"}
 
 <div class="search-field">
-	<label>{$lang.period}:</label>
+	<label>{__("period")}:</label>
 	{include file="common/period_selector.tpl" period=$search.period form_name="appointments_search_form" time_from=$search.time_from time_to=$search.time_to}
 </div>
 

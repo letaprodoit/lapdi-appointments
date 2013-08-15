@@ -1,13 +1,13 @@
 {if $display == "text"}
 	<span class="view-status">
 		{if $status == "O"}
-			{$lang.open}
+			{__("open")}
 		{elseif $status == "S"}
-			{$lang.tspa_scheduled}
+			{__("tspa_scheduled")}
 		{elseif $status == "X"}
-			{$lang.cancelled}
+			{__("cancelled")}
 		{elseif $status == "C"}
-			{$lang.completed}
+			{__("completed")}
 		{/if}
 	</span>
 {else}
@@ -24,13 +24,13 @@
 				{$items_status.$status}
 			{else}
 				{if $status == "O"}
-					{$lang.open}
+					{__("open")}
 				{elseif $status == "S"}
-					{$lang.tspa_scheduled}
+					{__("tspa_scheduled")}
 				{elseif $status == "X"}
-					{$lang.cancelled}
+					{__("cancelled")}
 				{elseif $status == "C"}
-					{$lang.completed}
+					{__("completed")}
 				{/if}
 			{/if}
 		{if !$hide_for_vendor}
@@ -52,10 +52,10 @@
 					<li><a class="{if $confirm}cm-confirm {/if}status-link-{$st|lower} {if $status == $st}cm-active{else}cm-ajax{/if}"{if $status_rev} rev="{$status_rev}"{/if} href="{"`$_update_controller`.update_status?id=`$id`&amp;status=`$st``$smarty.capture._extra``$extra`"|fn_url}" onclick="return fn_check_object_status(this, '{$st|lower}', '{if $statuses}{$statuses[$st].color|default:''}{/if}');" name="update_object_status_callback">{$val}</a></li>
 					{/foreach}
 				{else}
-					<li><a class="{if $confirm}cm-confirm {/if}status-link-o {if $status == "O"}cm-active{else}cm-ajax{/if}"{if $status_rev} rev="{$status_rev}"{/if} href="{"`$_update_controller`.update_status?`$object_id_name`=`$id`&amp;status=O`$dynamic_object`"|fn_url}" onclick="return fn_check_object_status(this, 'o', '');" name="update_object_status_callback">{$lang.open}</a></li>
-					<li><a class="{if $confirm}cm-confirm {/if}status-link-u {if $status == "S"}cm-active{else}cm-ajax{/if}"{if $status_rev} rev="{$status_rev}"{/if} href="{"`$_update_controller`.update_status?`$object_id_name`=`$id`&amp;status=S`$dynamic_object`"|fn_url}" onclick="return fn_check_object_status(this, 'u', '');" name="update_object_status_callback">{$lang.tspa_scheduled}</a></li>
-					<li><a class="{if $confirm}cm-confirm {/if}status-link-d {if $status == "X"}cm-active{else}cm-ajax{/if}"{if $status_rev} rev="{$status_rev}"{/if} href="{"`$_update_controller`.update_status?`$object_id_name`=`$id`&amp;status=X`$dynamic_object`"|fn_url}" onclick="return fn_check_object_status(this, 'd', '');" name="update_object_status_callback">{$lang.cancelled}</a></li>
-					<li><a class="{if $confirm}cm-confirm {/if}status-link-s {if $status == "C"}cm-active{else}cm-ajax{/if}"{if $status_rev} rev="{$status_rev}"{/if} href="{"`$_update_controller`.update_status?`$object_id_name`=`$id`&amp;status=C`$dynamic_object`"|fn_url}" onclick="return fn_check_object_status(this, 's', '');" name="update_object_status_callback">{$lang.completed}</a></li>
+					<li><a class="{if $confirm}cm-confirm {/if}status-link-o {if $status == "O"}cm-active{else}cm-ajax{/if}"{if $status_rev} rev="{$status_rev}"{/if} href="{"`$_update_controller`.update_status?`$object_id_name`=`$id`&amp;status=O`$dynamic_object`"|fn_url}" onclick="return fn_check_object_status(this, 'o', '');" name="update_object_status_callback">{__("open")}</a></li>
+					<li><a class="{if $confirm}cm-confirm {/if}status-link-u {if $status == "S"}cm-active{else}cm-ajax{/if}"{if $status_rev} rev="{$status_rev}"{/if} href="{"`$_update_controller`.update_status?`$object_id_name`=`$id`&amp;status=S`$dynamic_object`"|fn_url}" onclick="return fn_check_object_status(this, 'u', '');" name="update_object_status_callback">{__("tspa_scheduled")}</a></li>
+					<li><a class="{if $confirm}cm-confirm {/if}status-link-d {if $status == "X"}cm-active{else}cm-ajax{/if}"{if $status_rev} rev="{$status_rev}"{/if} href="{"`$_update_controller`.update_status?`$object_id_name`=`$id`&amp;status=X`$dynamic_object`"|fn_url}" onclick="return fn_check_object_status(this, 'd', '');" name="update_object_status_callback">{__("cancelled")}</a></li>
+					<li><a class="{if $confirm}cm-confirm {/if}status-link-s {if $status == "C"}cm-active{else}cm-ajax{/if}"{if $status_rev} rev="{$status_rev}"{/if} href="{"`$_update_controller`.update_status?`$object_id_name`=`$id`&amp;status=C`$dynamic_object`"|fn_url}" onclick="return fn_check_object_status(this, 's', '');" name="update_object_status_callback">{__("completed")}</a></li>
  				{/if}
 				</ul>
 				</div>
@@ -69,14 +69,14 @@
 				{if $notify_department}
 					<li class="select-field notify-department">
 						<input type="checkbox" name="__notify_department" id="{$prefix}_{$id}_notify_department" value="Y" class="checkbox" checked="checked" onclick="$('input[name=__notify_department]').attr('checked', this.checked);" />
-						<label for="{$prefix}_{$id}_notify_department">{$lang.notify_orders_department}</label>
+						<label for="{$prefix}_{$id}_notify_department">{__("notify_orders_department")}</label>
 					</li>
 				{/if}
 				
 				{if $notify_supplier}
 					<li class="select-field notify-department">
 						<input type="checkbox" name="__notify_supplier" id="{$prefix}_{$id}_notify_supplier" value="Y" class="checkbox" checked="checked" onclick="$('input[name=__notify_supplier]').attr('checked', this.checked);" />
-						<label for="{$prefix}_{$id}_notify_supplier">{if $smarty.const.PRODUCT_TYPE == "MULTIVENDOR" || $smarty.const.PRODUCT_TYPE == "ULTIMATE"}{$lang.notify_vendor}{else}{$lang.notify_supplier}{/if}</label>
+						<label for="{$prefix}_{$id}_notify_supplier">{if $smarty.const.PRODUCT_TYPE == "MULTIVENDOR" || $smarty.const.PRODUCT_TYPE == "ULTIMATE"}{__("notify_vendor")}{else}{__("notify_supplier")}{/if}</label>
 					</li>
 				{/if}
 				
