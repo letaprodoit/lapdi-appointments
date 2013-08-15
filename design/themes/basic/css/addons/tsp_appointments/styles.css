@@ -1,0 +1,18 @@
+.product_appointment_box {
+	background-color: #f3ffec;
+	padding: 10px 10px 10px 20px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	border: 1px solid #b0cf9f;
+	width: 80%;
+	margin-bottom: 20px;
+}
+
+.product_appointment_box .subheader{
+	font-size: 17px;
+}
+
+.product_appointment_box .product-list-field{
+	margin: 0px;
+}
