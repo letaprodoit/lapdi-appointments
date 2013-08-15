@@ -188,16 +188,39 @@ function fn_tspa_add_appointment_data_to_array(&$appointments,$key)
 			{			
 				$product_options = $product['extra']['product_options'];
 				
+				$date = $time = $location = $additonal_info = null;
+				
 				foreach ($product_options as $option_id => $option_value)
 				{
 					list ($description, $value) = fn_tspa_get_product_option_info($option_id, $option_value);
-					$data .= "<small><strong>$description:</strong>  $value</small><br>\n";
-										
+					
+					if ( Registry::get('tspa_product_option_date_field_id') == $option_id )
+					{
+						$date = $value;
+					}//endif
+					elseif ( Registry::get('tspa_product_option_time_field_id') == $option_id )
+					{
+						$time = $value;
+					}//end elseif
+					elseif ( Registry::get('tspa_product_option_location_field_id') == $option_id )
+					{
+						$location = $value;;
+					}//end elseif
+					elseif ( Registry::get('tspa_product_option_additional_information_field_id') == $option_id )
+					{
+						$additonal_info = $value;
+						
+					}//end elseif										
 				}//endforeach;
-			
+				
+				if (!empty($date) && !empty($time) && !empty($location))
+				{
+					$data = sprintf("Apppointment set for <strong>%s</strong> at <strong>%s</strong>. Location will be <strong>%s</strong>.<br>
+						<strong>Note:</strong> %s",$date, $time, $location, $additonal_info);			
+				}//endif
 			}//endif
 			
-			$appointments[$appt_id][$key] = htmlentities($data);
+			$appointments[$appt_id][$key] = $data;
 								
 		}//endforeach;		
 	}//endforeach;
@@ -647,7 +670,7 @@ function fn_tspa_product_contains_appointment($product_options)
  * Update the appointment in the database
  *
  ***********/
-function fn_tspa_update_appointment($id, $date, $time, $location)
+function fn_tspa_update_appointment($id, $date, $time, $location,$additional_info=null)
 {
 
 	$appointment = db_get_row("SELECT * FROM ?:addon_tsp_appointments WHERE id = ?i", $id);
@@ -658,6 +681,7 @@ function fn_tspa_update_appointment($id, $date, $time, $location)
 	$extra['product_options'][Registry::get('tspa_product_option_date_field_id')] = $date;
 	$extra['product_options'][Registry::get('tspa_product_option_time_field_id')] = $time;
 	$extra['product_options'][Registry::get('tspa_product_option_location_field_id')] = $location;
+	$extra['product_options'][Registry::get('tspa_product_option_additional_info_field_id')] = $additional_info;
 	
 	db_query('UPDATE ?:order_details SET ?u WHERE order_id = ?i', array('extra' => @serialize($extra)), $appointment['order_id']);
 }//end fn_tspa_update_appointment

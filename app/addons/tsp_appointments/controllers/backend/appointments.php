@@ -50,8 +50,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 			$date = $data['date'];
 			$time = $data['time'];
 			$location = $data['location'];
-			
-			fn_tspa_update_appointment($appointment_id, $date, $time, $location);
+			$additional_info = $data['additional_info'];
+				
+			fn_tspa_update_appointment($appointment_id, $date, $time, $location,$additional_info);
 			 
 		}//endif
 		
@@ -110,6 +111,7 @@ elseif ($mode == 'update' && !empty($_REQUEST['appointment_id']))
 		$appointment['date'] = fn_tspa_get_product_option_data($appointment['order_id'], $appointment['product_id'], Registry::get('tspa_product_option_date_field_id'));
 		$appointment['time'] = fn_tspa_get_product_option_data($appointment['order_id'], $appointment['product_id'], Registry::get('tspa_product_option_time_field_id'));
 		$appointment['location'] = fn_tspa_get_product_option_data($appointment['order_id'], $appointment['product_id'], Registry::get('tspa_product_option_location_field_id'), true);
+		$appointment['additional_info'] = fn_tspa_get_product_option_data($appointment['order_id'], $appointment['product_id'], Registry::get('tspa_product_option_additional_info_field_id'));
 	}//endif
 	
 	// [Breadcrumbs]
