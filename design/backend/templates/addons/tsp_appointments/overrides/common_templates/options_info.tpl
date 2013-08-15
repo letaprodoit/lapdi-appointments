@@ -1,0 +1,35 @@
+{if $product_options}
+<span>{$lang.options}: </span>
+{strip}
+{foreach from=$product_options item=po name=po_opt}
+	{assign var="value" value=$po.variant_name}
+	{if !$value}
+		{assign var="value" value=$po.value}
+	{/if}
+	
+	&nbsp;{$po.option_name}:&nbsp;{$value}
+	
+	{if $oi.extra.custom_files[$po.option_id] || $cp.extra.custom_files[$po.option_id]}
+		{foreach from=$oi.extra.custom_files[$po.option_id] item="file" name="po_files"}
+			{assign var="filename" value=$file.name|rawurlencode}
+			<a href="{"orders.get_custom_file?order_id=`$order_info.order_id`&amp;file=`$file.file`&amp;filename=`$filename`"|fn_url}">{$file.name}</a>
+			{if !$smarty.foreach.po_files.last},&nbsp;{/if}
+		{foreachelse}
+			{foreach from=$cp.extra.custom_files[$po.option_id] item="file" name="po_files"}
+				{$file.name}
+				{if !$smarty.foreach.po_files.last},&nbsp;{/if}
+			{/foreach}
+		{/foreach}
+	{/if}
+	
+	{if $settings.General.display_options_modifiers == "Y"}
+		{if $po.modifier|floatval}
+			&nbsp;({include file="common/modifier.tpl" mod_type=$po.modifier_type mod_value=$po.modifier display_sign=true})
+		{/if}
+	{/if}
+	{if !$smarty.foreach.po_opt.last},{/if}
+{/foreach}
+{/strip}
+{else}
+	&nbsp;
+{/if}
