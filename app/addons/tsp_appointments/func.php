@@ -40,6 +40,7 @@ function fn_tsp_appointments_finish_payment($order_id, $pp_response, $force_noti
 {
 	$order_info = fn_get_order_info($order_id);
 	
+	// FIXME: What is the admin want's to override payment other than a test payment
 	if (($order_info['payment_info']['order_status'] == 'P'))
 	{
 		// If the user purchased a service with an appointment
@@ -90,45 +91,48 @@ function fn_tsp_appointments_delete_product_post($product_id)
  */
 function fn_tsp_appointments_get_order_info(&$order_info, &$additional_data)
 {
-
-	foreach ($order_info['items'] as $k => $v)
+	$key = 'products';
+	
+	if (array_key_exists( $key, $order_info ))
 	{
-		$product_id = $v['product_id'];
-		$product_metadata = db_get_hash_array("SELECT * FROM ?:addon_tsp_appointments_product_metadata WHERE `product_id` = $product_id", 'field_name');
+		foreach ($order_info[$key] as $k => $v)
+		{
+			$product_id = $v['product_id'];
+			$product_metadata = db_get_hash_array("SELECT * FROM ?:addon_tsp_appointments_product_metadata WHERE `product_id` = $product_id", 'field_name');
 		
-		$product_appointment = array();
+			$product_appointment = array();
 		
-		// If the product has appointment data store it in the order
-		if (!empty($product_metadata))
-		{		
-			$field_names = Registry::get('tspa_product_data_field_names');
-			
-			foreach ($field_names as $field_name => $fdata)
-			{			
-				$value = "";
-				
-				// only display fields that have data
-				if (array_key_exists($field_name, $product_metadata))
-				{				
-					$value = $product_metadata[$field_name]['value'];
-					if ($fdata['type'] == 'T')
+			// If the product has appointment data store it in the order
+			if (!empty($product_metadata))
+			{
+				$field_names = Registry::get('tspa_product_data_field_names');
+					
+				foreach ($field_names as $field_name => $fdata)
+				{
+					$value = "";
+		
+					// only display fields that have data
+					if (array_key_exists($field_name, $product_metadata))
 					{
-						$value = html_entity_decode($value);
+						$value = $product_metadata[$field_name]['value'];
+						if ($fdata['type'] == 'T')
+						{
+							$value = html_entity_decode($value);
+						}//endif
+		
+						$product_appointment[] = array(
+								'title' => fn_get_lang_var($field_name),
+								'value' => $value
+						);
 					}//endif
-
-					$product_appointment[] = array(
-						'title' => fn_get_lang_var($field_name),
-						'value' => $value
-					);
-				}//endif
-							
-			}//endforeach;
-			
-			$order_info['items'][$k]['extra']['product_appointment'] = $product_appointment;
-			
-		}//endif
+						
+				}//endforeach;
+					
 				
-	}//endforeach;
+				$order_info[$key][$k]['extra']['product_appointment'] = $product_appointment;
+			}//endif
+		}//endforeach;
+	}//end if
 }//end fn_tsp_appointments_get_order_info
 
 /**

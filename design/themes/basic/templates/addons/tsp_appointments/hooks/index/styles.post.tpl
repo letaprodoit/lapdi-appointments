@@ -1,1 +1,1 @@
-<link href="{$config.skin_path}/addons/tsp_appointments/styles.css" rel="stylesheet" type="text/css" />
+{style src="addons/tsp_appointments/styles.less"}

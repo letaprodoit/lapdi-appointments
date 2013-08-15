@@ -74,11 +74,11 @@ function fn_tspa_install_product_fields ()
 	('tspa_product_option_additional_info_field_id',$info_id)");
 	
 	// Install descriptions
-	db_query('INSERT INTO ?:product_options_descriptions ?e', array('option_id' => $date_id, 'option_name' => 'Appointment Date', 'option_text' => '', 'description' => '', 'comment' => 'Enter in the date of the appointment', 'inner_hint' => '', 'incorrect_message' => ''));
-	db_query('INSERT INTO ?:product_options_descriptions ?e', array('option_id' => $time_id, 'option_name' => 'Appointment Time', 'option_text' => '', 'description' => '', 'comment' => 'Enter in the time of the appointment (format: 07:00 PM EST)', 'inner_hint' => '12:00 AM EST', 'incorrect_message' => 'Incorrect time format.'));
-	db_query('INSERT INTO ?:product_options_descriptions ?e', array('option_id' => $duration_id, 'option_name' => 'Appointment Duration', 'option_text' => '', 'description' => '', 'comment' => 'Enter in the duration of the appointment in Minutes, Hours, Days, Weeks, Months or Years (format: 1 Hour, 10 Minutes)', 'inner_hint' => '10 Minutes', 'incorrect_message' => 'Incorrect duration format.'));
-	db_query('INSERT INTO ?:product_options_descriptions ?e', array('option_id' => $location_id, 'option_name' => 'Appointment Location', 'option_text' => '', 'description' => '', 'comment' => 'In-Home or On-Site Appointment', 'inner_hint' => '', 'incorrect_message' => ''));
-	db_query('INSERT INTO ?:product_options_descriptions ?e', array('option_id' => $info_id, 'option_name' => 'Appointment Additional Information', 'option_text' => '', 'description' => '', 'comment' => 'Enter in any additional information you wish to provide.', 'inner_hint' => '', 'incorrect_message' => ''));
+	db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'en', 'option_id' => $date_id, 'option_name' => 'Appointment Date', 'option_text' => '', 'description' => '', 'comment' => 'Enter in the date of the appointment', 'inner_hint' => '', 'incorrect_message' => ''));
+	db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'en', 'option_id' => $time_id, 'option_name' => 'Appointment Time', 'option_text' => '', 'description' => '', 'comment' => 'Enter in the time of the appointment (format: 07:00 PM EST)', 'inner_hint' => '12:00 AM EST', 'incorrect_message' => 'Incorrect time format.'));
+	db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'en', 'option_id' => $duration_id, 'option_name' => 'Appointment Duration', 'option_text' => '', 'description' => '', 'comment' => 'Enter in the duration of the appointment in Minutes, Hours, Days, Weeks, Months or Years (format: 1 Hour, 10 Minutes)', 'inner_hint' => '10 Minutes', 'incorrect_message' => 'Incorrect duration format.'));
+	db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'en', 'option_id' => $location_id, 'option_name' => 'Appointment Location', 'option_text' => '', 'description' => '', 'comment' => 'In-Home or On-Site Appointment', 'inner_hint' => '', 'incorrect_message' => ''));
+	db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'en', 'option_id' => $info_id, 'option_name' => 'Appointment Additional Information', 'option_text' => '', 'description' => '', 'comment' => 'Enter in any additional information you wish to provide.', 'inner_hint' => '', 'incorrect_message' => ''));
 
 
 	// Install option variants
@@ -91,8 +91,8 @@ function fn_tspa_install_product_fields ()
 	('tspa_product_option_location_field_vars',$location_id,$var2)");
 
 	// Install option variant descriptions
-	db_query('INSERT INTO ?:product_option_variants_descriptions ?e', array('variant_id' => $var1, 'variant_name' => 'In-Home'));
-	db_query('INSERT INTO ?:product_option_variants_descriptions ?e', array('variant_id' => $var2, 'variant_name' => 'On-Site'));
+	db_query('INSERT INTO ?:product_option_variants_descriptions ?e', array('lang_code' => 'en', 'variant_id' => $var1, 'variant_name' => 'In-Home'));
+	db_query('INSERT INTO ?:product_option_variants_descriptions ?e', array('lang_code' => 'en', 'variant_id' => $var2, 'variant_name' => 'On-Site'));
 }//end fn_tspa_install_product_fields
 
 /***********
@@ -175,9 +175,9 @@ function fn_tspa_add_appointment_data_to_array(&$appointments,$key)
 	foreach ($appointments as $appt_id => $appt)
 	{	
 		$order_info = fn_get_order_info($appt['order_id']);
-		
+		$key = 'products';
 		// Search through ordered items to find the product that has an appointment
-		foreach ($order_info['items'] as $order_id => $product)
+		foreach ($order_info[$key] as $order_id => $product)
 		{		
 			$data = "";
 			
@@ -260,8 +260,10 @@ function fn_tspa_create_appointment($order_info)
 	$user_id = $order_info['user_id'];
 	$order_id = $order_info['order_id'];
 	
+	$key = 'products';
+	
 	// Search through ordered items to find the product that has an appointment
-	foreach ($order_info['items'] as $item_id => $product)
+	foreach ($order_info[$key] as $item_id => $product)
 	{	
 		$product_id = $product['product_id'];
 		
@@ -453,9 +455,10 @@ function fn_tspa_get_product_option_data($order_id, $product_id, $option_id, $va
 	$value = "";
 	
 	$order_info = fn_get_order_info($order_id);
+	$key = 'products';
 	
 	// Search through ordered items to find the product that has an appointment
-	foreach ($order_info['items'] as $order_id => $product)
+	foreach ($order_info[$key] as $order_id => $product)
 	{	
 		// if the appointment product ID equals this product id and the product has options
 		// continue
@@ -555,14 +558,29 @@ function fn_tspa_notify_user($id)
 		$appointment['order'] = fn_get_order_info($appointment['order_id']);
 	}//endif
 
-	Registry::get('view_mail')->assign('appointment', $appointment);
-	Registry::get('view_mail')->assign('profile_fields', fn_get_profile_fields('I', '', $supplier['lang_code']));
-	
-	// Send a copy to the customer
-	fn_send_mail($appointment['user']['email'], Registry::get('settings.Company.company_orders_department'), 'addons/tsp_appointments/appointment_notification_subj.tpl', 'addons/tsp_appointments/appointment_notification.tpl', '', $appointment['user']['lang_code'], Registry::get('settings.Company.company_orders_department'));
+	// Send a copy to the customer	
+	Mailer::sendMail(array(
+    	'to' => $appointment['user']['email'],
+        'from' => 'default_company_orders_department',
+        'reply_to' => Registry::get('settings.Company.company_orders_department'),
+        'data' => array(
+         		'appointment' => $appointment,
+                'profile_fields' => fn_get_profile_fields('I', '', $supplier['lang_code']),
+         ),
+         'tpl' => 'addons/tsp_appointments/appointment_notification.tpl',
+         ), 'C', Registry::get('settings.Appearance.backend_default_language'));
 
 	// Send a copy to the staff
-	fn_send_mail(Registry::get('settings.Company.company_orders_department'), Registry::get('settings.Company.company_orders_department'), 'addons/tsp_appointments/appointment_notification_subj.tpl', 'addons/tsp_appointments/appointment_notification.tpl', '', $appointment['user']['lang_code'], Registry::get('settings.Company.company_orders_department'));
+	Mailer::sendMail(array(
+    	'to' => Registry::get('settings.Company.company_orders_department'),
+        'from' => 'default_company_orders_department',
+        'reply_to' => Registry::get('settings.Company.company_orders_department'),
+        'data' => array(
+         		'appointment' => $appointment,
+                'profile_fields' => fn_get_profile_fields('I', '', $supplier['lang_code']),
+         ),
+         'tpl' => 'addons/tsp_appointments/appointment_notification.tpl',
+         ), 'C', Registry::get('settings.Appearance.backend_default_language'));
 }//end fn_tspa_notify_user
 
 /***********

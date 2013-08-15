@@ -3,7 +3,7 @@
 	{if $value == "S"}{__("selectbox")}
 	{elseif $value == "R"}{__("radiogroup")}
 	{elseif $value == "C"}{__("checkbox")}
-	{elseif $value == "D"}{__("date")}
+	{elseif $value == "D"}{__("date")} {* CHANGE ADD IN DATE TSP *}
 	{elseif $value == "I"}{__("text")}
 	{elseif $value == "T"}{__("textarea")}
 	{elseif $value == "F"}{__("file")}
@@ -13,8 +13,8 @@
 {if $value}
 	{if $value == "S" || $value == "R"}
 		{assign var="app_types" value="SR"}
-	{elseif $value == "I" || $value == "T" || $value == "D"}
-		{assign var="app_types" value="ITD"}
+	{elseif $value == "I" || $value == "T" || $value == "D"}  {* CHANGE ADD IN DATE TSP *}
+		{assign var="app_types" value="ITD"}  {* CHANGE ADD IN DATE TSP *}
 	{elseif $value == "C"}
 		{assign var="app_types" value="C"}
 	{else}
@@ -34,9 +34,11 @@
 {if !$app_types || ($app_types && $app_types|strpos:"C" !== false)}
 <option value="C" {if $value == "C"}selected="selected"{/if}>{__("checkbox")}</option>
 {/if}
+{* BEGIN CHANGE ADD IN DATE TSP *}
 {if !$app_types || ($app_types && $app_types|strpos:"D" !== false)}
 <option value="D" {if $value == "D"}selected="selected"{/if}>{__("date")}</option>
 {/if}
+{* END CHANGE ADD IN DATE TSP *}
 {if !$app_types || ($app_types && $app_types|strpos:"I" !== false)}
 <option value="I" {if $value == "I"}selected="selected"{/if}>{__("text")}</option>
 {/if}

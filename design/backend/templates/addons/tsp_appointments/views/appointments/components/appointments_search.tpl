@@ -32,18 +32,6 @@
 	</td>
 </tr>
 </table>
-
-{capture name="advanced_search"}
-
-<div class="search-field">
-	<label>{__("period")}:</label>
-	{include file="common/period_selector.tpl" period=$search.period form_name="appointments_search_form" time_from=$search.time_from time_to=$search.time_to}
-</div>
-
-{/capture}
-
-{include file="common/advanced_search.tpl" content=$smarty.capture.advanced_search dispatch="appointments.manage" view_type="appointments"}
-
 </form>
 {/capture}
 {include file="common/section.tpl" section_content=$smarty.capture.section}

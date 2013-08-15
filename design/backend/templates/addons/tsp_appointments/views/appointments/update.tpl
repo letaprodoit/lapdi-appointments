@@ -41,8 +41,8 @@
     <hr>
     
     <div class="form-field">
-    	<label for="apointment_status" class="cm-required">{__("tspa_appointment")} {__("status")}:</label>
-    	<select name="appointment_data[status]" id="apointment_status">
+    	<label for="appointment_status" class="cm-required">{__("tspa_appointment")} {__("status")}:</label>
+    	<select name="appointment_data[status]" id="appointment_status">
     		{foreach from=$appointment_statuses item="status" key="status_key"}
     			<option value="{$status_key}" {if $status_key == $appointment.status}selected="selected"{/if}>{$status}</option>
     		{/foreach}
@@ -50,20 +50,20 @@
     </div>
     
     <div class="form-field">
-    	<label for="apointment_date" class="cm-required">{$appointment.date.description}:</label>
+    	<label for="appointment_date" class="cm-required">{$appointment.date.description}:</label>
     	<div class="clearfix">
     		{include file="common/calendar.tpl" date_id="appointment_date" date_name="appointment_data[date]" start_year="`$smarty.const.TIME`" date_val=$appointment.date.value}
     	</div>
     </div>
     
     <div class="form-field">
-    	<label for="apointment_time" class="cm-required">{$appointment.time.description}:</label>
-    	<input type="text" name="appointment_data[time]" id="apointment_time" size="32" value="{$appointment.time.value}" class="input-text" />
+    	<label for="appointment_time" class="cm-required">{$appointment.time.description}:</label>
+    	<input type="text" name="appointment_data[time]" id="appointment_time" size="32" value="{$appointment.time.value}" class="input-text" />
     </div>
     
     <div class="form-field">
-    	<label for="apointment_location" class="cm-required">{$appointment.location.description}:</label>
-    	<select name="appointment_data[location]" id="apointment_location">
+    	<label for="appointment_location" class="cm-required">{$appointment.location.description}:</label>
+    	<select name="appointment_data[location]" id="appointment_location">
     		{foreach from=$appointment_locations item="location" key="option_id"}
     			<option value="{$option_id}" {if $option_id == $appointment.location.value}selected="selected"{/if}>{$location.variant_name}</option>
     		{/foreach}
