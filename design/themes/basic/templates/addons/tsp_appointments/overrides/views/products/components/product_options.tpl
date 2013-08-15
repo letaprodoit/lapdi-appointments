@@ -31,7 +31,7 @@
 			{if $po.variants}
 				{if ($po.disabled || $disabled) && !$po.not_required}<input type="hidden" value="" id="option_{$obj_prefix}{$id}_{$po.option_id}" />{/if}
 				<select name="{$name}[{$id}][product_options][{$po.option_id}]" {if !$po.disabled && !$disabled}id="option_{$obj_prefix}{$id}_{$po.option_id}"{/if} onchange="{if $product.options_update}fn_change_options('{$obj_prefix}{$id}', '{$id}', '{$po.option_id}');{else} fn_change_variant_image('{$obj_prefix}{$id}', '{$po.option_id}');{/if}" {if $product.exclude_from_calculate && !$product.aoc || $po.disabled || $disabled}disabled="disabled" class="disabled"{/if}>
-				{if $product.options_type == "S"}<option value="">{if $po.disabled || $disabled}{$lang.select_option_above}{else}{$lang.please_select_one}{/if}</option>{/if}
+				{if $product.options_type == "S"}<option value="">{if $po.disabled || $disabled}{__("select_option_above")}{else}{__("please_select_one")}{/if}</option>{/if}
 					{foreach from=$po.variants item="vr" name=vars}
 						{if !($po.disabled || $disabled) || (($po.disabled || $disabled) && $po.value && $po.value == $vr.variant_id)}
 							<option value="{$vr.variant_id}" {if $po.value == $vr.variant_id}{assign var="selected_variant" value=$vr.variant_id}selected="selected"{/if}>{$vr.variant_name} {if $show_modifiers}{hook name="products:options_modifiers"}{if $vr.modifier|floatval}({include file="common/modifier.tpl" mod_type=$vr.modifier_type mod_value=$vr.modifier display_sign=true}){/if}{/hook}{/if}</option>
@@ -40,7 +40,7 @@
 				</select>
 			{else}
 				<input type="hidden" name="{$name}[{$id}][product_options][{$po.option_id}]" value="{$po.value}" id="option_{$obj_prefix}{$id}_{$po.option_id}" />
-				<span>{$lang.na}</span>
+				<span>{__("na")}</span>
 			{/if}
 		{elseif $po.option_type == "R"} {*Radiobutton*}
 			{if $po.variants}
@@ -53,10 +53,10 @@
 						{/foreach}
 					{/if}
 				</ul>
-				{if !$po.value && $product.options_type == "S" && !($po.disabled || $disabled)}<p class="description clear-both">{$lang.please_select_one}</p>{elseif !$po.value && $product.options_type == "S" && ($po.disabled || $disabled)}<p class="description clear-both">{$lang.select_option_above}</p>{/if}
+				{if !$po.value && $product.options_type == "S" && !($po.disabled || $disabled)}<p class="description clear-both">{__("please_select_one")}</p>{elseif !$po.value && $product.options_type == "S" && ($po.disabled || $disabled)}<p class="description clear-both">{__("select_option_above")}</p>{/if}
 			{else}
 				<input type="hidden" name="{$name}[{$id}][product_options][{$po.option_id}]" value="{$po.value}" id="option_{$obj_prefix}{$id}_{$po.option_id}" />
-				<span>{$lang.na}</span>
+				<span>{__("na")}</span>
 			{/if}
 
 		{elseif $po.option_type == "C"} {*Checkbox*}
@@ -114,7 +114,7 @@
 	{/foreach}
 </div>
 {if $product.show_exception_warning == "Y"}
-	<p id="warning_{$obj_prefix}{$id}" class="cm-no-combinations{if $location != "cart"}-{$obj_prefix}{$id}{/if} price">{$lang.nocombination}</p>
+	<p id="warning_{$obj_prefix}{$id}" class="cm-no-combinations{if $location != "cart"}-{$obj_prefix}{$id}{/if} price">{__("nocombination")}</p>
 {/if}
 {/if}
 

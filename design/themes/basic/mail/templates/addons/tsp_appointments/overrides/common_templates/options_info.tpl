@@ -1,5 +1,5 @@
 {if $product_options}
-<strong>{$lang.options}:</strong>&nbsp;
+<strong>{__("options")}:</strong>&nbsp;
 {foreach from=$product_options item=po name=po_opt}
 	{assign var="value" value=$po.variant_name}
 	{if !$value}

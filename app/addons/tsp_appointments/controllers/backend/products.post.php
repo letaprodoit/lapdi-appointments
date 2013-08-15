@@ -26,7 +26,7 @@ $product_id = $_REQUEST['product_id'];
 $params = $_REQUEST;
 
 // View Supplier Products: Restore product addon settings
-if ($mode == 'update' && !empty($product_id))
+if ($runtime.mode == 'update' && !empty($product_id))
 {
 	// Get current product data
 	$product_data = fn_get_product_data($product_id, $auth, DESCR_SL, '', true, true, true, true, false, true, false);
@@ -74,7 +74,7 @@ if ($mode == 'update' && !empty($product_id))
 }//endif
 // When displaying the form to add a new product make sure that the addon fields
 // get added values will be null
-elseif ($mode == 'add')
+elseif ($runtime.mode == 'add')
 {
 
 	$field_names = Registry::get('tspa_product_data_field_names');

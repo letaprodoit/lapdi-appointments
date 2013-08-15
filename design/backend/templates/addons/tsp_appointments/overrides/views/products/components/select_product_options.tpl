@@ -10,7 +10,7 @@
 	<input type="hidden" name="{$name}[{$id}][product_id]" value="{$product.product_id}" />
 {/if}
 
-<p class="normal">{$lang.product_options}:</p>
+<p class="normal">{__("product_options")}:</p>
 
 <div id="opt_{$id}">
 {foreach from=$product_options item="po"}
@@ -19,14 +19,14 @@
 	{if $po.option_type == "S"} {*Selectbox*}
 		{if $po.variants}
 			<select id="option_{$id}_{$po.option_id}" name="{$name}[{$id}][product_options][{$po.option_id}]" id="option_{$id}_{$po.option_id}" {if $product.options_update}onchange="fn_change_options('{$id}', {$id}, '{$po.option_id}');"{/if} {if $cp.exclude_from_calculate && !$product.aoc || $po.disabled}disabled="disabled"{/if} {if $po.disabled}class="cm-skip-avail-switch"{/if}>
-			{if $product.options_type == "S"}<option value="">{if $po.disabled}{$lang.select_option_above}{else}{$lang.please_select_one}{/if}</option>{/if}
+			{if $product.options_type == "S"}<option value="">{if $po.disabled}{__("select_option_above")}{else}{__("please_select_one")}{/if}</option>{/if}
 			{foreach from=$po.variants item="vr"}
 				<option value="{$vr.variant_id}" {if $po.value == $vr.variant_id}selected="selected"{/if}>{$vr.variant_name}{if $settings.General.display_options_modifiers == "Y"}{if $vr.modifier|floatval} ({include file="common/modifier.tpl" mod_type=$vr.modifier_type mod_value=$vr.modifier display_sign=true}){/if}{hook name="products:select_options"}{/hook}{/if}</option>
 			{/foreach}
 			</select>
 		{else}
 			<input type="hidden" name="{$name}[{$id}][product_options][{$po.option_id}]" value="{$po.value}" id="option_{$id}_{$po.option_id}" />
-			{$lang.na}
+			{__("na")}
 		{/if}
 	{elseif $po.option_type == "R"} {*Radiobutton*}
 		{if $po.variants}
@@ -37,11 +37,11 @@
 					<label id="option_description_{$id}_{$po.option_id}_{$vr.variant_id}">
 					{$vr.variant_name}&nbsp;{if $settings.General.display_options_modifiers == "Y"}{if $vr.modifier|floatval}({include file="common/modifier.tpl" mod_type=$vr.modifier_type mod_value=$vr.modifier display_sign=true}){/if}{hook name="products:select_options"}{/hook}{/if}</label>
 				{/foreach}
-				{if !$po.value && $product.options_type == "S" && !$po.disabled}<p class="description clear-both">{$lang.please_select_one}</p>{/if}
+				{if !$po.value && $product.options_type == "S" && !$po.disabled}<p class="description clear-both">{__("please_select_one")}</p>{/if}
 			</div>
 		{else}
 			<input type="hidden" name="{$name}[{$id}][product_options][{$po.option_id}]" value="{$po.value}" id="option_{$id}_{$po.option_id}" />
-			{$lang.na}
+			{__("na")}
 		{/if}
 	{elseif $po.option_type == "C"} {*Checkbox*}
 
@@ -84,7 +84,7 @@
 {if $show_aoc}
 <input type="hidden" name="appearance[show_aoc]" value="{$show_aoc}" />
 <div class="select-field">
-	<input id="option_{$id}_AOC" type="checkbox" name="{$name}[{$id}][product_options][AOC]" class="checkbox" value="N" onclick="options_routine.disable('opt_{$id}', this);"/><label for="option_{$id}_AOC">{$lang.any_option_combinations}</label>
+	<input id="option_{$id}_AOC" type="checkbox" name="{$name}[{$id}][product_options][AOC]" class="checkbox" value="N" onclick="options_routine.disable('opt_{$id}', this);"/><label for="option_{$id}_AOC">{__("any_option_combinations")}</label>
 </div>
 {/if}
 <!--product_options_update_{$id}--></span>

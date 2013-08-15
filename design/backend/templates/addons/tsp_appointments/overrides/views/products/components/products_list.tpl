@@ -8,14 +8,14 @@
 	{hook name="product_list:table_head"}
 	{if $hide_amount}
 	<th class="center" width="1%">
-		<input type="checkbox" name="check_all" value="Y" title="{$lang.check_uncheck_all}" class="checkbox cm-check-items"/></th>
+		<input type="checkbox" name="check_all" value="Y" title="{__("check_uncheck_all")}" class="checkbox cm-check-items"/></th>
 	{/if}
-	<th>{$lang.product_name}</th>
+	<th>{__("product_name")}</th>
 	{if $show_price}
-	<th class="center">{$lang.price}</th>
+	<th class="center">{__("price")}</th>
 	{/if}
 	{if !$hide_amount}
-	<th class="center" width="5%">{$lang.quantity}</th>
+	<th class="center" width="5%">{__("quantity")}</th>
 	{/if}
 	{/hook}
 </tr>
@@ -55,7 +55,7 @@
 </tr>
 {foreachelse}
 <tr class="no-items">
-	<td colspan="4"><p>{$lang.no_items}</p></td>
+	<td colspan="4"><p>{__("no_items")}</p></td>
 </tr>
 {/foreach}
 </table>
