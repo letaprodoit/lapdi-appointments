@@ -23,7 +23,7 @@ $product_id = $_REQUEST['product_id'];
 $params = $_REQUEST;
 
 // View Supplier Products: Show appointment information
-if ($runtime.mode == 'view' && !empty($product_id))
+if ($mode == 'view' && !empty($product_id))
 {
 	// Get current product data
 	$product_data = fn_get_product_data($product_id, $auth, DESCR_SL, '', true, true, true, true, false, true, false);
