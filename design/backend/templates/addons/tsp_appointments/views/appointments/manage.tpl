@@ -24,7 +24,7 @@
     <td width="1%" class="center">
         <input type="checkbox" name="appointment_ids[]" value="{$appointment.id}" class="checkbox cm-item" /></td>
     <td><a href="{"profiles.update?user_id=`$appointment.user_id`"|fn_url}">{$appointment.lastname} {$appointment.firstname}</a></td>
-    <td>{$appointment.info|html_entity_decode:$smarty.const.ENT_COMPAT:"UTF-8"}</td>
+    <td><a href="{"appointments.update?appointment_id=`$appointment.id`"|fn_url}">{$appointment.info|html_entity_decode:$smarty.const.ENT_COMPAT:"UTF-8"}</a></td>
     <td class="center">{if $appointment.date_created}{$appointment.date_created|date_format:"`$settings.Appearance.date_format` `$settings.Appearance.time_format`"}{/if}</td>
     <td class="center">{if $appointment.date_completed}{$appointment.date_completed|date_format:"`$settings.Appearance.date_format` `$settings.Appearance.time_format`"}{/if}</td>
     <td>
