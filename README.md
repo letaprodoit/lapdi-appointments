@@ -17,13 +17,10 @@ For up-to-date installation and setup notes, visit the FAQ:
 
 * Download from repository
 * Unzip the zip file
-* Open app/addons/ folder and copy the tsp_appointments to [your cscart install dir]/app/addons/
-* Open the basic/admin/addons/ folder and copy the tsp_appointments/ folder to [your cscart install dir]/var/skins_repository/basic/admin/addons/ folder
-* Open the basic/customer/addons/ folder and copy the tsp_appointments/ folder to [your cscart install dir]/var/skins_repository/basic/customer/addons/ folder
-* Open the basic/mail/addons/folder and copy the tsp_appointments/ folder to [your cscart install dir]/var/skins_repository/basic/mail/addons/ folder
+* Navigate to the folder it creates. Update the $target_loc in the install.php and run its. Command: php install.php
 * Open CS-Cart Administration Control Panel
-* Navigate to Settings-> Addons
-* Find the "The Software People: Appointments" addon and click "Install"
+* Navigate to Addons -> Manage Addons
+* Find the "The Software People: Appointments" addon and click "Install" (If you don't see it make sure "All Stores" is selected at the top of the screen)
 * After Install, from the Addons listing click on Settings for "The Software People: Appointments"
 * Update The Appointment settings
 
@@ -39,7 +36,9 @@ The Products->Global Options that are added include:
 * Appointment Location
 * Appointment Additional Information
 
-Each product has settings that can be turned on if the admin wishes to sell an appointment as a product. The settings include:
+Each product has settings that can be turned on if the admin wishes to sell an appointment as a product. 
+
+The Product Listing -> Addon tab includes:
 
 * Appointment Date
 * Appointment Time
