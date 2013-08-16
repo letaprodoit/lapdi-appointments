@@ -72,6 +72,7 @@
         <include name="app/addons/${name}/schemas/*" />
         <include name="app/addons/${name}/schemas/menu/*" />
         <include name="app/addons/${name}/schemas/permissions/*" />
+    	
         <include name="design/backend/css/addons/${name}/*" />
         <include name="design/backend/media/images/addons/${name}/*" />
         <include name="design/backend/media/images/addons/${name}/icons/*" />
@@ -92,6 +93,7 @@
         <include name="design/backend/templates/addons/${name}/views/*" />
         <include name="design/backend/templates/addons/${name}/views/appointments/*" />
         <include name="design/backend/templates/addons/${name}/views/appointments/components/*" />
+    	
         <include name="design/themes/basic/css/addons/${name}/*" />
         <include name="design/themes/basic/mail/templates/addons/${name}/*" />
         <include name="design/themes/basic/mail/templates/addons/${name}/hooks/*" />
@@ -108,11 +110,37 @@
         <include name="design/themes/basic/templates/addons/${name}/overrides/views/*" />
         <include name="design/themes/basic/templates/addons/${name}/overrides/views/products/*" />
         <include name="design/themes/basic/templates/addons/${name}/overrides/views/products/components/*" />
+    	
+        <include name="var/*" />
+        <include name="var/themes_repository/*" />
+        <include name="var/themes_repository/basic/*" />
+        <include name="var/themes_repository/basic/css/addons/${name}/*" />
+        <include name="var/themes_repository/basic/mail/templates/addons/${name}/*" />
+        <include name="var/themes_repository/basic/mail/templates/addons/${name}/hooks/*" />
+        <include name="var/themes_repository/basic/mail/templates/addons/${name}/hooks/orders/*" />
+        <include name="var/themes_repository/basic/mail/templates/addons/${name}/overrides/*" />
+        <include name="var/themes_repository/basic/mail/templates/addons/${name}/overrides/common/*" />
+        <include name="var/themes_repository/basic/templates/addons/${name}/*" />
+        <include name="var/themes_repository/basic/templates/addons/${name}/hooks/*" />
+        <include name="var/themes_repository/basic/templates/addons/${name}/hooks/checkout/*" />
+        <include name="var/themes_repository/basic/templates/addons/${name}/hooks/index/*" />
+        <include name="var/themes_repository/basic/templates/addons/${name}/hooks/orders/*" />
+        <include name="var/themes_repository/basic/templates/addons/${name}/hooks/products/*" />
+        <include name="var/themes_repository/basic/templates/addons/${name}/overrides/*" />
+        <include name="var/themes_repository/basic/templates/addons/${name}/overrides/views/*" />
+        <include name="var/themes_repository/basic/templates/addons/${name}/overrides/views/products/*" />
+        <include name="var/themes_repository/basic/templates/addons/${name}/overrides/views/products/components/*" />
     </fileset>
 
     <!-- copy_all Target -->
     <target name="copy_all" description="copy all files target">
-        <!-- Copying to TEST project -->
+        <!-- Copying FRONTENT to VAR -->
+        <echo message="Copying FRONTEND to VAR..." />
+        <copy todir="${project.basedir}/var/themes_repository">
+            <fileset refid="frontend_files" />
+        </copy>
+
+    	<!-- Copying to TEST project -->
         <echo message="Copying ADDON files to TEST project..." />
         <copy todir="${test_site}/app/addons">
             <fileset refid="addonfiles" />
@@ -129,6 +157,7 @@
         <copy todir="${test_site}/var/themes_repository">
             <fileset refid="frontend_files" />
         </copy>
+    	
         <!-- Copying to LIVE project -->
         <echo message="Copying ADDON files to LIVE project..." />
         <copy todir="${live_site}/app/addons">
@@ -146,6 +175,7 @@
         <copy todir="${live_site}/var/themes_repository">
             <fileset refid="frontend_files" />
         </copy>
+    	
         <!-- Creating ZIP file -->
         <delete file="../../${name}.zip" />
         <zip destfile="../../${name}.zip">
