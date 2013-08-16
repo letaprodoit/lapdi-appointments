@@ -16,8 +16,9 @@ For up-to-date installation and setup notes, visit the FAQ:
 ## GENERAL INSTALLATION NOTES
 
 * Download from repository
-* Unzip the zip file
-* Navigate to the folder it creates. Update the $target_loc in the install.php and run its. Command: php install.php
+* Unzip the zip file in the directory where CS-Cart runs
+* If the zip creates a new directory called `tsp-appointments` you will need to run the install script, else you are done
+* If `tsp-appointments` folder created by zip, Navigate to the folder. Update the $target_loc in the install.php and run its. Command: php install.php
 * Open CS-Cart Administration Control Panel
 * Navigate to Addons -> Manage Addons
 * Find the "The Software People: Appointments" addon and click "Install" (If you don't see it make sure "All Stores" is selected at the top of the screen)
