@@ -44,8 +44,8 @@ else
 	shell_exec( " cp -R -v -a $source_loc/$theme_frontend_dir/templates/addons/$addon_name $target_loc/$theme_frontend_dir/templates/addons/ " );
 
 	// Copy files from theme frontend directory to the target var/ directory
-	shell_exec( " cp -R -v -a $source_loc/$theme_frontend_dir/css/addons/$addon_name $target_loc/$theme_var_dir/css/addons/ " );
-	shell_exec( " cp -R -v -a $source_loc/$theme_frontend_dir/mail/templates/addons/$addon_name $target_loc/$theme_var_dir/mail/templates/addons/ " );
-	shell_exec( " cp -R -v -a $source_loc/$theme_frontend_dir/templates/addons/$addon_name $target_loc/$theme_var_dir/templates/addons/ " );
+	shell_exec( " cp -R -v -a $source_loc/$theme_var_dir/css/addons/$addon_name $target_loc/$theme_var_dir/css/addons/ " );
+	shell_exec( " cp -R -v -a $source_loc/$theme_var_dir/mail/templates/addons/$addon_name $target_loc/$theme_var_dir/mail/templates/addons/ " );
+	shell_exec( " cp -R -v -a $source_loc/$theme_var_dir/templates/addons/$addon_name $target_loc/$theme_var_dir/templates/addons/ " );
 }//end else
 ?>

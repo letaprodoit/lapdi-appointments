@@ -10,3 +10,4 @@ _archive
 _design
 *.bak
 *.vpp~*
+/var
