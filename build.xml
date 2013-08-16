@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="TSP Appointments" default="copy_all" basedir=".">
+    <property name="name"  value="tsp_appointments" />
+    <property name="test_site"  value="/Users/SharronDenice/Sites/_testsites/cscart_latest" />
+    <property name="live_site"  value="/Users/SharronDenice/Sites/www.thesoftwarepeople.com/cscart_ult" />
+ 
+    <!-- Fileset for addon files -->
+    <fileset dir="${project.basedir}/app/addons" id="addonfiles">
+        <include name="${name}/*" />
+        <include name="${name}/controllers/*" />
+        <include name="${name}/controllers/backend/*" />
+        <include name="${name}/controllers/frontend/*" />
+        <include name="${name}/lib/*" />
+        <include name="${name}/schemas/*" />
+        <include name="${name}/schemas/menu/*" />
+        <include name="${name}/schemas/permissions/*" />
+    </fileset>
+
+    <!-- Fileset for backend files -->
+    <fileset dir="${project.basedir}/design" id="backend_files">
+        <include name="backend/css/addons/${name}/*" />
+        <include name="backend/media/images/addons/${name}/*" />
+        <include name="backend/media/images/addons/${name}/icons/*" />
+        <include name="backend/media/images/addons/${name}/icons/menu/*" />
+        <include name="backend/templates/addons/${name}/*" />
+        <include name="backend/templates/addons/${name}/hooks/*" />
+        <include name="backend/templates/addons/${name}/hooks/index/*" />
+        <include name="backend/templates/addons/${name}/hooks/products/*" />
+        <include name="backend/templates/addons/${name}/overrides/*" />
+        <include name="backend/templates/addons/${name}/overrides/common/*" />
+        <include name="backend/templates/addons/${name}/overrides/views/*" />
+        <include name="backend/templates/addons/${name}/overrides/views/order_management/*" />
+        <include name="backend/templates/addons/${name}/overrides/views/order_management/components/*" />
+        <include name="backend/templates/addons/${name}/overrides/views/product_options/*" />
+        <include name="backend/templates/addons/${name}/overrides/views/product_options/components/*" />
+        <include name="backend/templates/addons/${name}/overrides/views/products/*" />
+        <include name="backend/templates/addons/${name}/overrides/views/products/components/*" />
+        <include name="backend/templates/addons/${name}/views/*" />
+        <include name="backend/templates/addons/${name}/views/appointments/*" />
+        <include name="backend/templates/addons/${name}/views/appointments/components/*" />
+    </fileset>
+
+    <!-- Fileset for frontend files -->
+    <fileset dir="${project.basedir}/design/themes" id="frontend_files">
+        <include name="basic/css/addons/${name}/*" />
+        <include name="basic/mail/templates/addons/${name}/*" />
+        <include name="basic/mail/templates/addons/${name}/hooks/*" />
+        <include name="basic/mail/templates/addons/${name}/hooks/orders/*" />
+        <include name="basic/mail/templates/addons/${name}/overrides/*" />
+        <include name="basic/mail/templates/addons/${name}/overrides/common/*" />
+        <include name="basic/templates/addons/${name}/*" />
+        <include name="basic/templates/addons/${name}/hooks/*" />
+        <include name="basic/templates/addons/${name}/hooks/checkout/*" />
+        <include name="basic/templates/addons/${name}/hooks/index/*" />
+        <include name="basic/templates/addons/${name}/hooks/orders/*" />
+        <include name="basic/templates/addons/${name}/hooks/products/*" />
+        <include name="basic/templates/addons/${name}/overrides/*" />
+        <include name="basic/templates/addons/${name}/overrides/views/*" />
+        <include name="basic/templates/addons/${name}/overrides/views/products/*" />
+        <include name="basic/templates/addons/${name}/overrides/views/products/components/*" />
+    </fileset>
+
+
+    <!-- Fileset for all files -->
+    <fileset dir="${project.basedir}" id="allfiles">
+        <include name="install.php" />
+        <include name="app/addons/${name}/*" />
+        <include name="app/addons/${name}/controllers/*" />
+        <include name="app/addons/${name}/controllers/backend/*" />
+        <include name="app/addons/${name}/controllers/frontend/*" />
+        <include name="app/addons/${name}/lib/*" />
+        <include name="app/addons/${name}/schemas/*" />
+        <include name="app/addons/${name}/schemas/menu/*" />
+        <include name="app/addons/${name}/schemas/permissions/*" />
+        <include name="design/backend/css/addons/${name}/*" />
+        <include name="design/backend/media/images/addons/${name}/*" />
+        <include name="design/backend/media/images/addons/${name}/icons/*" />
+        <include name="design/backend/media/images/addons/${name}/icons/menu/*" />
+        <include name="design/backend/templates/addons/${name}/*" />
+        <include name="design/backend/templates/addons/${name}/hooks/*" />
+        <include name="design/backend/templates/addons/${name}/hooks/index/*" />
+        <include name="design/backend/templates/addons/${name}/hooks/products/*" />
+        <include name="design/backend/templates/addons/${name}/overrides/*" />
+        <include name="design/backend/templates/addons/${name}/overrides/common/*" />
+        <include name="design/backend/templates/addons/${name}/overrides/views/*" />
+        <include name="design/backend/templates/addons/${name}/overrides/views/order_management/*" />
+        <include name="design/backend/templates/addons/${name}/overrides/views/order_management/components/*" />
+        <include name="design/backend/templates/addons/${name}/overrides/views/product_options/*" />
+        <include name="design/backend/templates/addons/${name}/overrides/views/product_options/components/*" />
+        <include name="design/backend/templates/addons/${name}/overrides/views/products/*" />
+        <include name="design/backend/templates/addons/${name}/overrides/views/products/components/*" />
+        <include name="design/backend/templates/addons/${name}/views/*" />
+        <include name="design/backend/templates/addons/${name}/views/appointments/*" />
+        <include name="design/backend/templates/addons/${name}/views/appointments/components/*" />
+        <include name="design/themes/basic/css/addons/${name}/*" />
+        <include name="design/themes/basic/mail/templates/addons/${name}/*" />
+        <include name="design/themes/basic/mail/templates/addons/${name}/hooks/*" />
+        <include name="design/themes/basic/mail/templates/addons/${name}/hooks/orders/*" />
+        <include name="design/themes/basic/mail/templates/addons/${name}/overrides/*" />
+        <include name="design/themes/basic/mail/templates/addons/${name}/overrides/common/*" />
+        <include name="design/themes/basic/templates/addons/${name}/*" />
+        <include name="design/themes/basic/templates/addons/${name}/hooks/*" />
+        <include name="design/themes/basic/templates/addons/${name}/hooks/checkout/*" />
+        <include name="design/themes/basic/templates/addons/${name}/hooks/index/*" />
+        <include name="design/themes/basic/templates/addons/${name}/hooks/orders/*" />
+        <include name="design/themes/basic/templates/addons/${name}/hooks/products/*" />
+        <include name="design/themes/basic/templates/addons/${name}/overrides/*" />
+        <include name="design/themes/basic/templates/addons/${name}/overrides/views/*" />
+        <include name="design/themes/basic/templates/addons/${name}/overrides/views/products/*" />
+        <include name="design/themes/basic/templates/addons/${name}/overrides/views/products/components/*" />
+    </fileset>
+
+    <!-- copy_all Target -->
+    <target name="copy_all" description="copy all files target">
+        <!-- Copying to TEST project -->
+        <echo message="Copying ADDON files to TEST project..." />
+        <copy todir="${test_site}/app/addons">
+            <fileset refid="addonfiles" />
+        </copy>
+        <echo message="Copying BACKEND files to TEST project..." />
+        <copy todir="${test_site}/design">
+            <fileset refid="backend_files" />
+        </copy>
+        <echo message="Copying FRONTEND files to TEST project..." />
+        <copy todir="${test_site}/design/themes">
+            <fileset refid="frontend_files" />
+        </copy>
+        <echo message="Copying FRONTEND files to var/ dir of TEST project..." />
+        <copy todir="${test_site}/var/themes_repository">
+            <fileset refid="frontend_files" />
+        </copy>
+        <!-- Copying to LIVE project -->
+        <echo message="Copying ADDON files to LIVE project..." />
+        <copy todir="${live_site}/app/addons">
+            <fileset refid="addonfiles" />
+        </copy>
+        <echo message="Copying BACKEND files to LIVE project..." />
+        <copy todir="${live_site}/design">
+            <fileset refid="backend_files" />
+        </copy>
+        <echo message="Copying FRONTEND files to LIVE project..." />
+        <copy todir="${live_site}/design/themes">
+            <fileset refid="frontend_files" />
+        </copy>
+        <echo message="Copying FRONTEND files to var/ dir of LIVE project..." />
+        <copy todir="${live_site}/var/themes_repository">
+            <fileset refid="frontend_files" />
+        </copy>
+        <!-- Creating ZIP file -->
+        <delete file="../../${name}.zip" />
+        <zip destfile="../../${name}.zip">
+            <fileset refid="allfiles" />
+        </zip>
+    </target>
+</project>
