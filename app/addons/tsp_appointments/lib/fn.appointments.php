@@ -188,40 +188,28 @@ function fn_tspa_add_appointment_data_to_array(&$appointments,$key)
 			{			
 				$product_options = $product['extra']['product_options'];
 				
-				$date = $time = $location = $additonal_info = null;
-				
 				foreach ($product_options as $option_id => $option_value)
 				{
 					list ($description, $value) = fn_tspa_get_product_option_info($option_id, $option_value);
 					
 					if ( Registry::get('tspa_product_option_date_field_id') == $option_id )
 					{
-						$date = $value;
+						$appointments[$appt_id][$key]['date'] = $value;
 					}//endif
 					elseif ( Registry::get('tspa_product_option_time_field_id') == $option_id )
 					{
-						$time = $value;
+						$appointments[$appt_id][$key]['time'] = $value;
 					}//end elseif
 					elseif ( Registry::get('tspa_product_option_location_field_id') == $option_id )
 					{
-						$location = $value;;
+						$appointments[$appt_id][$key]['location'] = $value;
 					}//end elseif
-					elseif ( Registry::get('tspa_product_option_additional_information_field_id') == $option_id )
+					elseif ( Registry::get('tspa_product_option_additional_info_field_id') == $option_id )
 					{
-						$additonal_info = $value;
-						
+						$appointments[$appt_id][$key]['additional_info'] = $value;
 					}//end elseif										
 				}//endforeach;
-				
-				if (!empty($date) && !empty($time) && !empty($location))
-				{
-					$data = sprintf("Apppointment set for <strong>%s</strong> at <strong>%s</strong>. Location will be <strong>%s</strong>.<br>
-						<strong>Note:</strong> %s",$date, $time, $location, $additonal_info);			
-				}//endif
-			}//endif
-			
-			$appointments[$appt_id][$key] = $data;
-								
+			}//endif			
 		}//endforeach;		
 	}//endforeach;
 }
@@ -433,7 +421,7 @@ function fn_tspa_get_appointments($params, $items_per_page = 0)
 
 	$appointments = db_get_hash_array("SELECT " . implode(', ', $fields) . " FROM ?:addon_tsp_appointments LEFT JOIN ?:users ON ?:addon_tsp_appointments.user_id = ?:users.user_id WHERE 1 $condition ORDER BY $sorting $limit", 'id');
 	
-	fn_tspa_add_appointment_data_to_array($appointments,'info');
+	fn_tspa_add_appointment_data_to_array($appointments,'data');
 	
 	LastView::instance()->processResults('appointments', $appointments, $params, $items_per_page);
 

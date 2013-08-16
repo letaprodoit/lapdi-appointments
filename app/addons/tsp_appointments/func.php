@@ -117,7 +117,7 @@ function fn_tsp_appointments_get_order_info(&$order_info, &$additional_data)
 						$value = $product_metadata[$field_name]['value'];
 						if ($fdata['type'] == 'T')
 						{
-							$value = html_entity_decode($value);
+							$value = html_entity_decode($value, ENT_QUOTES, 'UTF-8');
 						}//endif
 		
 						$product_appointment[] = array(

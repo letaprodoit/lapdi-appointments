@@ -58,7 +58,7 @@ if ($mode == 'view' && !empty($product_id))
 				
 				if ($fdata['type'] == 'T')
 				{
-					$value = html_entity_decode($value);
+					$value = html_entity_decode($value, ENT_QUOTES, 'UTF-8');
 				}//endif
 
 				if (!empty($fdata['options_func']))
