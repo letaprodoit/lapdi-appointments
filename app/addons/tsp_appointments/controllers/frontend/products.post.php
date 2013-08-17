@@ -67,7 +67,7 @@ if ($mode == 'view' && !empty($product_id))
 				}//endif
 	
 				$product_addon_fields[] = array(
-					'title' => fn_get_lang_var($field_name),
+					'title' => __($field_name),
 					'name' => $field_name,
 					'value' => $value,
 					'icon' => $fdata['icon'],
