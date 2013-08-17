@@ -1,11 +1,13 @@
-{if $fields}
-<div id="tsp_appointments_fields" class="in collapse">
-    <fieldset>        
+{if $has_data}
+<fieldset>
+    <div class="{$class_name}">
+        {include file="common/subheader.tpl" title="`$title`"}
+        
         {foreach from=$fields item="field"}
-        <div class="control-group">
+        
             {if !$field.readonly}
-                <label class="control-label" for="product_{$field.name}">{$field.title}:</label>
-                <div class="controls form-field {if $field.type == 'D'}clearfix{/if}">
+                <div class="form-field {if $field.type == 'D'}clearfix{/if}">
+                    <label for="product_{$field.name}">{$field.title}:</label>
                     {if $field.type == 'I' || $field.type == 'U'}
                         <input type="hidden" name="product_data[{$field.name}]" value="" />
                         <input id="product_{$field.name}" type="text" name="product_data[{$field.name}]" {if $field.width}style="width: {$field.width};"{/if} value="{$field.value}" class="valign input-text {if $field.hint}cm-hint{/if}" title="{$field.hint}"/>
@@ -40,22 +42,22 @@
                     {/if}
                     
                     {if $field.icon}
-                        <div class="controls {$field.class} field_type_{$field.type}" style="cursor: pointer;" onclick="window.location='{$url|unescape}'">&nbsp;</div>
+                        <div class="{$field.class} field_type_{$field.type}" style="cursor: pointer;" onclick="window.location='{$url|unescape}'">&nbsp;</div>
                     {else}
-                        <label class="control-label" for="product_{$field.name}">{$field.title}:</label>
-                        <div class="controls form-field {if $field.type == 'D'}clearfix{/if} product-list-field">
+                        <div class="form-field {if $field.type == 'D'}clearfix{/if} product-list-field">
+                            <label for="product_{$field.name}">{$field.title}:</label>
                             <span class="{$field.class} field_type_{$field.type}"><a href="{$url|unescape}">{$field.title|unescape}</a></span>
                         </div>
                     {/if}
                 {else}
-                    <label class="control-label" for="product_{$field.name}">{$field.title}:</label>
-                    <div class="controls form-field {if $field.type == 'D'}clearfix{/if} product-list-field">
+                    <div class="form-field {if $field.type == 'D'}clearfix{/if} product-list-field">
+                        <label for="product_{$field.name}">{$field.title}:</label>
                         <span class="{$field.class} field_type_{$field.type}">{$field.value|unescape}</span>
                     </div>
                 {/if}
             {/if}       
-        </div>
+
         {/foreach}
-    </fieldset>
-</div>
+    </div>
+</fieldset>
 {/if}
