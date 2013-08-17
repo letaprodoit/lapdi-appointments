@@ -58,6 +58,9 @@
         <include name="basic/templates/addons/${name}/overrides/views/*" />
         <include name="basic/templates/addons/${name}/overrides/views/products/*" />
         <include name="basic/templates/addons/${name}/overrides/views/products/components/*" />
+        <include name="basic/templates/addons/${name}/views/*" />
+        <include name="basic/templates/addons/${name}/views/appointments/*" />
+        <include name="basic/templates/addons/${name}/views/appointments/components/*" />
     </fileset>
 
 
@@ -110,7 +113,10 @@
         <include name="design/themes/basic/templates/addons/${name}/overrides/views/*" />
         <include name="design/themes/basic/templates/addons/${name}/overrides/views/products/*" />
         <include name="design/themes/basic/templates/addons/${name}/overrides/views/products/components/*" />
-    	
+        <include name="design/themes/basic/templates/addons/${name}/views/*" />
+        <include name="design/themes/basic/templates/addons/${name}/views/appointments/*" />
+        <include name="design/themes/basic/templates/addons/${name}/views/appointments/components/*" />
+   	
         <include name="var/*" />
         <include name="var/themes_repository/*" />
         <include name="var/themes_repository/basic/*" />
@@ -130,6 +136,9 @@
         <include name="var/themes_repository/basic/templates/addons/${name}/overrides/views/*" />
         <include name="var/themes_repository/basic/templates/addons/${name}/overrides/views/products/*" />
         <include name="var/themes_repository/basic/templates/addons/${name}/overrides/views/products/components/*" />
+        <include name="var/themes_repository/basic/templates/addons/${name}/views/*" />
+        <include name="var/themes_repository/basic/templates/addons/${name}/views/appointments/*" />
+        <include name="var/themes_repository/basic/templates/addons/${name}/views/appointments/components/*" />
     </fileset>
 
     <!-- copy_all Target -->
