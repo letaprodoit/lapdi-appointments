@@ -115,8 +115,8 @@ elseif ($mode == 'update' && !empty($_REQUEST['appointment_id']))
 	}//endif
 	
 	// [Breadcrumbs]
-	fn_add_breadcrumb(fn_get_lang_var('tspa_appointments'), "appointments.manage.reset_view");
-	fn_add_breadcrumb(fn_get_lang_var('search_results'), "appointments.manage.last_view");
+	fn_add_breadcrumb(__('tspa_appointments'), "appointments.manage.reset_view");
+	fn_add_breadcrumb(__('search_results'), "appointments.manage.last_view");
 	// [/Breadcrumbs]
 	
 	$locations = fn_tspa_get_product_option_select_values(Registry::get('tspa_product_option_location_field_id'),'variant_id');
