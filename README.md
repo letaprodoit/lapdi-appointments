@@ -47,12 +47,17 @@ The Product Listing -> Addon tab includes:
 * Appointment Location
 * Appointment Additional Information
 
-### Creating an Appointment Service (ie Therapy Session, Spa Appointments, etc)
+### Creating an Appointment Service (ie Training, Class, Therapy Session, Spa Appointments, etc)
 
 In order to create a product that is an appointment service you will need to perform the following steps:
 
 * Create the product and save (after save the Options tab will be available to you.
-* Navigate to the Options tab and add the Global options above to the product by clicking on "Add Global Option" (you can change the field names and drop down options by clicking edit).
+* Navigate to the Options tab and add the Global options above to the product by clicking on "Add Global Option"
+** Add Appointment Date (Apply as Link).
+** Add Appointment Time (Apply as Link).
+** Add Appointment Duration (Apply as Link).
+** Add Appointment Location (Apply as Link).
+** Add Appointment Additional Information (Apply as Link).
 * Save and close the product
 * And thats it! Now you can allow your customers to purchase products that are appointment services.
 
@@ -60,7 +65,7 @@ In order to create a product that is an appointment service you will need to per
 
 Any appointment the user creates they will be able to see on their order receipt and the admin can view and manage appointments by visiting Customer->Appointments in the admin panel.
 
-### Creating an Appointment Event (ie Webinars, Training, etc)
+### Creating an Appointment Event (ie Webinars, Demos, etc)
 
 In order to create a product that is an event you will need to perform the following steps:
 
