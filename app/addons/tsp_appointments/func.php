@@ -121,7 +121,7 @@ function fn_tsp_appointments_get_order_info(&$order_info, &$additional_data)
 						}//endif
 		
 						$product_appointment[] = array(
-								'title' => fn_get_lang_var($field_name),
+								'title' => __($field_name),
 								'value' => $value
 						);
 					}//endif
