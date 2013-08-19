@@ -66,7 +66,7 @@
                 <label for="appointment_date" class="control-label cm-required">{$appointment.date.description}:</label>
                 <div class="controls">
                     <div class="clearfix">
-                        {include file="common/calendar.tpl" date_id="appointment_date" date_name="appointment_data[date]" start_year="`$smarty.const.TIME`" date_val=$appointment.date.value}
+                        {include file="common/calendar.tpl" date_id="appointment_date" date_name="appointment_data[date]" start_year=$settings.Company.company_start_year date_val=$appointment.date.value}
                     </div>
                 </div>
             </div>
@@ -78,6 +78,13 @@
                 </div>
             </div>
             
+            <div class="control-group">
+                <label for="appointment_time" class="control-label cm-required">{$appointment.duration.description}:</label>
+                <div class="controls">
+                    <input type="text" name="appointment_data[duration]" id="appointment_duration" size="32" value="{$appointment.duration.value}" class="input-text" />
+                </div>
+            </div>
+
             <div class="control-group">
                 <label for="appointment_location" class="control-label cm-required">{$appointment.location.description}:</label>
                 <div class="controls">
