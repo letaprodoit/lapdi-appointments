@@ -15,7 +15,7 @@
     {* END CHANGE TSP *}
 
 	<li>	   
-        <strong>{$po.option_name}: </strong>{$value} {* CHANGED TSP *}
+        <strong>{$po.option_name}: </strong>{$value} {* CHANGED TSP - since date is not stored in variant_name initially get it from value *}
 	
 	{if $oi.extra.custom_files[$po.option_id] || $cp.extra.custom_files[$po.option_id]}
 		{foreach from=$oi.extra.custom_files[$po.option_id] item="file" name="po_files"}
