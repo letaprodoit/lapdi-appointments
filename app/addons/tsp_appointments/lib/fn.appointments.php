@@ -385,7 +385,8 @@ function fn_tspa_get_appointments($params, $items_per_page = 0)
 
     $default_params = array (
         'page' => 1,
-        'items_per_page' => $items_per_page
+        'items_per_page' => $items_per_page,
+    	'company' => Registry::get('runtime.company_id'),
     );
 
     $params = array_merge($default_params, $params);
@@ -437,7 +438,7 @@ function fn_tspa_get_appointments($params, $items_per_page = 0)
 
 	if (!empty($params['company'])) 
 	{
-		$condition .= db_quote(" AND ?:companies LIKE ?l", "%{$params['company']}%");
+		$condition .= db_quote(" AND ?:addon_tsp_appointments.company_id = ?i", $params['company']);
 	}//endif
 
 	if (!empty($params['email'])) 
