@@ -60,10 +60,10 @@ if ($mode == 'manage')
 {
 	list($appointments, $search) = fn_tspa_get_appointments($_REQUEST);
 	
-	$statuses = fn_tspa_get_statuses();
-	
+	$statuses = Registry::get('tspa_appointment_statuses_long');
+		
 	// Loop through and set the color (style) status for each appointment
-	// Styles are taken from order status colors see fn_tspa_get_statuses
+	// Styles are taken from order status colors see tspa_appointment_statuses_long
 	foreach ( $appointments as $id => $appointment )
 	{
 		if ( array_key_exists($appointment['status'], $statuses) )
@@ -72,9 +72,9 @@ if ($mode == 'manage')
 		}//end if
 	}// foreach
 	
-	Registry::get('view')->assign('simple_statuses', fn_tspa_get_appointment_default_statuses());
+	Registry::get('view')->assign('simple_statuses', Registry::get('tspa_appointment_statuses_short'));
 	Registry::get('view')->assign('statuses', $statuses);
-	Registry::get('view')->assign('status_params', fn_tspa_get_status_params());
+	Registry::get('view')->assign('status_params', Registry::get('tspa_appointment_status_params'));
 	
 	Registry::get('view')->assign('appointments', $appointments);
 	Registry::get('view')->assign('search', $search);
@@ -133,7 +133,7 @@ elseif ($mode == 'update' && !empty($_REQUEST['appointment_id']))
 	$locations = fn_tspa_get_product_option_select_values(Registry::get('tspa_product_option_location_field_id'),'variant_id');
 
 	Registry::get('view')->assign('appointment_locations', $locations);
-	Registry::get('view')->assign('appointment_statuses', Registry::get('tspa_appointment_statuses'));
+	Registry::get('view')->assign('appointment_statuses', Registry::get('tspa_appointment_statuses_short'));
 	Registry::get('view')->assign('appointment', $appointment);
 
 }//endelseif

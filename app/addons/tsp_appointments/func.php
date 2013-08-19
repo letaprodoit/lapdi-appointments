@@ -58,8 +58,7 @@ function fn_tsp_appointments_change_order_status( $status_to, $status_from, $ord
 		{
 			fn_tspa_update_appointment_status($appointment_id, 'X', 'Y');
 		}//end if
-		// If the order is backordered then set the appointment to open
-		elseif ( $status_to == 'B')
+		else
 		{
 			fn_tspa_update_appointment_status($appointment_id, 'O', 'Y');
 		}//end elseif

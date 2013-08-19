@@ -495,24 +495,6 @@ function fn_tspa_get_appointments($params, $items_per_page = 0)
 }//end fn_tspa_get_appointments
 
 /**
- * Gets list of default statuses
- *
- * @param string $lang_code 2-letter language code (e.g. 'en', 'ru', etc.)
- * @return array statuses list
- */
-function fn_tspa_get_appointment_default_statuses($lang_code = CART_LANGUAGE)
-{
-	$statuses = array (
-			'O' => __('open', '', $lang_code),
-			'S' => __('tspa_scheduled', '', $lang_code),
-			'X' => __('cancelled', '', $lang_code),
-			'C' => __('completed', '', $lang_code),
-	);
-
-	return $statuses;
-}
-
-/**
  * Get order color
  *
  * @param char $status Required the appointment status
@@ -520,7 +502,7 @@ function fn_tspa_get_appointment_default_statuses($lang_code = CART_LANGUAGE)
  */
 function fn_tspa_get_order_color_status ( $status )
 {
-	$statuses = fn_tspa_get_statuses();
+	$statuses = Registry::get('tspa_appointment_statuses_long');
 	
 	if ( array_key_exists( $status, $statuses ) )
 	{
@@ -663,100 +645,6 @@ function fn_tspa_get_product_option_select_values($option_id,$key)
 	WHERE opt_var.option_id = $option_id",$key);
 }//end fn_tspa_get_product_option_select_values
 
-/***********
- *
- * Get the appointment statuses
- *
- ***********/
-function fn_tspa_get_statuses()
-{
-	$statuses = array(
-		'O' => array(
-			'status_id' 	=> 1,
-			'status' 		=> 'O',
-			'color_status'	=> 'O',
-			'type' 			=> 'A',
-			'is_default' 	=> 'Y',
-			'description' 	=> 'Open',
-			'email_subj' 	=> 'has been created',
-			'email_header' 	=> 'Your appointment has been created successfully.',
-			'lang_code' 	=> 'en',
-			'params' 		=> array(
-				'notify'=> 'Y',
-				'color'	=> '#FF9522',
-			),
-		),
-		'S' => array(
-			'status_id' 	=> 2,
-			'status' 		=> 'S',
-			'color_status'	=> 'B',
-			'type' 			=> 'A',
-			'is_default' 	=> 'Y',
-			'description' 	=> 'Scheduled',
-			'email_subj' 	=> 'has been scheduled',
-			'email_header' 	=> 'Your appointment has been scheduled successfully.',
-			'lang_code' 	=> 'en',
-			'params' 		=> array(
-				'notify'=> 'Y',
-				'color'	=> '#28ABF6',
-			),
-		),
-		'X' => array(
-			'status_id' 	=> 3,
-			'status' 		=> 'X',
-			'color_status'	=> 'F',
-			'type' 			=> 'A',
-			'is_default' 	=> 'Y',
-			'description' 	=> 'Canceled',
-			'email_subj' 	=> 'has been canceled',
-			'email_header' 	=> 'Your appointment has been canceled successfully.',
-			'lang_code' 	=> 'en',
-			'params' 		=> array(
-				'notify'=> 'Y',
-				'color'	=> '#C2C2C2',
-			),
-		),
-		'C' => array(
-			'status_id' 	=> 4,
-			'status' 		=> 'C',
-			'color_status'	=> 'P',
-			'type' 			=> 'A',
-			'is_default' 	=> 'Y',
-			'description' 	=> 'Completed',
-			'email_subj' 	=> 'has been completed',
-			'email_header' 	=> 'Your appointment has been completed successfully.',
-			'lang_code' 	=> 'en',
-			'params' 		=> array(
-				'notify'=> 'Y',
-				'color'	=> '#97CF4D',
-			),
-		),
-	);
-	
-	return $statuses;
-}//end fn_tspa_get_statuses
-
-/***********
- *
-* Get the appointment status parameters
-*
-***********/
-function fn_tspa_get_status_params()
-{
-	$status_params = array (
-		'color' => array (
-				'type' => 'color',
-				'label' => 'color'
-		),
-		'notify' => array (
-				'type' => 'checkbox',
-				'label' => 'notify_customer',
-				'default_value' => 'Y'
-		),
-	);
-	
-	return $status_params;
-}//end fn_tspa_get_status_params
 
 /***********
  *
@@ -766,65 +654,70 @@ function fn_tspa_get_status_params()
 function fn_tspa_notify_user($id)
 {
 	$appointment = db_get_row("SELECT * FROM ?:addon_tsp_appointments WHERE id = ?i", $id);
-	$statuses = Registry::get('tspa_appointment_statuses');
 	
-	$appointment['status'] = $statuses[$appointment['status']];
-	$appointment['info'] = '';
-	
-	// get order/appointment data
-	$extra = fn_tspa_get_order_details( $appointment['order_id'], $appointment['product_id'] );
-	
-	if ( array_key_exists( 'product_options_value', $extra ) )
+	// if the appointment exists
+	if (!empty( $appointment ))
 	{
-		$product_options = $extra['product_options_value'];
+		$statuses = Registry::get('tspa_appointment_statuses_short');
 		
-		foreach ( $product_options as $pos => $field )
+		$appointment['status'] = $statuses[$appointment['status']];
+		$appointment['info'] = '';
+		
+		// get order/appointment data
+		$extra = fn_tspa_get_order_details( $appointment['order_id'], $appointment['product_id'] );
+		
+		if ( array_key_exists( 'product_options_value', $extra ) )
 		{
-			$option_id = $field['option_id'];
-			
-			list($description, $value) = fn_tspa_get_product_option_info($option_id, $field['value']);
-			$appointment['info'] .= "<strong>$description:</strong>  $value<br>\n";
-		}//end foreach
-	}//end if
-	
-	if (!empty($appointment['user_id']))
-	{
-		$appointment['user'] = fn_get_user_info($appointment['user_id']);
-	}//endif
+			$product_options = $extra['product_options_value'];
 		
-	if (!empty($appointment['product_id']))
-	{
-		$appointment['product'] = fn_get_product_data($appointment['product_id'],$auth,CART_LANGUAGE,'product,product_code');
-	}//endif
-
-	if (!empty($appointment['order_id']))
-	{
-		$appointment['order'] = fn_get_order_info($appointment['order_id']);
-	}//endif
-
-	// Send a copy to the customer	
-	Mailer::sendMail(array(
-    	'to' => $appointment['user']['email'],
-        'from' => 'default_company_orders_department',
-        'reply_to' => Registry::get('settings.Company.company_orders_department'),
-        'data' => array(
-         		'appointment' => $appointment,
-                'profile_fields' => fn_get_profile_fields('I', '', $supplier['lang_code']),
-         ),
-         'tpl' => 'addons/tsp_appointments/appointment_notification.tpl',
-         ), 'C', Registry::get('settings.Appearance.backend_default_language'));
-
-	// Send a copy to the staff
-	Mailer::sendMail(array(
-    	'to' => Registry::get('settings.Company.company_orders_department'),
-        'from' => 'default_company_orders_department',
-        'reply_to' => Registry::get('settings.Company.company_orders_department'),
-        'data' => array(
-         		'appointment' => $appointment,
-                'profile_fields' => fn_get_profile_fields('I', '', $supplier['lang_code']),
-         ),
-         'tpl' => 'addons/tsp_appointments/appointment_notification.tpl',
-         ), 'C', Registry::get('settings.Appearance.backend_default_language'));
+			foreach ( $product_options as $pos => $field )
+			{
+				$option_id = $field['option_id'];
+					
+				list($description, $value) = fn_tspa_get_product_option_info($option_id, $field['value']);
+				$appointment['info'] .= "<strong>$description:</strong>  $value<br>\n";
+			}//end foreach
+		}//end if
+		
+		if (!empty($appointment['user_id']))
+		{
+			$appointment['user'] = fn_get_user_info($appointment['user_id']);
+		}//endif
+		
+		if (!empty($appointment['product_id']))
+		{
+			$appointment['product'] = fn_get_product_data($appointment['product_id'],$auth,CART_LANGUAGE,'product,product_code');
+		}//endif
+		
+		if (!empty($appointment['order_id']))
+		{
+			$appointment['order'] = fn_get_order_info($appointment['order_id']);
+		}//endif
+		
+		// Send a copy to the customer
+		Mailer::sendMail(array(
+		'to' => $appointment['user']['email'],
+		'from' => 'default_company_orders_department',
+		'reply_to' => Registry::get('settings.Company.company_orders_department'),
+		'data' => array(
+		'appointment' => $appointment,
+		'profile_fields' => fn_get_profile_fields('I', '', $supplier['lang_code']),
+		),
+		'tpl' => 'addons/tsp_appointments/appointment_notification.tpl',
+		), 'C', Registry::get('settings.Appearance.backend_default_language'));
+		
+		// Send a copy to the staff
+		Mailer::sendMail(array(
+		'to' => Registry::get('settings.Company.company_orders_department'),
+		'from' => 'default_company_orders_department',
+		'reply_to' => Registry::get('settings.Company.company_orders_department'),
+		'data' => array(
+		'appointment' => $appointment,
+		'profile_fields' => fn_get_profile_fields('I', '', $supplier['lang_code']),
+		),
+		'tpl' => 'addons/tsp_appointments/appointment_notification.tpl',
+		), 'C', Registry::get('settings.Appearance.backend_default_language'));
+	}//end if
 }//end fn_tspa_notify_user
 
 /***********
@@ -882,9 +775,11 @@ function fn_tspa_update_appointment($id, &$data)
 {
 	$appointment = db_get_row("SELECT * FROM ?:addon_tsp_appointments WHERE id = ?i", $id);
 	
-	fn_tspa_update_order_details($appointment['order_id'], $appointment['product_id'], $data);
-	fn_tspa_update_order_data($appointment['order_id'], $appointment['product_id'], $data);
-	
+	if (!empty( $appointment ))
+	{
+		fn_tspa_update_order_details($appointment['order_id'], $appointment['product_id'], $data);
+		fn_tspa_update_order_data($appointment['order_id'], $appointment['product_id'], $data);		
+	}//end if
 }//end fn_tspa_update_appointment
 
 /***********
@@ -908,11 +803,11 @@ function fn_tspa_update_appointment_status($id, $status, $notify_user = 'N')
 		// if its not completed then null out the date completed
 		if ($status == 'C')
 		{
-			db_query("UPDATE ?:addon_tsp_appointments SET `date_completed` = ?i", time());
+			db_query("UPDATE ?:addon_tsp_appointments SET `date_completed` = ?i WHERE `id` = ?i", time(), $id);
 		}//endif
 		else
 		{
-			db_query("UPDATE ?:addon_tsp_appointments SET `date_completed` = ?i", $null);
+			db_query("UPDATE ?:addon_tsp_appointments SET `date_completed` = ?i WHERE `id` = ?i", $null, $id);
 		}//endelse
 		
 		if ($notify_user == 'Y')
