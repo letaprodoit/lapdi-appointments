@@ -702,7 +702,7 @@ function fn_tspa_notify_user($id)
 		'reply_to' => Registry::get('settings.Company.company_orders_department'),
 		'data' => array(
 		'appointment' => $appointment,
-		'profile_fields' => fn_get_profile_fields('I', '', $supplier['lang_code']),
+		'profile_fields' => fn_get_profile_fields('I', '', CART_LANGUAGE),
 		),
 		'tpl' => 'addons/tsp_appointments/appointment_notification.tpl',
 		), 'C', Registry::get('settings.Appearance.backend_default_language'));
@@ -714,7 +714,7 @@ function fn_tspa_notify_user($id)
 		'reply_to' => Registry::get('settings.Company.company_orders_department'),
 		'data' => array(
 		'appointment' => $appointment,
-		'profile_fields' => fn_get_profile_fields('I', '', $supplier['lang_code']),
+		'profile_fields' => fn_get_profile_fields('I', '', CART_LANGUAGE),
 		),
 		'tpl' => 'addons/tsp_appointments/appointment_notification.tpl',
 		), 'C', Registry::get('settings.Appearance.backend_default_language'));
