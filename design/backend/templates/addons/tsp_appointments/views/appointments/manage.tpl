@@ -12,29 +12,29 @@
     <th width="1%" class="center">
      {include file="common/check_items.tpl"}</th>
     <th width="20%"><a class="{$ajax_class}{if $search.sort_by == "user"} sort-link-{$search.sort_order}{/if}" href="{"`$c_url`&amp;sort_by=user&amp;sort_order=`$search.sort_order`"|fn_url}" rev="pagination_contents">{__("user")}</a></th>
-    <th width="35%"><a class="{$ajax_class}" href="#" rev="pagination_contents">{__("tspa_appointment")}</a></th>
+    <th width="30%"><a class="{$ajax_class}" href="#" rev="pagination_contents">{__("tspa_appointment")}</a></th>
     <th width="15%" class="center"><a class="{$ajax_class}{if $search.sort_by == "date_created"} sort-link-{$search.sort_order}{/if}" href="{"`$c_url`&amp;sort_by=date_created&amp;sort_order=`$search.sort_order`"|fn_url}" rev="pagination_contents">{__("date_created")}</a></th>
     <th width="15%" class="center"><a class="{$ajax_class}{if $search.sort_by == "date_completed"} sort-link-{$search.sort_order}{/if}" href="{"`$c_url`&amp;sort_by=date_completed&amp;sort_order=`$search.sort_order`"|fn_url}" rev="pagination_contents">{__("date")} {__("completed")}</a></th>
-    <th width="10%"><a class="{$ajax_class}{if $search.sort_by == "status"} sort-link-{$search.sort_order}{/if}" href="{"`$c_url`&amp;sort_by=status&amp;sort_order=`$search.sort_order`"|fn_url}" rev="pagination_contents">{__("status")}</a></th>
+    <th width="15%"><a class="{$ajax_class}{if $search.sort_by == "status"} sort-link-{$search.sort_order}{/if}" href="{"`$c_url`&amp;sort_by=status&amp;sort_order=`$search.sort_order`"|fn_url}" rev="pagination_contents">{__("status")}</a></th>
 </tr>
 </thead>
 
 {foreach from=$appointments key="id" item="appointment"}
-<tr class="cm-row-status-{$appointment.status|lower}">
+<tr class="cm-row-status-{$appointment.color_status|lower}">
     <td width="1%" class="center">
         <input type="checkbox" name="appointment_ids[]" value="{$appointment.id}" class="checkbox cm-item" /></td>
     <td><a href="{"profiles.update?user_id=`$appointment.user_id`"|fn_url}">{$appointment.lastname} {$appointment.firstname}</a></td>
     <td>
         <a href="{"appointments.update?appointment_id=`$appointment.id`"|fn_url}">
-        Apppointment set for <strong>{$appointment.data.date}</strong> at <strong>{$appointment.data.time}</strong>. Location will be <strong>{$appointment.data.location}</strong>.
+        Apppointment set for <strong>{$appointment.data.date}</strong> at <strong>{$appointment.data.time}</strong> for <strong>{$appointment.data.duration}</strong>. Location will be <strong>{$appointment.data.location}</strong>.
                         <br><strong>Note: </strong>{$appointment.data.additional_info|default:'None'}
         </a>
     </td>
     <td class="center">{if $appointment.date_created}{$appointment.date_created|date_format:"`$settings.Appearance.date_format` `$settings.Appearance.time_format`"}{/if}</td>
     <td class="center">{if $appointment.date_completed}{$appointment.date_completed|date_format:"`$settings.Appearance.date_format` `$settings.Appearance.time_format`"}{/if}</td>
     <td>
-        {assign var="notify" value=true}
-        {include file="addons/tsp_appointments/views/appointments/components/select_popup.tpl" id=$appointment.id status=$appointment.status object_id_name="appointment_id" hide_for_vendor=$runtime.company_id update_controller="appointments" notify=$notify}
+        {assign var="this_url" value=$config.current_url|escape:"url"}
+        {include file="common/select_popup.tpl" suffix="o" id=$appointment.id status=$appointment.status items_status=$simple_statuses update_controller="appointments" notify=true extra="&return_url=`$this_url`" statuses=$statuses btn_meta="btn btn-info o-status-`$appointment.color_status` btn-small"|lower}
     </td>
 </tr>
 {/foreach}

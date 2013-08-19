@@ -61,7 +61,7 @@
     {* BEGIN ADD DATE TSP *}
     {elseif $po.option_type == "D"} {*Date*}
         <div class="clear">
-            {include file="common/calendar.tpl" date_id="option_`$id`_`$po.option_id`" date_name="`$name`[`$id`][product_options][`$po.option_id`]" date_val=$po.value|default:$smarty.const.TIME start_year="`$smarty.const.TIME`"}
+            {include file="common/calendar.tpl" date_id="option_`$id`_`$po.option_id`" date_name="`$name`[`$id`][product_options][`$po.option_id`]" date_val=$po.value|default:$smarty.const.TIME start_year=$settings.Company.company_start_year"}
 	    </div>
     {* END ADD DATE TSP *}
     {elseif $po.option_type == "I"} {*Input*}

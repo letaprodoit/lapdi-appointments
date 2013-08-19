@@ -23,7 +23,17 @@
 		<item lang="en" id="tspa_meeting_duration">Meeting Duration</item>
 		<item lang="en" id="tspa_meeting_location">Meeting Location</item>
 		<item lang="en" id="tspa_meeting_info">Additional Information</item>
-		<item lang="en" id="tspa_scheduled">Scheduled</item>	
+        <item lang="en" id="tspa_appointment_date">Appointment Date</item>
+        <item lang="en" id="tspa_appointment_date_comment">Enter in the date of the appointment</item>
+        <item lang="en" id="tspa_appointment_time">Appointment Time</item>
+        <item lang="en" id="tspa_appointment_time_comment">Enter in the time of the appointment (format: 07:00 PM EST)</item>
+        <item lang="en" id="tspa_appointment_duration">Appointment Duration</item>
+        <item lang="en" id="tspa_appointment_duration_comment">Enter in the duration of the appointment in Minutes, Hours, Days, Weeks, Months or Years (format: 1 Hour, 10 Minutes)</item>
+        <item lang="en" id="tspa_appointment_location">Appointment Location</item>
+        <item lang="en" id="tspa_appointment_location_comment">Where will this appointment take place?</item>
+        <item lang="en" id="tspa_appointment_info">Appointment Additional Information</item>
+        <item lang="en" id="tspa_appointment_info_comment">Enter in any additional information you wish to provide.</item>
+  		<item lang="en" id="tspa_scheduled">Scheduled</item>	
 	</language_variables>
 	<tab_order>prepend</tab_order>
 	<settings>

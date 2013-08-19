@@ -26,6 +26,47 @@ require_once 'lib/fn.appointments.php';
 
 
 /**
+ * Change order status
+ *
+ * @since 2.0.0
+ *
+ * @param string $status_to New order status (one char)
+ * @param string $status_from Old order status (one char)
+ * @param array $order_info Array with order information
+ * @param array $force_notification Array with notification rules
+ * @param array $order_statuses Array of order statuses.
+ * @param boolean $place_order Place order or not
+ * @return boolean
+ *
+ * @return none
+ */
+function fn_tsp_appointments_change_order_status( $status_to, $status_from, $order_info, $force_notification, $order_statuses, $place_order )
+{
+	$order_id = $order_info['order_id'];	
+	$appointment_id = db_get_field("SELECT `id` FROM ?:addon_tsp_appointments WHERE `order_id` = ?i", $order_id);
+	
+	// If the appointment has not been created and the admin is changing the status
+	if (!$appointment_id && $status_to == 'P' )
+	{
+		// If the user purchased a service with an appointment
+		fn_tspa_create_appointment($order_info);
+	}//end if
+	else 
+	{
+		// If the order is cancelled, failed or declined then cancel the appointment
+		if ( in_array( $status_to, array('I','F','D') ) )
+		{
+			fn_tspa_update_appointment_status($appointment_id, 'X', 'Y');
+		}//end if
+		// If the order is backordered then set the appointment to open
+		elseif ( $status_to == 'B')
+		{
+			fn_tspa_update_appointment_status($appointment_id, 'O', 'Y');
+		}//end elseif
+	}
+}//end fn_tsp_appointments_change_order_status
+
+/**
  * Finish payment
  *
  * @since 1.0.0

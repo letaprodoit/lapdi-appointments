@@ -58,6 +58,7 @@ Registry::set('tspa_product_data_field_names', array(
 // Fields necessary for storing product data
 Registry::set('tspa_product_option_date_field_id', fn_tspa_get_product_field_id('tspa_product_option_date_field_id'));
 Registry::set('tspa_product_option_time_field_id', fn_tspa_get_product_field_id('tspa_product_option_time_field_id'));
+Registry::set('tspa_product_option_duration_field_id', fn_tspa_get_product_field_id('tspa_product_option_duration_field_id'));
 Registry::set('tspa_product_option_location_field_id', fn_tspa_get_product_field_id('tspa_product_option_location_field_id'));
 Registry::set('tspa_product_option_additional_info_field_id', fn_tspa_get_product_field_id('tspa_product_option_additional_info_field_id'));
 

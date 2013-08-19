@@ -16,6 +16,7 @@
 if ( !defined('BOOTSTRAP') ) { die('Access denied'); }
 
 fn_register_hooks(
+	'change_order_status',
 	'finish_payment',
 	'delete_order',
 	'delete_product_post',

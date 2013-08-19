@@ -43,6 +43,16 @@ function fn_tspa_uninstall_languages ()
 		'tspa_meeting_location',
 		'tspa_meeting_duration',
 		'tspa_meeting_info',
+		'tspa_appointment_date',
+		'tspa_appointment_date_comment',
+		'tspa_appointment_time',
+		'tspa_appointment_time_comment',
+		'tspa_appointment_location',
+		'tspa_appointment_location_comment',
+		'tspa_appointment_duration',
+		'tspa_appointment_duration_comment',
+		'tspa_appointment_info',
+		'tspa_appointment_info_comment',
 		'tspa_scheduled'
 	);
 	
@@ -59,40 +69,92 @@ function fn_tspa_uninstall_languages ()
  ***********/
 function fn_tspa_install_product_fields () 
 {	
-	// Install the global option fields
-	$date_id = db_query('INSERT INTO ?:product_options ?e', array('position' => 0, 'option_type' => 'D', 'inventory' => 'N', 'required' => 'Y', 'status' => 'A'));
-	$time_id = db_query('INSERT INTO ?:product_options ?e', array('position' => 5, 'option_type' => 'I', 'inventory' => 'N', 'required' => 'Y', 'status' => 'A', 'regexp' => '(\\d\\d:\\d\\d) (AM|PM) (\\w\\w\\w)'));
-	$duration_id = db_query('INSERT INTO ?:product_options ?e', array('position' => 10, 'option_type' => 'I', 'inventory' => 'N', 'required' => 'Y', 'status' => 'A', 'regexp' => '(\\d+) (Minutes|Hour|Hours|Day|Days|Week|Weeks|Month|Months|Year|Years)'));
-	$location_id = db_query('INSERT INTO ?:product_options ?e', array('position' => 15, 'option_type' => 'S', 'inventory' => 'N', 'required' => 'Y', 'status' => 'A'));
-	$info_id = db_query('INSERT INTO ?:product_options ?e', array('position' => 20, 'option_type' => 'T', 'inventory' => 'N', 'required' => 'N', 'status' => 'A'));
+	$default_option_fields = array(
+		'tspa_product_option_date_field_id',
+		'tspa_product_option_time_field_id',
+		'tspa_product_option_duration_field_id',
+		'tspa_product_option_location_field_id',
+		'tspa_product_option_additional_info_field_id',
+	);
 	
-	// Store the global option fields
-	db_query("INSERT INTO ?:addon_tsp_appointments_product_field_metadata (`key`,`option_id`) VALUES ('tspa_product_option_date_field_id',$date_id), 
-	('tspa_product_option_time_field_id',$time_id), 
-	('tspa_product_option_duration_field_id',$duration_id), 
-	('tspa_product_option_location_field_id',$location_id),
-	('tspa_product_option_additional_info_field_id',$info_id)");
-	
-	// Install descriptions
-	db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'en', 'option_id' => $date_id, 'option_name' => 'Appointment Date', 'option_text' => '', 'description' => '', 'comment' => 'Enter in the date of the appointment', 'inner_hint' => '', 'incorrect_message' => ''));
-	db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'en', 'option_id' => $time_id, 'option_name' => 'Appointment Time', 'option_text' => '', 'description' => '', 'comment' => 'Enter in the time of the appointment (format: 07:00 PM EST)', 'inner_hint' => '12:00 AM EST', 'incorrect_message' => 'Incorrect time format.'));
-	db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'en', 'option_id' => $duration_id, 'option_name' => 'Appointment Duration', 'option_text' => '', 'description' => '', 'comment' => 'Enter in the duration of the appointment in Minutes, Hours, Days, Weeks, Months or Years (format: 1 Hour, 10 Minutes)', 'inner_hint' => '10 Minutes', 'incorrect_message' => 'Incorrect duration format.'));
-	db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'en', 'option_id' => $location_id, 'option_name' => 'Appointment Location', 'option_text' => '', 'description' => '', 'comment' => 'In-Home or On-Site Appointment', 'inner_hint' => '', 'incorrect_message' => ''));
-	db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'en', 'option_id' => $info_id, 'option_name' => 'Appointment Additional Information', 'option_text' => '', 'description' => '', 'comment' => 'Enter in any additional information you wish to provide.', 'inner_hint' => '', 'incorrect_message' => ''));
-
-
-	// Install option variants
-	$var1 = db_query('INSERT INTO ?:product_option_variants ?e', array('position' => 0, 'option_id' => $location_id, 'modifier' => 0.00));
-	$var2 = db_query('INSERT INTO ?:product_option_variants ?e', array('position' => 5, 'option_id' => $location_id, 'modifier' => 0.00));
-
-	// Store the global option fields
-	db_query("INSERT INTO ?:addon_tsp_appointments_product_field_metadata (`key`,`option_id`,`variant_id`) VALUES 
-	('tspa_product_option_location_field_vars',$location_id,$var1), 
-	('tspa_product_option_location_field_vars',$location_id,$var2)");
-
-	// Install option variant descriptions
-	db_query('INSERT INTO ?:product_option_variants_descriptions ?e', array('lang_code' => 'en', 'variant_id' => $var1, 'variant_name' => 'In-Home'));
-	db_query('INSERT INTO ?:product_option_variants_descriptions ?e', array('lang_code' => 'en', 'variant_id' => $var2, 'variant_name' => 'On-Site'));
+	foreach ( $default_option_fields as $option_field_key )
+	{
+		// check to see if the field is already in the table (the global option already added) if it is not
+		// then add it
+		if ( !fn_tspa_get_product_field_id($option_field_key) )
+		{
+			if ($option_field_key == 'tspa_product_option_date_field_id')
+			{
+				// Install the global option fields
+				$date_id = db_query('INSERT INTO ?:product_options ?e', array('company_id' => 1, 'position' => 100, 'option_type' => 'D', 'inventory' => 'N', 'required' => 'Y', 'status' => 'A'));
+				
+				// Store the global option fields
+				db_query("INSERT INTO ?:addon_tsp_appointments_product_field_metadata (`key`,`option_id`) VALUES ('$option_field_key',$date_id)");
+				
+				// Install descriptions
+				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'en', 'option_id' => $date_id, 'option_name' => __("tspa_appointment_date"), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_date_comment"), 'inner_hint' => '', 'incorrect_message' => ''));
+			}//end if
+			elseif ($option_field_key == 'tspa_product_option_time_field_id')
+			{
+				// Install the global option fields
+				$time_id = db_query('INSERT INTO ?:product_options ?e', array('company_id' => 1, 'position' => 101, 'option_type' => 'I', 'inventory' => 'N', 'required' => 'Y', 'status' => 'A', 'regexp' => '(\\d\\d:\\d\\d) (AM|PM) (\\w\\w\\w)'));
+				
+				// Store the global option fields
+				db_query("INSERT INTO ?:addon_tsp_appointments_product_field_metadata (`key`,`option_id`) VALUES ('$option_field_key',$time_id)");
+				
+				// Install descriptions
+				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'en', 'option_id' => $time_id, 'option_name' => __("tspa_appointment_time"), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_time_comment"), 'inner_hint' => '12:00 AM EST', 'incorrect_message' => 'Incorrect format.'));				
+			}//end if
+			elseif ($option_field_key == 'tspa_product_option_duration_field_id')
+			{
+				// Install the global option fields
+				$duration_id = db_query('INSERT INTO ?:product_options ?e', array('company_id' => 1, 'position' => 102, 'option_type' => 'I', 'inventory' => 'N', 'required' => 'Y', 'status' => 'A', 'regexp' => '(\\d+) (Minutes|Hour|Hours|Day|Days|Week|Weeks|Month|Months|Year|Years)'));				
+				
+				// Store the global option fields
+				db_query("INSERT INTO ?:addon_tsp_appointments_product_field_metadata (`key`,`option_id`) VALUES ('$option_field_key',$duration_id)");
+				
+				// Install descriptions
+				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'en', 'option_id' => $duration_id, 'option_name' => __("tspa_appointment_duration"), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_duration_comment"), 'inner_hint' => '10 Minutes', 'incorrect_message' => 'Incorrect format.'));
+			}//end if
+			elseif ($option_field_key == 'tspa_product_option_location_field_id')
+			{
+				// Install the global option fields
+				$location_id = db_query('INSERT INTO ?:product_options ?e', array('company_id' => 1, 'position' => 103, 'option_type' => 'S', 'inventory' => 'N', 'required' => 'Y', 'status' => 'A'));
+				
+				// Store the global option fields
+				db_query("INSERT INTO ?:addon_tsp_appointments_product_field_metadata (`key`,`option_id`) VALUES ('$option_field_key',$location_id)");
+				
+				// Install descriptions
+				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'en', 'option_id' => $location_id, 'option_name' => __("tspa_appointment_location"), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_location_comment"), 'inner_hint' => '', 'incorrect_message' => ''));
+				
+				// Install option variants
+				$var1 = db_query('INSERT INTO ?:product_option_variants ?e', array('position' => 0, 'option_id' => $location_id, 'modifier' => 0.00));
+				$var2 = db_query('INSERT INTO ?:product_option_variants ?e', array('position' => 5, 'option_id' => $location_id, 'modifier' => 0.00));
+				
+				// Store the global option fields
+				db_query("INSERT INTO ?:addon_tsp_appointments_product_field_metadata (`key`,`option_id`,`variant_id`) VALUES
+				('tspa_product_option_location_field_vars',$location_id,$var1),
+				('tspa_product_option_location_field_vars',$location_id,$var2)");
+				
+				// Install option variant descriptions
+				db_query('INSERT INTO ?:product_option_variants_descriptions ?e', array('lang_code' => 'en', 'variant_id' => $var1, 'variant_name' => 'In-Home'));
+				db_query('INSERT INTO ?:product_option_variants_descriptions ?e', array('lang_code' => 'en', 'variant_id' => $var2, 'variant_name' => 'On-Site'));
+				
+			}//end if
+			elseif ($option_field_key == 'tspa_product_option_additional_info_field_id')
+			{
+				// Install the global option fields
+				$info_id = db_query('INSERT INTO ?:product_options ?e', array('company_id' => 1, 'position' => 104, 'option_type' => 'T', 'inventory' => 'N', 'required' => 'N', 'status' => 'A'));
+				
+				// Store the global option fields
+				db_query("INSERT INTO ?:addon_tsp_appointments_product_field_metadata (`key`,`option_id`) VALUES ('$option_field_key',$info_id)");
+				
+				// Install descriptions
+				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'en', 'option_id' => $info_id, 'option_name' => __("tspa_appointment_info"), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_info_comment"), 'inner_hint' => '', 'incorrect_message' => ''));
+				
+			}//end if
+		}//end if
+	}//end foreach
 }//end fn_tspa_install_product_fields
 
 /***********
@@ -174,43 +236,40 @@ function fn_tspa_add_appointment_data_to_array(&$appointments,$key)
 {
 	foreach ($appointments as $appt_id => $appt)
 	{	
-		$order_info = fn_get_order_info($appt['order_id']);
-		$order_key = 'products';
-
-		// Search through ordered items to find the product that has an appointment
-		foreach ($order_info[$order_key] as $order_id => $product)
-		{		
-			$data = "";
+		$extra = fn_tspa_get_order_details( $appt['order_id'], $appt['product_id'] );
+	
+		if ( array_key_exists( 'product_options_value', $extra ) )
+		{
+			$product_options = $extra['product_options_value'];
 			
-			// if the appointment product ID equals this product id and the product has options
-			// continue
-			if ($appt['product_id'] == $product['product_id'] && fn_tspa_product_contains_appointment($product['extra']['product_options']))
-			{			
-				$product_options = $product['extra']['product_options'];
+			foreach ( $product_options as $pos => $field )
+			{
+				$option_id = $field['option_id'];
 				
-				foreach ($product_options as $option_id => $option_value)
+				list ($description, $value) = fn_tspa_get_product_option_info($option_id, $field['value']);
+				
+				if ( Registry::get('tspa_product_option_date_field_id') == $option_id )
 				{
-					list ($description, $value) = fn_tspa_get_product_option_info($option_id, $option_value);
-					
-					if ( Registry::get('tspa_product_option_date_field_id') == $option_id )
-					{
-						$appointments[$appt_id][$key]['date'] = $value;
-					}//endif
-					elseif ( Registry::get('tspa_product_option_time_field_id') == $option_id )
-					{
-						$appointments[$appt_id][$key]['time'] = $value;
-					}//end elseif
-					elseif ( Registry::get('tspa_product_option_location_field_id') == $option_id )
-					{
-						$appointments[$appt_id][$key]['location'] = $value;
-					}//end elseif
-					elseif ( Registry::get('tspa_product_option_additional_info_field_id') == $option_id )
-					{
-						$appointments[$appt_id][$key]['additional_info'] = $value;
-					}//end elseif										
-				}//endforeach;
-			}//endif			
-		}//endforeach;		
+					$appointments[$appt_id][$key]['date'] = $value;
+				}//endif
+				elseif ( Registry::get('tspa_product_option_time_field_id') == $option_id )
+				{
+					$appointments[$appt_id][$key]['time'] = $value;
+				}//end elseif
+				elseif ( Registry::get('tspa_product_option_duration_field_id') == $option_id )
+				{
+					$appointments[$appt_id][$key]['duration'] = $value;
+				}//end elseif
+				elseif ( Registry::get('tspa_product_option_location_field_id') == $option_id )
+				{
+					$appointments[$appt_id][$key]['location'] = $value;
+				}//end elseif
+				elseif ( Registry::get('tspa_product_option_additional_info_field_id') == $option_id )
+				{
+					$appointments[$appt_id][$key]['additional_info'] = $value;
+				}//end elseif										
+			}//end foreach
+		}//end if
 	}//endforeach;
 }
 
@@ -278,19 +337,25 @@ function fn_tspa_create_appointment($order_info)
 	{	
 		$product_id = $product['product_id'];
 		
-		if (fn_tspa_product_contains_appointment($product['extra']['product_options']))
-		{			
-			$data = array(
-				'status' => 'O',
-				'order_id' => $order_id,
-				'product_id' => $product_id,
-				'user_id' => $user_id,
-				'date_created' => time(),
-			);
-						
-			db_query("INSERT INTO ?:addon_tsp_appointments ?e", $data);
-		}//endif
+		$extra = fn_tspa_get_order_details( $order_id, $product_id );
 		
+		if ( array_key_exists('product_options_value', $extra) )
+		{
+			$product_options = $extra['product_options_value'];
+			
+			if (fn_tspa_product_contains_appointment($product_options))
+			{
+				$data = array(
+						'status' => 'O',
+						'order_id' => $order_id,
+						'product_id' => $product_id,
+						'user_id' => $user_id,
+						'date_created' => time(),
+				);
+			
+				db_query("INSERT INTO ?:addon_tsp_appointments ?e", $data);
+			}//endif
+		}//end if		
 	}//endforeach;	
 }//end fn_tspa_create_appointment
 
@@ -302,9 +367,6 @@ function fn_tspa_create_appointment($order_info)
  ***********/
 function fn_tspa_delete_appointment($id) 
 {	
-	// Change the appointment in the order details
-	fn_tspa_update_appointment($id, 'Deleted', 'Deleted', 'Deleted');
-
 	db_query("DELETE FROM ?:addon_tsp_appointments WHERE `id` = ?i", $id);
 }//end fn_tspa_delete_appointment
 
@@ -431,12 +493,10 @@ function fn_tspa_get_appointments($params, $items_per_page = 0)
 /**
  * Gets list of default statuses
  *
- * @param string $status current object status
- * @param boolean $add_hidden includes 'hiden' status
  * @param string $lang_code 2-letter language code (e.g. 'en', 'ru', etc.)
  * @return array statuses list
  */
-function fn_tspa_get_appointment_default_statuses($status, $add_hidden, $lang_code = CART_LANGUAGE)
+function fn_tspa_get_appointment_default_statuses($lang_code = CART_LANGUAGE)
 {
 	$statuses = array (
 			'O' => __('open', '', $lang_code),
@@ -448,16 +508,76 @@ function fn_tspa_get_appointment_default_statuses($status, $add_hidden, $lang_co
 	return $statuses;
 }
 
+/**
+ * Get order color
+ *
+ * @param char $status Required the appointment status
+ * @return char the equivalent order status
+ */
+function fn_tspa_get_order_color_status ( $status )
+{
+	$statuses = fn_tspa_get_statuses();
+	
+	if ( array_key_exists( $status, $statuses ) )
+	{
+		return $statuses[$status]['color_status'];
+	}//end if
+}//end fn_tspa_get_order_color_status
+
+
+/**
+ * Get order data
+ *
+ * @param int $order_id Required the order id
+ * @return array statuses list
+ */
+function fn_tspa_get_order_data( $order_id )
+{
+	$data = db_get_field("SELECT `data` FROM ?:order_data WHERE `order_id` = ?i AND `type` = ?s", $order_id, 'G');	
+	$data = @unserialize($data);
+	
+	if ( is_array($data) )
+	{
+		return $data;
+	}//end if
+	else 
+	{
+		return array();
+	}//end else
+}//end fn_tspa_get_order_data
+
+/**
+ * Get order details
+ *
+ * @param int $order_id Required the order id
+ * @param int $product_id Required the product id
+ * @return array statuses list
+ */
+function fn_tspa_get_order_details( $order_id, $product_id )
+{
+	$extra = db_get_field("SELECT `extra` FROM ?:order_details WHERE `order_id` = ?i AND `product_id` = ?i", $order_id, $product_id);
+	$extra = @unserialize($extra);
+	
+	if ( is_array($extra) )
+	{
+		return $extra;
+	}//end if
+	else 
+	{
+		return array();
+	}//end else
+}//end fn_tspa_get_order_details
+
 /***********
  *
- * There are 3 fields that are required for any appointment and they are
+ * There are 4 fields that are required for any appointment and they are
  * time, date and location, this function will get the option keys from
  * the appointments product metadata table
  *
  ***********/
 function fn_tspa_get_product_field_id($key)
 {
-	$field_id = -1;
+	$field_id = null;
 	
 	$table = '?:addon_tsp_appointments_product_field_metadata';
 	$table_exists = db_get_row("SHOW TABLES LIKE '$table'");
@@ -484,33 +604,23 @@ function fn_tspa_get_product_option_data($order_id, $product_id, $option_id, $va
 {
 	$description = "";
 	$value = "";
-	
-	$order_info = fn_get_order_info($order_id);
-	$order_key = 'products';
-	
-	// Search through ordered items to find the product that has an appointment
-	foreach ($order_info[$order_key] as $order_id => $product)
-	{	
-		// if the appointment product ID equals this product id and the product has options
-		// continue
-		if ($product_id == $product['product_id'] && fn_tspa_product_contains_appointment($product['extra']['product_options']))
-		{		
-			$product_options = $product['extra']['product_options'];
-			
-			foreach ($product_options as $id => $val)
-			{
-			
-				if ($option_id == $id)
-				{
-					list ($description, $value) = fn_tspa_get_product_option_info($id, $val, $value_only);
-				}//endif
-									
-			}//endforeach;
 		
-		}//endif
-									
-	}//endforeach;
+	$extra = fn_tspa_get_order_details( $order_id, $product_id );
 	
+	if ( array_key_exists( 'product_options_value', $extra ) )
+	{
+		$product_options = $extra['product_options_value'];
+	
+		foreach ($product_options as $pos => $field)
+		{
+			if ($option_id == $field['option_id'])
+			{
+				list ($description, $value) = fn_tspa_get_product_option_info($option_id, $field['value'], $value_only);
+			}//endif
+				
+		}//endforeach;
+	}
+		
 	return array('description' => $description, 'value' => $value);
 }//end fn_tspa_get_product_option_data
 
@@ -551,6 +661,101 @@ function fn_tspa_get_product_option_select_values($option_id,$key)
 
 /***********
  *
+ * Get the appointment statuses
+ *
+ ***********/
+function fn_tspa_get_statuses()
+{
+	$statuses = array(
+		'O' => array(
+			'status_id' 	=> 1,
+			'status' 		=> 'O',
+			'color_status'	=> 'O',
+			'type' 			=> 'A',
+			'is_default' 	=> 'Y',
+			'description' 	=> 'Open',
+			'email_subj' 	=> 'has been created',
+			'email_header' 	=> 'Your appointment has been created successfully.',
+			'lang_code' 	=> 'en',
+			'params' 		=> array(
+				'notify'=> 'Y',
+				'color'	=> '#FF9522',
+			),
+		),
+		'S' => array(
+			'status_id' 	=> 2,
+			'status' 		=> 'S',
+			'color_status'	=> 'B',
+			'type' 			=> 'A',
+			'is_default' 	=> 'Y',
+			'description' 	=> 'Scheduled',
+			'email_subj' 	=> 'has been scheduled',
+			'email_header' 	=> 'Your appointment has been scheduled successfully.',
+			'lang_code' 	=> 'en',
+			'params' 		=> array(
+				'notify'=> 'Y',
+				'color'	=> '#28ABF6',
+			),
+		),
+		'X' => array(
+			'status_id' 	=> 3,
+			'status' 		=> 'X',
+			'color_status'	=> 'F',
+			'type' 			=> 'A',
+			'is_default' 	=> 'Y',
+			'description' 	=> 'Canceled',
+			'email_subj' 	=> 'has been canceled',
+			'email_header' 	=> 'Your appointment has been canceled successfully.',
+			'lang_code' 	=> 'en',
+			'params' 		=> array(
+				'notify'=> 'Y',
+				'color'	=> '#C2C2C2',
+			),
+		),
+		'C' => array(
+			'status_id' 	=> 4,
+			'status' 		=> 'C',
+			'color_status'	=> 'P',
+			'type' 			=> 'A',
+			'is_default' 	=> 'Y',
+			'description' 	=> 'Completed',
+			'email_subj' 	=> 'has been completed',
+			'email_header' 	=> 'Your appointment has been completed successfully.',
+			'lang_code' 	=> 'en',
+			'params' 		=> array(
+				'notify'=> 'Y',
+				'color'	=> '#97CF4D',
+			),
+		),
+	);
+	
+	return $statuses;
+}//end fn_tspa_get_statuses
+
+/***********
+ *
+* Get the appointment status parameters
+*
+***********/
+function fn_tspa_get_status_params()
+{
+	$status_params = array (
+		'color' => array (
+				'type' => 'color',
+				'label' => 'color'
+		),
+		'notify' => array (
+				'type' => 'checkbox',
+				'label' => 'notify_customer',
+				'default_value' => 'Y'
+		),
+	);
+	
+	return $status_params;
+}//end fn_tspa_get_status_params
+
+/***********
+ *
  * Function to notify user of appointment change
  *
  ***********/
@@ -560,19 +765,23 @@ function fn_tspa_notify_user($id)
 	$statuses = Registry::get('tspa_appointment_statuses');
 	
 	$appointment['status'] = $statuses[$appointment['status']];
-	
-	// get order/appointment data
-	$extra = db_get_field("SELECT `extra` FROM ?:order_details WHERE `order_id` = ?i", $appointment['order_id']);
-	$extra = @unserialize($extra);
-			
 	$appointment['info'] = '';
 	
-	foreach ($extra['product_options'] as $option_id => $option_value)
-	{	
-		list($description, $value) = fn_tspa_get_product_option_info($option_id, $option_value);
-		$appointment['info'] .= "<strong>$description:</strong>  $value<br>\n";
+	// get order/appointment data
+	$extra = fn_tspa_get_order_details( $appointment['order_id'], $appointment['product_id'] );
+	
+	if ( array_key_exists( 'product_options_value', $extra ) )
+	{
+		$product_options = $extra['product_options_value'];
 		
-	}//endforeach;
+		foreach ( $product_options as $pos => $field )
+		{
+			$option_id = $field['option_id'];
+			
+			list($description, $value) = fn_tspa_get_product_option_info($option_id, $field['value']);
+			$appointment['info'] .= "<strong>$description:</strong>  $value<br>\n";
+		}//end foreach
+	}//end if
 	
 	if (!empty($appointment['user_id']))
 	{
@@ -620,16 +829,19 @@ function fn_tspa_notify_user($id)
  * appointments all contain a date, time and location
  *
  ***********/
-function fn_tspa_product_contains_appointment($product_options)
+function fn_tspa_product_contains_appointment(&$product_options)
 {
 	$contains_appointment = false;
 	// required fields
 	$date_found = false;
 	$time_found = false;
+	$duration_found = false;
 	$location_found = false;
 	
-	foreach ($product_options as $option_id => $value)
+	foreach ($product_options as $pos => $field)
 	{	
+		$option_id = $field['option_id'];
+		
 		if ($option_id == Registry::get('tspa_product_option_date_field_id'))
 		{
 			$date_found = true;
@@ -638,14 +850,18 @@ function fn_tspa_product_contains_appointment($product_options)
 		{
 			$time_found = true;
 		}//endelseif
+		elseif ($option_id == Registry::get('tspa_product_option_duration_field_id'))
+		{
+			$duration_found = true;
+		}//endelseif;
 		elseif ($option_id == Registry::get('tspa_product_option_location_field_id'))
 		{
 			$location_found = true;
-		}//endelseif;
+		}//endelseif;		
 		
 	}//endforeach;
 	
-	if ($date_found && $time_found && $location_found)
+	if ($date_found && $time_found && $duration_found && $location_found)
 	{
 		$contains_appointment = true;
 	}//endif
@@ -658,20 +874,13 @@ function fn_tspa_product_contains_appointment($product_options)
  * Update the appointment in the database
  *
  ***********/
-function fn_tspa_update_appointment($id, $date, $time, $location,$additional_info=null)
+function fn_tspa_update_appointment($id, &$data)
 {
-
 	$appointment = db_get_row("SELECT * FROM ?:addon_tsp_appointments WHERE id = ?i", $id);
 	
-	$extra = db_get_field("SELECT `extra` FROM ?:order_details WHERE `order_id` = ?i", $appointment['order_id']);
-	$extra = @unserialize($extra);
+	fn_tspa_update_order_details($appointment['order_id'], $appointment['product_id'], $data);
+	fn_tspa_update_order_data($appointment['order_id'], $appointment['product_id'], $data);
 	
-	$extra['product_options'][Registry::get('tspa_product_option_date_field_id')] = $date;
-	$extra['product_options'][Registry::get('tspa_product_option_time_field_id')] = $time;
-	$extra['product_options'][Registry::get('tspa_product_option_location_field_id')] = $location;
-	$extra['product_options'][Registry::get('tspa_product_option_additional_info_field_id')] = $additional_info;
-	
-	db_query('UPDATE ?:order_details SET ?u WHERE order_id = ?i', array('extra' => @serialize($extra)), $appointment['order_id']);
 }//end fn_tspa_update_appointment
 
 /***********
@@ -681,24 +890,159 @@ function fn_tspa_update_appointment($id, $date, $time, $location,$additional_inf
  ***********/
 function fn_tspa_update_appointment_status($id, $status, $notify_user = 'N')
 {
-	db_query("UPDATE ?:addon_tsp_appointments SET `status` = ?s WHERE `id` = ?i", $status, $id);
+	$updated = false;
 	
-	// If the appointment is completed then change the date completd
-	// if its not completed then null out the date completed
-	if ($status == 'C')
-	{
-		db_query("UPDATE ?:addon_tsp_appointments SET `date_completed` = ?i", time());
-	}//endif
-	else
-	{
-		db_query("UPDATE ?:addon_tsp_appointments SET `date_completed` = ?i", $null);
-	}//endelse
+	// get current status
+	$current_status = db_get_field("SELECT `status` FROM ?:addon_tsp_appointments WHERE `id` = ?i", $id);
 	
-	if ($notify_user)
+	// update the status only if its changed
+	if ( $current_status != $status )
 	{
-		fn_tspa_notify_user($id);
-	}//endif
+		db_query("UPDATE ?:addon_tsp_appointments SET `status` = ?s WHERE `id` = ?i", $status, $id);
+		
+		// If the appointment is completed then change the date completd
+		// if its not completed then null out the date completed
+		if ($status == 'C')
+		{
+			db_query("UPDATE ?:addon_tsp_appointments SET `date_completed` = ?i", time());
+		}//endif
+		else
+		{
+			db_query("UPDATE ?:addon_tsp_appointments SET `date_completed` = ?i", $null);
+		}//endelse
+		
+		if ($notify_user == 'Y')
+		{
+			fn_tspa_notify_user($id);
+		}//endif
+		
+		$updated = true;
+	}//end if
+	
+	return $updated;
 }//end fn_tspa_update_appointment_status
+
+/**
+ * Update the order data
+ *
+ * @param int $order_id Required the order id
+ * @param int $product_id Required the product id
+ * @param array $data Required the data to update the record with
+ * @return none
+ */
+function fn_tspa_update_order_data( $order_id, $product_id, &$data )
+{
+	$order_data = fn_tspa_get_order_data( $order_id );
+
+	foreach ( $order_data as $pos => $record )
+	{
+		foreach ( $record as $key => $value )
+		{
+			if ( $key == 'products' )
+			{
+				foreach ( $value as $item_id => $product_record )
+				{
+					if ( $product_record['product_id'] == $product_id )
+					{
+						$product_options = $product_record['product_options'];
+						
+						if ( !empty( $product_options ) )
+						{
+							foreach ( $product_options as $option_id => $option_value )
+							{									
+								if ( $option_id == Registry::get('tspa_product_option_date_field_id'))
+								{
+									$order_data[$pos][$key][$item_id]['product_options'][$option_id] = $data['date'];
+									$order_data[$pos][$key][$item_id]['extra']['product_options'][$option_id] = $data['date'];
+								}//end if
+								elseif ( $option_id == Registry::get('tspa_product_option_time_field_id'))
+								{
+									$order_data[$pos][$key][$item_id]['product_options'][$option_id] = $data['time'];
+									$order_data[$pos][$key][$item_id]['extra']['product_options'][$option_id] = $data['time'];
+								}//end elseif
+								elseif ( $option_id == Registry::get('tspa_product_option_duration_field_id'))
+								{
+									$order_data[$pos][$key][$item_id]['product_options'][$option_id] = $data['duration'];
+									$order_data[$pos][$key][$item_id]['extra']['product_options'][$option_id] = $data['duration'];
+								}//end elseif
+								elseif ( $option_id == Registry::get('tspa_product_option_location_field_id'))
+								{
+									$order_data[$pos][$key][$item_id]['product_options'][$option_id] = $data['location'];
+									$order_data[$pos][$key][$item_id]['extra']['product_options'][$option_id] = $data['location'];
+								}//end elseif
+								elseif ( $option_id == Registry::get('tspa_product_option_additional_info_field_id'))
+								{
+									$order_data[$pos][$key][$item_id]['product_options'][$option_id] = $data['additional_info'];
+									$order_data[$pos][$key][$item_id]['extra']['product_options'][$option_id] = $data['additional_info'];
+								}//end elseif
+							}//end foreach
+						}//end if
+					}//end if
+				}//end foreach
+			}//end if
+		}//end foreach
+	}//end foreach
+
+	db_query('UPDATE ?:order_data SET ?u WHERE order_id = ?i AND type = ?s', array('data' => @serialize($order_data)), $order_id, 'G');								
+}//end fn_tspa_update_order_data
+
+/**
+ * Update the order details
+ *
+ * @param int $order_id Required the order id
+ * @param int $product_id Required the product id
+ * @param array $data Required the data to update the record with
+ * @return none
+ */
+function fn_tspa_update_order_details( $order_id, $product_id, &$data )
+{
+	$extra = fn_tspa_get_order_details( $order_id, $product_id );
+	
+	if ( array_key_exists( 'product_options_value', $extra ) )
+	{
+		$product_options = $extra['product_options_value'];
+	
+		foreach ( $product_options as $pos => $field )
+		{
+			$option_id = $field['option_id'];
+				
+			if ( $option_id == Registry::get('tspa_product_option_date_field_id'))
+			{
+				$extra['product_options'][$option_id] = $data['date'];
+				$extra['product_options_value'][$pos]['value'] = $data['date'];
+				$extra['product_options_value'][$pos]['variant_name'] = $data['date'];
+			}//end if
+			elseif ( $option_id == Registry::get('tspa_product_option_time_field_id'))
+			{
+				$extra['product_options'][$option_id] = $data['time'];
+				$extra['product_options_value'][$pos]['value'] = $data['time'];
+				$extra['product_options_value'][$pos]['variant_name'] = $data['time'];
+			}//end elseif
+			elseif ( $option_id == Registry::get('tspa_product_option_duration_field_id'))
+			{
+				$extra['product_options'][$option_id] = $data['duration'];
+				$extra['product_options_value'][$pos]['value'] = $data['duration'];
+				$extra['product_options_value'][$pos]['variant_name'] = $data['duration'];
+			}//end elseif
+			elseif ( $option_id == Registry::get('tspa_product_option_location_field_id'))
+			{
+				list($loc_desc, $loc_val) = fn_tspa_get_product_option_info($option_id, $data['location']);
+				
+				$extra['product_options'][$option_id] = $data['location'];
+				$extra['product_options_value'][$pos]['value'] = $data['location'];
+				$extra['product_options_value'][$pos]['variant_name'] = $loc_val;
+			}//end elseif
+			elseif ( $option_id == Registry::get('tspa_product_option_additional_info_field_id'))
+			{
+				$extra['product_options'][$option_id] = $data['additional_info'];
+				$extra['product_options_value'][$pos]['value'] = $data['additional_info'];
+				$extra['product_options_value'][$pos]['variant_name'] = $data['additional_info'];
+			}//end elseif
+		}//end foreach
+
+		db_query('UPDATE ?:order_details SET ?u WHERE order_id = ?i AND product_id = ?i', array('extra' => @serialize($extra)), $order_id, $product_id);		
+	}//end if
+}//end fn_tspa_update_order_details
 
 /***********
  *

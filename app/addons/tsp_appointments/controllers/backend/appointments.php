@@ -45,15 +45,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 			fn_tspa_update_appointment_status($appointment_id,$data['status']);
 		}//endif
 		
-		if (!empty($data['date']) && !empty($data['time']) && !empty($data['location']))
+		if (!empty($data['date']) && !empty($data['time']) && !empty($data['duration']) && !empty($data['location']))
 		{
-			$date = $data['date'];
-			$time = $data['time'];
-			$location = $data['location'];
-			$additional_info = $data['additional_info'];
-				
-			fn_tspa_update_appointment($appointment_id, $date, $time, $location,$additional_info);
-			 
+			fn_tspa_update_appointment($appointment_id, $data);			 
 		}//endif
 		
 		$suffix = ".update?appointment_id=$appointment_id";
@@ -65,7 +59,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 if ($mode == 'manage') 
 {
 	list($appointments, $search) = fn_tspa_get_appointments($_REQUEST);
-
+	
+	$statuses = fn_tspa_get_statuses();
+	
+	// Loop through and set the color (style) status for each appointment
+	// Styles are taken from order status colors see fn_tspa_get_statuses
+	foreach ( $appointments as $id => $appointment )
+	{
+		if ( array_key_exists($appointment['status'], $statuses) )
+		{
+			$appointments[$id]['color_status'] = $statuses[$appointment['status']]['color_status'];
+		}//end if
+	}// foreach
+	
+	Registry::get('view')->assign('simple_statuses', fn_tspa_get_appointment_default_statuses());
+	Registry::get('view')->assign('statuses', $statuses);
+	Registry::get('view')->assign('status_params', fn_tspa_get_status_params());
+	
 	Registry::get('view')->assign('appointments', $appointments);
 	Registry::get('view')->assign('search', $search);
 
@@ -110,6 +120,7 @@ elseif ($mode == 'update' && !empty($_REQUEST['appointment_id']))
 	{
 		$appointment['date'] = fn_tspa_get_product_option_data($appointment['order_id'], $appointment['product_id'], Registry::get('tspa_product_option_date_field_id'));
 		$appointment['time'] = fn_tspa_get_product_option_data($appointment['order_id'], $appointment['product_id'], Registry::get('tspa_product_option_time_field_id'));
+		$appointment['duration'] = fn_tspa_get_product_option_data($appointment['order_id'], $appointment['product_id'], Registry::get('tspa_product_option_duration_field_id'));
 		$appointment['location'] = fn_tspa_get_product_option_data($appointment['order_id'], $appointment['product_id'], Registry::get('tspa_product_option_location_field_id'), true);
 		$appointment['additional_info'] = fn_tspa_get_product_option_data($appointment['order_id'], $appointment['product_id'], Registry::get('tspa_product_option_additional_info_field_id'));
 	}//endif
@@ -126,12 +137,12 @@ elseif ($mode == 'update' && !empty($_REQUEST['appointment_id']))
 	Registry::get('view')->assign('appointment', $appointment);
 
 }//endelseif
-elseif ($mode == 'update_status' && !empty($_REQUEST['appointment_id'])) 
+elseif ($mode == 'update_status' && !empty($_REQUEST['id'])) 
 {
 
 	$status = $_REQUEST['status'];
 	$notify_user = $_REQUEST['notify_user'];
-	$appointment_id = $_REQUEST['appointment_id'];
+	$appointment_id = $_REQUEST['id'];
 	
 	if (empty($notify_user))
 	{
@@ -140,12 +151,24 @@ elseif ($mode == 'update_status' && !empty($_REQUEST['appointment_id']))
 	
 	if (!empty($status))
 	{	
-		fn_tspa_update_appointment_status($appointment_id,$status,$notify_user);
-		
+		if (fn_tspa_update_appointment_status($appointment_id,$status,$notify_user))
+		{
+			Registry::get('ajax')->assign('return_status', $status);
+			Registry::get('ajax')->assign('color', fn_get_status_param_value(fn_tspa_get_order_color_status($status), 'color'));
+	
+			fn_set_notification('N', __('notice'), __('status_changed'));
+		}//endif
 	}//endif
 			
-	return array(CONTROLLER_STATUS_REDIRECT, "appointments.manage");
-
+    if (empty($_REQUEST['return_url'])) 
+    {
+        exit;
+    }//endif 
+    else 
+    {
+        return array(CONTROLLER_STATUS_REDIRECT, $_REQUEST['return_url']);
+    }//end else
+	
 }//endelseif
 elseif ($mode == 'delete') 
 {
