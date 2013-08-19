@@ -345,8 +345,11 @@ function fn_tspa_create_appointment($order_info)
 			
 			if (fn_tspa_product_contains_appointment($product_options))
 			{
+				$company_id = db_get_field("SELECT company_id FROM ?:products WHERE product_id = ?i", $product_id);
+				
 				$data = array(
 						'status' => 'O',
+						'company_id' => $company_id,
 						'order_id' => $order_id,
 						'product_id' => $product_id,
 						'user_id' => $user_id,
@@ -404,6 +407,7 @@ function fn_tspa_get_appointments($params, $items_per_page = 0)
 		'user_id' => "?:users.user_id",
 		'user' => "?:users.lastname",
 		'email' => '?:users.email',
+		'appointment_id' => "?:addon_tsp_appointments.id",
 		'date_created' => "?:addon_tsp_appointments.date_created",
 		'date_completed' => "?:addon_tsp_appointments.date_completed",
 		'status' => "?:addon_tsp_appointments.status",
@@ -421,7 +425,7 @@ function fn_tspa_get_appointments($params, $items_per_page = 0)
 
 	if (empty($params['sort_by']) || empty($sortings[$params['sort_by']])) 
 	{
-		$params['sort_by'] = 'date_created';
+		$params['sort_by'] = 'appointment_id';
 	}//endif
 
 	$sorting = (is_array($sortings[$params['sort_by']]) ? implode(' ' . $directions[$params['sort_order']] . ', ', $sortings[$params['sort_by']]) : $sortings[$params['sort_by']]) . " " . $directions[$params['sort_order']];

@@ -4,38 +4,45 @@
 
 {include file="common/pagination.tpl"}
 
+{assign var="c_url" value=$config.current_url|fn_query_remove:"sort_by":"sort_order"}
+{assign var="c_icon" value="<i class=\"exicon-`$search.sort_order_rev`\"></i>"}
+{assign var="c_dummy" value="<i class=\"exicon-dummy\"></i>"}
+
+{assign var="rev" value=$smarty.request.content_id|default:"pagination_contents"}
+
 {if $appointments}
-{assign var="c_url" value=$config.current_url|fn_url}
 <table width="100%" class="table table-middle">
 <thead>
 <tr>
-    <th width="1%" class="center">
-     {include file="common/check_items.tpl"}</th>
-    <th width="20%"><a class="{$ajax_class}{if $search.sort_by == "user"} sort-link-{$search.sort_order}{/if}" href="{"`$c_url`&amp;sort_by=user&amp;sort_order=`$search.sort_order`"|fn_url}" rev="pagination_contents">{__("user")}</a></th>
-    <th width="30%"><a class="{$ajax_class}" href="#" rev="pagination_contents">{__("tspa_appointment")}</a></th>
-    <th width="15%" class="center"><a class="{$ajax_class}{if $search.sort_by == "date_created"} sort-link-{$search.sort_order}{/if}" href="{"`$c_url`&amp;sort_by=date_created&amp;sort_order=`$search.sort_order`"|fn_url}" rev="pagination_contents">{__("date_created")}</a></th>
-    <th width="15%" class="center"><a class="{$ajax_class}{if $search.sort_by == "date_completed"} sort-link-{$search.sort_order}{/if}" href="{"`$c_url`&amp;sort_by=date_completed&amp;sort_order=`$search.sort_order`"|fn_url}" rev="pagination_contents">{__("date")} {__("completed")}</a></th>
-    <th width="15%"><a class="{$ajax_class}{if $search.sort_by == "status"} sort-link-{$search.sort_order}{/if}" href="{"`$c_url`&amp;sort_by=status&amp;sort_order=`$search.sort_order`"|fn_url}" rev="pagination_contents">{__("status")}</a></th>
+    <th  class="left">
+        {include file="common/check_items.tpl" check_statuses=$simple_statuses}
+    </th>
+    <th width="35%"><a class="cm-ajax" href="{"`$c_url`&sort_by=appointment_id&sort_order=`$search.sort_order_rev`"|fn_url}" data-ca-target-id={$rev}>{__("tspa_appointment")}{if $search.sort_by == "appointment_id"}{$c_icon nofilter}{else}{$c_dummy nofilter}{/if}</a></th>
+    <th width="15%"><a class="cm-ajax" href="{"`$c_url`&sort_by=status&sort_order=`$search.sort_order_rev`"|fn_url}" data-ca-target-id={$rev}>{__("status")}{if $search.sort_by == "status"}{$c_icon nofilter}{else}{$c_dummy nofilter}{/if}</a></th>
+    <th width="20%"><a class="cm-ajax" href="{"`$c_url`&sort_by=user&sort_order=`$search.sort_order_rev`"|fn_url}" data-ca-target-id={$rev}>{__("customer")}{if $search.sort_by == "user"}{$c_icon nofilter}{/if}</a></th>
+    <th width="15%"><a class="cm-ajax" href="{"`$c_url`&sort_by=date_created&sort_order=`$search.sort_order_rev`"|fn_url}" data-ca-target-id={$rev}>{__("date_created")}{if $search.sort_by == "date_created"}{$c_icon nofilter}{/if}</a></th>
+    <th width="15%"><a class="cm-ajax" href="{"`$c_url`&sort_by=date_completed&sort_order=`$search.sort_order_rev`"|fn_url}" data-ca-target-id={$rev}>{__("date")} {__("completed")}{if $search.sort_by == "date_completed"}{$c_icon nofilter}{/if}</a></th>
 </tr>
 </thead>
 
 {foreach from=$appointments key="id" item="appointment"}
 <tr class="cm-row-status-{$appointment.color_status|lower}">
-    <td width="1%" class="center">
-        <input type="checkbox" name="appointment_ids[]" value="{$appointment.id}" class="checkbox cm-item" /></td>
-    <td><a href="{"profiles.update?user_id=`$appointment.user_id`"|fn_url}">{$appointment.lastname} {$appointment.firstname}</a></td>
+    <td class="left">
+        <input type="checkbox" name="appointment_ids[]" value="{$appointment.id}" class="cm-item cm-item-status-{$appointment.status|lower}" /></td>
     <td>
         <a href="{"appointments.update?appointment_id=`$appointment.id`"|fn_url}">
         Apppointment set for <strong>{$appointment.data.date}</strong> at <strong>{$appointment.data.time}</strong> for <strong>{$appointment.data.duration}</strong>. Location will be <strong>{$appointment.data.location}</strong>.
                         <br><strong>Note: </strong>{$appointment.data.additional_info|default:'None'}
         </a>
+        {include file="views/companies/components/company_name.tpl" object=$appointment}
     </td>
-    <td class="center">{if $appointment.date_created}{$appointment.date_created|date_format:"`$settings.Appearance.date_format` `$settings.Appearance.time_format`"}{/if}</td>
-    <td class="center">{if $appointment.date_completed}{$appointment.date_completed|date_format:"`$settings.Appearance.date_format` `$settings.Appearance.time_format`"}{/if}</td>
     <td>
         {assign var="this_url" value=$config.current_url|escape:"url"}
-        {include file="common/select_popup.tpl" suffix="o" id=$appointment.id status=$appointment.status items_status=$simple_statuses update_controller="appointments" notify=true extra="&return_url=`$this_url`" statuses=$statuses btn_meta="btn btn-info o-status-`$appointment.color_status` btn-small"|lower}
+        {include file="common/select_popup.tpl" suffix="o" id=$appointment.id status=$appointment.status items_status=$simple_statuses update_controller="appointments" notify=true status_target_id="`$rev`" extra="&return_url=`$this_url`" statuses=$statuses btn_meta="btn btn-info o-status-`$appointment.color_status` btn-small"|lower}
     </td>
+    <td>{if $appointment.user_id}<a href="{"profiles.update?user_id=`$appointment.user_id`"|fn_url}">{/if}{$appointment.lastname} {$appointment.firstname}{if $appointment.user_id}</a>{/if}</td>
+    <td>{if $appointment.date_created}{$appointment.date_created|date_format:"`$settings.Appearance.date_format` `$settings.Appearance.time_format`"}{/if}</td>
+    <td>{if $appointment.date_completed}{$appointment.date_completed|date_format:"`$settings.Appearance.date_format` `$settings.Appearance.time_format`"}{/if}</td>
 </tr>
 {/foreach}
 </table>

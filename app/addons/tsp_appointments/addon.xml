@@ -70,6 +70,7 @@
 			CREATE TABLE `?:addon_tsp_appointments`	(
 					`id` mediumint(8) NOT NULL AUTO_INCREMENT,
 					`status` char(1) NOT NULL DEFAULT 'O',
+					`company_id` mediumint(8) NOT NULL,
 					`order_id` mediumint(8) NOT NULL,
 					`product_id` mediumint(8) NOT NULL,
 					`user_id` mediumint(8) NOT NULL,

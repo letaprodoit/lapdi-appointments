@@ -36,7 +36,7 @@
         {else}
             <span>{$product.product nofilter}</span>
         {/if}
-        {* CHANGED 1 LINE BELOW *}
+        {* CHANGED 1 LINE BELOW TSP *}
         {include file="addons/tsp_appointments/overrides/views/products/components/select_product_options.tpl" id=$product.product_id product_options=$product.product_options name="product_data" show_aoc=$show_aoc additional_class=$additional_class}
     </td>
     {if $show_price}
