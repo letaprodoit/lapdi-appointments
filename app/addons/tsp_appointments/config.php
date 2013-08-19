@@ -18,11 +18,70 @@ use Tygh\Registry;
 
 require_once 'lib/fn.appointments.php';
 
-Registry::set('tspa_appointment_statuses', array(
+Registry::set('tspa_appointment_statuses_long', array(
+		'O' => array(
+			'status_id' 	=> 1,
+			'status' 		=> 'O',
+			'color_status'	=> 'O',
+			'type' 			=> 'A',
+			'is_default' 	=> 'Y',
+			'description' 	=> 'Open',
+			'email_subj' 	=> 'has been created',
+			'email_header' 	=> 'Your appointment has been created successfully.',
+			'lang_code' 	=> 'en',
+		),
+		'S' => array(
+			'status_id' 	=> 2,
+			'status' 		=> 'S',
+			'color_status'	=> 'B',
+			'type' 			=> 'A',
+			'is_default' 	=> 'Y',
+			'description' 	=> 'Scheduled',
+			'email_subj' 	=> 'has been scheduled',
+			'email_header' 	=> 'Your appointment has been scheduled successfully.',
+			'lang_code' 	=> 'en',
+		),
+		'X' => array(
+			'status_id' 	=> 3,
+			'status' 		=> 'X',
+			'color_status'	=> 'F',
+			'type' 			=> 'A',
+			'is_default' 	=> 'Y',
+			'description' 	=> 'Canceled',
+			'email_subj' 	=> 'has been canceled',
+			'email_header' 	=> 'Your appointment has been canceled successfully.',
+			'lang_code' 	=> 'en',
+		),
+		'C' => array(
+			'status_id' 	=> 4,
+			'status' 		=> 'C',
+			'color_status'	=> 'P',
+			'type' 			=> 'A',
+			'is_default' 	=> 'Y',
+			'description' 	=> 'Completed',
+			'email_subj' 	=> 'has been completed',
+			'email_header' 	=> 'Your appointment has been completed successfully.',
+			'lang_code' 	=> 'en',
+		),
+));
+
+Registry::set('tspa_appointment_statuses_short', array(
 		'O' => 'Open',
 		'S' => 'Scheduled',
 		'X' => 'Canceled',
 		'C' => 'Completed'
+));
+
+Registry::set('tspa_appointment_status_params', array(
+		'color' => array (
+				'type' => 'color',
+				'label' => 'color'
+		),
+		'notify' => array (
+				'type' => 'checkbox',
+				'label' => 'notify_customer',
+				'default_value' => 'Y'
+		),
 ));
 
 // Field types: 
