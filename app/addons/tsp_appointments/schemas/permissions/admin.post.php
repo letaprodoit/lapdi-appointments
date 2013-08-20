@@ -15,7 +15,7 @@
 $schema['appointments'] = array (
 	'permissions' => 'manage_appointments',
 );
-$schema['tools']['modes']['update_status']['param_permissions']['table_names']['addon_tsp_appointments'] = 'manage_aappointments';
+$schema['tools']['modes']['update_status']['param_permissions']['table_names']['addon_tsp_appointments'] = 'manage_appointments';
 
 return $schema;
 
