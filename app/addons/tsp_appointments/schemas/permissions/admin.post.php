@@ -12,6 +12,8 @@
  * 
  */
 
+$schema = array();
+
 $schema['appointments'] = array (
 	'permissions' => 'manage_appointments',
 );
