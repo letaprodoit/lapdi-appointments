@@ -20,7 +20,7 @@
     <th width="40%"><a class="cm-ajax" href="{"`$c_url`&sort_by=appointment_id&sort_order=`$search.sort_order_rev`"|fn_url}" data-ca-target-id={$rev}>{__("tspa_appointment")}{if $search.sort_by == "appointment_id"}{$c_icon nofilter}{else}{$c_dummy nofilter}{/if}</a></th>
     <th width="15%"><a class="cm-ajax" href="{"`$c_url`&sort_by=status&sort_order=`$search.sort_order_rev`"|fn_url}" data-ca-target-id={$rev}>{__("status")}{if $search.sort_by == "status"}{$c_icon nofilter}{else}{$c_dummy nofilter}{/if}</a></th>
     <th width="15%"><a class="cm-ajax" href="{"`$c_url`&sort_by=user&sort_order=`$search.sort_order_rev`"|fn_url}" data-ca-target-id={$rev}>{__("customer")}{if $search.sort_by == "user"}{$c_icon nofilter}{/if}</a></th>
-    <th width="15%"><a class="cm-ajax" href="{"`$c_url`&sort_by=date_created&sort_order=`$search.sort_order_rev`"|fn_url}" data-ca-target-id={$rev}>{__("date_created")}{if $search.sort_by == "date_created"}{$c_icon nofilter}{/if}</a></th>
+    <th width="15%"><a class="cm-ajax" href="{"`$c_url`&sort_by=date_created&sort_order=`$search.sort_order_rev`"|fn_url}" data-ca-target-id={$rev}>{__("date")} {__("created")}{if $search.sort_by == "date_created"}{$c_icon nofilter}{/if}</a></th>
     <th width="15%"><a class="cm-ajax" href="{"`$c_url`&sort_by=date_completed&sort_order=`$search.sort_order_rev`"|fn_url}" data-ca-target-id={$rev}>{__("date")} {__("completed")}{if $search.sort_by == "date_completed"}{$c_icon nofilter}{/if}</a></th>
 </tr>
 </thead>
