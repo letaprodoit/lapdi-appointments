@@ -4,7 +4,7 @@
  *
  * @package		TSP Appointments for CS-Cart
  * @filename	install.php
- * @version		2.0.0
+ * @version		2.0.1
  * @author		Sharron Denice, The Software People, LLC on 2013/02/09
  * @copyright	Copyright © 2013 The Software People, LLC (www.thesoftwarepeople.com). All rights reserved
  * @license		Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported (http://creativecommons.org/licenses/by-nc-nd/3.0/)
@@ -12,10 +12,10 @@
  * 
  */
 $target_loc 		= '';
-$source_loc			= '.';
+$source_loc		= '.';
 
 $addon_name 		= 'tsp_appointments';
-$addon_dir			= 'app/addons';
+$addon_dir		= 'app/addons';
 $theme_backend_dir	= 'design/backend';
 $theme_frontend_dir	= 'design/themes/basic';
 $theme_var_dir		= 'var/themes_repository/basic';
