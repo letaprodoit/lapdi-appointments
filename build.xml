@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="TSP Appointments" default="copy_all" basedir=".">
+    <property name="name"  value="tsp_appointments" />
+ 
+    <!-- Fileset for addon files -->
+    <fileset dir="${project.basedir}/addons" id="addonfiles">
+        <include name="${name}/*" />
+        <include name="${name}/controllers/*" />
+        <include name="${name}/controllers/admin/*" />
+        <include name="${name}/controllers/customer/*" />
+        <include name="${name}/lib/*" />
+        <include name="${name}/schemas/*" />
+        <include name="${name}/schemas/menu/*" />
+        <include name="${name}/schemas/permissions/*" />
+    </fileset>
+
+    <!-- Fileset for basic theme files -->
+    <fileset dir="${project.basedir}/skins/basic" id="basic_skin_files">
+        <include name="admin/addons/${name}/*" />
+        <include name="admin/addons/${name}/hooks/*" />
+        <include name="admin/addons/${name}/hooks/index/*" />
+        <include name="admin/addons/${name}/hooks/products/*" />
+        <include name="admin/addons/${name}images/*" />
+        <include name="admin/addons/${name}images/icons/*" />
+        <include name="admin/addons/${name}images/icons/menu/*" />      
+        <include name="admin/addons/${name}/overrides/*" />
+        <include name="admin/addons/${name}/overrides/common_templates/*" />
+        <include name="admin/addons/${name}/overrides/views/*" />
+        <include name="admin/addons/${name}/overrides/views/order_management/*" />
+        <include name="admin/addons/${name}/overrides/views/product_options/*" />
+        <include name="admin/addons/${name}/overrides/views/product_options/components/*" />
+        <include name="admin/addons/${name}/overrides/views/products/*" />
+        <include name="admin/addons/${name}/overrides/views/products/components/*" />        
+        <include name="customer/addons/${name}/*" />
+        <include name="customer/addons/${name}/hooks/*" />
+        <include name="customer/addons/${name}/hooks/checkout/*" />
+        <include name="customer/addons/${name}/hooks/index/*" />
+        <include name="customer/addons/${name}/hooks/orders/*" />
+        <include name="customer/addons/${name}/hooks/products/*" />
+        <include name="customer/addons/${name}/overrides/*" />
+        <include name="customer/addons/${name}/overrides/views/*" />
+        <include name="customer/addons/${name}/overrides/views/products/*" />
+        <include name="customer/addons/${name}/overrides/views/products/components/*" />       
+        <include name="mail/addons/${name}/*" />
+        <include name="mail/addons/${name}/hooks/*" />
+        <include name="mail/addons/${name}/hooks/orders/*" />
+        <include name="mail/addons/${name}/overrides/*" />
+        <include name="mail/addons/${name}/overrides/common_templates/*" />
+    </fileset>
+    
+    <!-- Fileset for all files -->
+    <fileset dir="${project.basedir}" id="allfiles">
+        <include name="LICENSE" />
+        <include name="README.md" />
+        <include name="install.php" />
+        <include name="addons/${name}/*" />
+        <include name="addons/${name}/controllers/*" />
+        <include name="addons/${name}/controllers/admin/*" />
+        <include name="addons/${name}/controllers/customer/*" />
+        <include name="addons/${name}/lib/*" />
+        <include name="addons/${name}/schemas/*" />
+        <include name="addons/${name}/schemas/menu/*" />
+        <include name="addons/${name}/schemas/permissions/*" />
+    	
+        <include name="skins/basic/admin/addons/${name}/*" />
+        <include name="skins/basic/admin/addons/${name}/hooks/*" />
+        <include name="skins/basic/admin/addons/${name}/hooks/index/*" />
+        <include name="skins/basic/admin/addons/${name}/hooks/products/*" />
+        <include name="skins/basic/admin/addons/${name}images/*" />
+        <include name="skins/basic/admin/addons/${name}images/icons/*" />
+        <include name="skins/basic/admin/addons/${name}images/icons/menu/*" />      
+        <include name="skins/basic/admin/addons/${name}/overrides/*" />
+        <include name="skins/basic/admin/addons/${name}/overrides/common_templates/*" />
+        <include name="skins/basic/admin/addons/${name}/overrides/views/*" />
+        <include name="skins/basic/admin/addons/${name}/overrides/views/order_management/*" />
+        <include name="skins/basic/admin/addons/${name}/overrides/views/product_options/*" />
+        <include name="skins/basic/admin/addons/${name}/overrides/views/product_options/components/*" />
+        <include name="skins/basic/admin/addons/${name}/overrides/views/products/*" />
+        <include name="skins/basic/admin/addons/${name}/overrides/views/products/components/*" />        
+        <include name="skins/basic/customer/addons/${name}/*" />
+        <include name="skins/basic/customer/addons/${name}/hooks/*" />
+        <include name="skins/basic/customer/addons/${name}/hooks/checkout/*" />
+        <include name="skins/basic/customer/addons/${name}/hooks/index/*" />
+        <include name="skins/basic/customer/addons/${name}/hooks/orders/*" />
+        <include name="skins/basic/customer/addons/${name}/hooks/products/*" />
+        <include name="skins/basic/customer/addons/${name}/overrides/*" />
+        <include name="skins/basic/customer/addons/${name}/overrides/views/*" />
+        <include name="skins/basic/customer/addons/${name}/overrides/views/products/*" />
+        <include name="skins/basic/customer/addons/${name}/overrides/views/products/components/*" />       
+        <include name="skins/basic/mail/addons/${name}/*" />
+        <include name="skins/basic/mail/addons/${name}/hooks/*" />
+        <include name="skins/basic/mail/addons/${name}/hooks/orders/*" />
+        <include name="skins/basic/mail/addons/${name}/overrides/*" />
+        <include name="skins/basic/mail/addons/${name}/overrides/common_templates/*" />
+   	
+        <include name="var/skins_repository/basic/admin/addons/${name}/*" />
+        <include name="var/skins_repository/basic/admin/addons/${name}/hooks/*" />
+        <include name="var/skins_repository/basic/admin/addons/${name}/hooks/index/*" />
+        <include name="var/skins_repository/basic/admin/addons/${name}/hooks/products/*" />
+        <include name="var/skins_repository/basic/admin/addons/${name}images/*" />
+        <include name="var/skins_repository/basic/admin/addons/${name}images/icons/*" />
+        <include name="var/skins_repository/basic/admin/addons/${name}images/icons/menu/*" />      
+        <include name="var/skins_repository/basic/admin/addons/${name}/overrides/*" />
+        <include name="var/skins_repository/basic/admin/addons/${name}/overrides/common_templates/*" />
+        <include name="var/skins_repository/basic/admin/addons/${name}/overrides/views/*" />
+        <include name="var/skins_repository/basic/admin/addons/${name}/overrides/views/order_management/*" />
+        <include name="var/skins_repository/basic/admin/addons/${name}/overrides/views/product_options/*" />
+        <include name="var/skins_repository/basic/admin/addons/${name}/overrides/views/product_options/components/*" />
+        <include name="var/skins_repository/basic/admin/addons/${name}/overrides/views/products/*" />
+        <include name="var/skins_repository/basic/admin/addons/${name}/overrides/views/products/components/*" />        
+        <include name="var/skins_repository/basic/customer/addons/${name}/*" />
+        <include name="var/skins_repository/basic/customer/addons/${name}/hooks/*" />
+        <include name="var/skins_repository/basic/customer/addons/${name}/hooks/checkout/*" />
+        <include name="var/skins_repository/basic/customer/addons/${name}/hooks/index/*" />
+        <include name="var/skins_repository/basic/customer/addons/${name}/hooks/orders/*" />
+        <include name="var/skins_repository/basic/customer/addons/${name}/hooks/products/*" />
+        <include name="var/skins_repository/basic/customer/addons/${name}/overrides/*" />
+        <include name="var/skins_repository/basic/customer/addons/${name}/overrides/views/*" />
+        <include name="var/skins_repository/basic/customer/addons/${name}/overrides/views/products/*" />
+        <include name="var/skins_repository/basic/customer/addons/${name}/overrides/views/products/components/*" />       
+        <include name="var/skins_repository/basic/mail/addons/${name}/*" />
+        <include name="var/skins_repository/basic/mail/addons/${name}/hooks/*" />
+        <include name="var/skins_repository/basic/mail/addons/${name}/hooks/orders/*" />
+        <include name="var/skins_repository/basic/mail/addons/${name}/overrides/*" />
+        <include name="var/skins_repository/basic/mail/addons/${name}/overrides/common_templates/*" />
+    </fileset>
+
+    <!-- Fileset for all files -->
+    <fileset dir="${project.basedir}" id="clientfiles">
+        <include name="LICENSE" />
+        <include name="README.md" />
+        <include name="install.php" />
+        <include name="addons/${name}/*" />
+        <include name="addons/${name}/controllers/*" />
+        <include name="addons/${name}/controllers/admin/*" />
+        <include name="addons/${name}/controllers/customer/*" />
+        <include name="addons/${name}/lib/*" />
+        <include name="addons/${name}/schemas/*" />
+        <include name="addons/${name}/schemas/menu/*" />
+        <include name="addons/${name}/schemas/permissions/*" />
+    	
+        <include name="skins/basic/admin/addons/${name}/*" />
+        <include name="skins/basic/admin/addons/${name}/hooks/*" />
+        <include name="skins/basic/admin/addons/${name}/hooks/index/*" />
+        <include name="skins/basic/admin/addons/${name}/hooks/products/*" />
+        <include name="skins/basic/admin/addons/${name}images/*" />
+        <include name="skins/basic/admin/addons/${name}images/icons/*" />
+        <include name="skins/basic/admin/addons/${name}images/icons/menu/*" />      
+        <include name="skins/basic/admin/addons/${name}/overrides/*" />
+        <include name="skins/basic/admin/addons/${name}/overrides/common_templates/*" />
+        <include name="skins/basic/admin/addons/${name}/overrides/views/*" />
+        <include name="skins/basic/admin/addons/${name}/overrides/views/order_management/*" />
+        <include name="skins/basic/admin/addons/${name}/overrides/views/product_options/*" />
+        <include name="skins/basic/admin/addons/${name}/overrides/views/product_options/components/*" />
+        <include name="skins/basic/admin/addons/${name}/overrides/views/products/*" />
+        <include name="skins/basic/admin/addons/${name}/overrides/views/products/components/*" />        
+        <include name="skins/basic/customer/addons/${name}/*" />
+        <include name="skins/basic/customer/addons/${name}/hooks/*" />
+        <include name="skins/basic/customer/addons/${name}/hooks/checkout/*" />
+        <include name="skins/basic/customer/addons/${name}/hooks/index/*" />
+        <include name="skins/basic/customer/addons/${name}/hooks/orders/*" />
+        <include name="skins/basic/customer/addons/${name}/hooks/products/*" />
+        <include name="skins/basic/customer/addons/${name}/overrides/*" />
+        <include name="skins/basic/customer/addons/${name}/overrides/views/*" />
+        <include name="skins/basic/customer/addons/${name}/overrides/views/products/*" />
+        <include name="skins/basic/customer/addons/${name}/overrides/views/products/components/*" />       
+        <include name="skins/basic/mail/addons/${name}/*" />
+        <include name="skins/basic/mail/addons/${name}/hooks/*" />
+        <include name="skins/basic/mail/addons/${name}/hooks/orders/*" />
+        <include name="skins/basic/mail/addons/${name}/overrides/*" />
+        <include name="skins/basic/mail/addons/${name}/overrides/common_templates/*" />
+   	
+        <include name="skins/lazygirlcreations/admin/addons/${name}/*" />
+        <include name="skins/lazygirlcreations/admin/addons/${name}/hooks/*" />
+        <include name="skins/lazygirlcreations/admin/addons/${name}/hooks/index/*" />
+        <include name="skins/lazygirlcreations/admin/addons/${name}/hooks/products/*" />
+        <include name="skins/lazygirlcreations/admin/addons/${name}images/*" />
+        <include name="skins/lazygirlcreations/admin/addons/${name}images/icons/*" />
+        <include name="skins/lazygirlcreations/admin/addons/${name}images/icons/menu/*" />      
+        <include name="skins/lazygirlcreations/admin/addons/${name}/overrides/*" />
+        <include name="skins/lazygirlcreations/admin/addons/${name}/overrides/common_templates/*" />
+        <include name="skins/lazygirlcreations/admin/addons/${name}/overrides/views/*" />
+        <include name="skins/lazygirlcreations/admin/addons/${name}/overrides/views/order_management/*" />
+        <include name="skins/lazygirlcreations/admin/addons/${name}/overrides/views/product_options/*" />
+        <include name="skins/lazygirlcreations/admin/addons/${name}/overrides/views/product_options/components/*" />
+        <include name="skins/lazygirlcreations/admin/addons/${name}/overrides/views/products/*" />
+        <include name="skins/lazygirlcreations/admin/addons/${name}/overrides/views/products/components/*" />        
+        <include name="skins/lazygirlcreations/customer/addons/${name}/*" />
+        <include name="skins/lazygirlcreations/customer/addons/${name}/hooks/*" />
+        <include name="skins/lazygirlcreations/customer/addons/${name}/hooks/checkout/*" />
+        <include name="skins/lazygirlcreations/customer/addons/${name}/hooks/index/*" />
+        <include name="skins/lazygirlcreations/customer/addons/${name}/hooks/orders/*" />
+        <include name="skins/lazygirlcreations/customer/addons/${name}/hooks/products/*" />
+        <include name="skins/lazygirlcreations/customer/addons/${name}/overrides/*" />
+        <include name="skins/lazygirlcreations/customer/addons/${name}/overrides/views/*" />
+        <include name="skins/lazygirlcreations/customer/addons/${name}/overrides/views/products/*" />
+        <include name="skins/lazygirlcreations/customer/addons/${name}/overrides/views/products/components/*" />       
+        <include name="skins/lazygirlcreations/mail/addons/${name}/*" />
+        <include name="skins/lazygirlcreations/mail/addons/${name}/hooks/*" />
+        <include name="skins/lazygirlcreations/mail/addons/${name}/hooks/orders/*" />
+        <include name="skins/lazygirlcreations/mail/addons/${name}/overrides/*" />
+        <include name="skins/lazygirlcreations/mail/addons/${name}/overrides/common_templates/*" />
+        
+        <include name="var/skins_repository/basic/admin/addons/${name}/*" />
+        <include name="var/skins_repository/basic/admin/addons/${name}/hooks/*" />
+        <include name="var/skins_repository/basic/admin/addons/${name}/hooks/index/*" />
+        <include name="var/skins_repository/basic/admin/addons/${name}/hooks/products/*" />
+        <include name="var/skins_repository/basic/admin/addons/${name}images/*" />
+        <include name="var/skins_repository/basic/admin/addons/${name}images/icons/*" />
+        <include name="var/skins_repository/basic/admin/addons/${name}images/icons/menu/*" />      
+        <include name="var/skins_repository/basic/admin/addons/${name}/overrides/*" />
+        <include name="var/skins_repository/basic/admin/addons/${name}/overrides/common_templates/*" />
+        <include name="var/skins_repository/basic/admin/addons/${name}/overrides/views/*" />
+        <include name="var/skins_repository/basic/admin/addons/${name}/overrides/views/order_management/*" />
+        <include name="var/skins_repository/basic/admin/addons/${name}/overrides/views/product_options/*" />
+        <include name="var/skins_repository/basic/admin/addons/${name}/overrides/views/product_options/components/*" />
+        <include name="var/skins_repository/basic/admin/addons/${name}/overrides/views/products/*" />
+        <include name="var/skins_repository/basic/admin/addons/${name}/overrides/views/products/components/*" />        
+        <include name="var/skins_repository/basic/customer/addons/${name}/*" />
+        <include name="var/skins_repository/basic/customer/addons/${name}/hooks/*" />
+        <include name="var/skins_repository/basic/customer/addons/${name}/hooks/checkout/*" />
+        <include name="var/skins_repository/basic/customer/addons/${name}/hooks/index/*" />
+        <include name="var/skins_repository/basic/customer/addons/${name}/hooks/orders/*" />
+        <include name="var/skins_repository/basic/customer/addons/${name}/hooks/products/*" />
+        <include name="var/skins_repository/basic/customer/addons/${name}/overrides/*" />
+        <include name="var/skins_repository/basic/customer/addons/${name}/overrides/views/*" />
+        <include name="var/skins_repository/basic/customer/addons/${name}/overrides/views/products/*" />
+        <include name="var/skins_repository/basic/customer/addons/${name}/overrides/views/products/components/*" />       
+        <include name="var/skins_repository/basic/mail/addons/${name}/*" />
+        <include name="var/skins_repository/basic/mail/addons/${name}/hooks/*" />
+        <include name="var/skins_repository/basic/mail/addons/${name}/hooks/orders/*" />
+        <include name="var/skins_repository/basic/mail/addons/${name}/overrides/*" />
+        <include name="var/skins_repository/basic/mail/addons/${name}/overrides/common_templates/*" />
+        
+        <include name="var/skins_repository/lazygirlcreations/admin/addons/${name}/*" />
+        <include name="var/skins_repository/lazygirlcreations/admin/addons/${name}/hooks/*" />
+        <include name="var/skins_repository/lazygirlcreations/admin/addons/${name}/hooks/index/*" />
+        <include name="var/skins_repository/lazygirlcreations/admin/addons/${name}/hooks/products/*" />
+        <include name="var/skins_repository/lazygirlcreations/admin/addons/${name}images/*" />
+        <include name="var/skins_repository/lazygirlcreations/admin/addons/${name}images/icons/*" />
+        <include name="var/skins_repository/lazygirlcreations/admin/addons/${name}images/icons/menu/*" />      
+        <include name="var/skins_repository/lazygirlcreations/admin/addons/${name}/overrides/*" />
+        <include name="var/skins_repository/lazygirlcreations/admin/addons/${name}/overrides/common_templates/*" />
+        <include name="var/skins_repository/lazygirlcreations/admin/addons/${name}/overrides/views/*" />
+        <include name="var/skins_repository/lazygirlcreations/admin/addons/${name}/overrides/views/order_management/*" />
+        <include name="var/skins_repository/lazygirlcreations/admin/addons/${name}/overrides/views/product_options/*" />
+        <include name="var/skins_repository/lazygirlcreations/admin/addons/${name}/overrides/views/product_options/components/*" />
+        <include name="var/skins_repository/lazygirlcreations/admin/addons/${name}/overrides/views/products/*" />
+        <include name="var/skins_repository/lazygirlcreations/admin/addons/${name}/overrides/views/products/components/*" />        
+        <include name="var/skins_repository/lazygirlcreations/customer/addons/${name}/*" />
+        <include name="var/skins_repository/lazygirlcreations/customer/addons/${name}/hooks/*" />
+        <include name="var/skins_repository/lazygirlcreations/customer/addons/${name}/hooks/checkout/*" />
+        <include name="var/skins_repository/lazygirlcreations/customer/addons/${name}/hooks/index/*" />
+        <include name="var/skins_repository/lazygirlcreations/customer/addons/${name}/hooks/orders/*" />
+        <include name="var/skins_repository/lazygirlcreations/customer/addons/${name}/hooks/products/*" />
+        <include name="var/skins_repository/lazygirlcreations/customer/addons/${name}/overrides/*" />
+        <include name="var/skins_repository/lazygirlcreations/customer/addons/${name}/overrides/views/*" />
+        <include name="var/skins_repository/lazygirlcreations/customer/addons/${name}/overrides/views/products/*" />
+        <include name="var/skins_repository/lazygirlcreations/customer/addons/${name}/overrides/views/products/components/*" />       
+        <include name="var/skins_repository/lazygirlcreations/mail/addons/${name}/*" />
+        <include name="var/skins_repository/lazygirlcreations/mail/addons/${name}/hooks/*" />
+        <include name="var/skins_repository/lazygirlcreations/mail/addons/${name}/hooks/orders/*" />
+        <include name="var/skins_repository/lazygirlcreations/mail/addons/${name}/overrides/*" />
+        <include name="var/skins_repository/lazygirlcreations/mail/addons/${name}/overrides/common_templates/*" />
+    
+    </fileset>
+    
+    <!-- copy_all Target -->
+    <target name="copy_all" description="copy all files target">
+        <!-- Copying Client SKIN files to base dir -->
+        <echo message="Copying CLIENT SKINFILES to BASE DIR..." />
+        <copy todir="${project.basedir}/skins/lazygirlcreations">
+            <fileset refid="basic_skin_files" />
+        </copy>
+        <!-- Copying SKIN files to VAR -->
+        <echo message="Copying SKINFILES to VAR..." />
+        <copy todir="${project.basedir}/var/skins_repository/basic">
+            <fileset refid="basic_skin_files" />
+        </copy>
+        <copy todir="${project.basedir}/var/skins_repository/lazygirlcreations">
+            <fileset refid="basic_skin_files" />
+        </copy>
+        
+    	<!-- Copying to TEST project -->
+        <echo message="Copying ADDON files to TEST project..." />
+        <copy todir="${test_site}/addons">
+            <fileset refid="addonfiles" />
+        </copy>
+        <echo message="Copying SKIN files to TEST project..." />
+        <copy todir="${test_site}/skins/basic">
+            <fileset refid="basic_skin_files" />
+        </copy>
+        <copy todir="${test_site}/skins/lazygirlcreations">
+            <fileset refid="basic_skin_files" />
+        </copy>
+        <echo message="Copying SKIN files to var/ dir of TEST project..." />
+        <copy todir="${test_site}/var/skins_repository/basic">
+            <fileset refid="basic_skin_files" />
+        </copy>
+        <copy todir="${test_site}/var/skins_repository/lazygirlcreations">
+            <fileset refid="basic_skin_files" />
+        </copy>
+        	
+        <!-- Copying to LIVE project -->
+        <echo message="Copying ADDON files to LIVE project..." />
+        <copy todir="${live_site}/addons">
+            <fileset refid="addonfiles" />
+        </copy>
+        <echo message="Copying SKIN files to LIVE project..." />
+        <copy todir="${live_site}/skins/basic">
+            <fileset refid="basic_skin_files" />
+        </copy>
+        <copy todir="${live_site}/skins/lazygirlcreations">
+            <fileset refid="basic_skin_files" />
+        </copy>
+        <echo message="Copying SKIN files to var/ dir of LIVE project..." />
+        <copy todir="${live_site}/var/skins_repository/basic">
+            <fileset refid="basic_skin_files" />
+        </copy>
+        <copy todir="${live_site}/var/skins_repository/lazygirlcreations">
+            <fileset refid="basic_skin_files" />
+        </copy>
+        	
+        <!-- Creating ZIP file -->
+        <delete file="../../${name}_3x.zip" />
+        <zip destfile="../../${name}_3x.zip">
+            <fileset refid="allfiles" />
+        </zip>
+        
+        <!-- Creating CLIENT ZIP file -->
+        <delete file="../../${name}_client_3x.zip" />
+        <zip destfile="../../${name}_client_3x.zip">
+            <fileset refid="clientfiles" />
+        </zip>
+        </target>
+</project>

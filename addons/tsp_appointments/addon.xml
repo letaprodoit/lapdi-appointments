@@ -85,10 +85,10 @@
 				PRIMARY KEY  (`id`)
 			) ENGINE=MyISAM DEFAULT CHARSET=UTF8
 		</item>
-		<item table="privilege_descriptions" lang="EN" editions="COMMUNITY,PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:privilege_descriptions (privilege, description, lang_code, section_id) VALUES ('manage_appointments', 'Manage Appointments', 'EN', '1');</item>
-		<item editions="COMMUNITY,PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:privileges (privilege, is_default) VALUES ('manage_appointments', 'Y');</item>
-		<item for="uninstall" editions="COMMUNITY,PROFESSIONAL,MULTIVENDOR,ULTIMATE">DELETE FROM ?:privileges WHERE privilege LIKE 'manage_appointments'</item>
-		<item for="uninstall" editions="COMMUNITY,PROFESSIONAL,MULTIVENDOR,ULTIMATE">DELETE FROM ?:privilege_descriptions WHERE privilege LIKE 'manage_appointments'</item>
+		<item table="privilege_descriptions" lang="EN" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:privilege_descriptions (privilege, description, lang_code, section_id) VALUES ('manage_appointments', 'Manage Appointments', 'EN', '1');</item>
+		<item editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">REPLACE INTO ?:privileges (privilege, is_default) VALUES ('manage_appointments', 'Y');</item>
+		<item for="uninstall" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">DELETE FROM ?:privileges WHERE privilege LIKE 'manage_appointments'</item>
+		<item for="uninstall" editions="PROFESSIONAL,MULTIVENDOR,ULTIMATE">DELETE FROM ?:privilege_descriptions WHERE privilege LIKE 'manage_appointments'</item>
 	</queries>
 	<functions>
 		<item for="install">fn_tspa_install_product_fields</item>
