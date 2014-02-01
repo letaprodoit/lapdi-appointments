@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="TSP Appointments" default="copy_all" basedir=".">
     <property name="name"  value="tsp_appointments" />
- 
+    <property name="test_site"  value="/Users/SharronDenice/Sites/_testsites/cscart_302" />
+    <property name="live_site"  value="/Users/SharronDenice/Sites/www.impressive-healing.com" />
+    
     <!-- Fileset for addon files -->
     <fileset dir="${project.basedir}/addons" id="addonfiles">
         <include name="${name}/*" />
@@ -31,6 +33,9 @@
         <include name="admin/addons/${name}/overrides/views/product_options/components/*" />
         <include name="admin/addons/${name}/overrides/views/products/*" />
         <include name="admin/addons/${name}/overrides/views/products/components/*" />        
+        <include name="admin/addons/${name}/views/*" />        
+        <include name="admin/addons/${name}/views/appointments/*" />        
+        <include name="admin/addons/${name}/views/appointments/components/*" />                
         <include name="customer/addons/${name}/*" />
         <include name="customer/addons/${name}/hooks/*" />
         <include name="customer/addons/${name}/hooks/checkout/*" />
@@ -77,6 +82,10 @@
         <include name="skins/basic/admin/addons/${name}/overrides/views/product_options/components/*" />
         <include name="skins/basic/admin/addons/${name}/overrides/views/products/*" />
         <include name="skins/basic/admin/addons/${name}/overrides/views/products/components/*" />        
+        <include name="skins/basic/admin/addons/${name}/views/*" />        
+        <include name="skins/basic/admin/addons/${name}/views/appointments/*" />        
+        <include name="skins/basic/admin/addons/${name}/views/appointments/components/*" />                
+        
         <include name="skins/basic/customer/addons/${name}/*" />
         <include name="skins/basic/customer/addons/${name}/hooks/*" />
         <include name="skins/basic/customer/addons/${name}/hooks/checkout/*" />
@@ -107,7 +116,11 @@
         <include name="var/skins_repository/basic/admin/addons/${name}/overrides/views/product_options/*" />
         <include name="var/skins_repository/basic/admin/addons/${name}/overrides/views/product_options/components/*" />
         <include name="var/skins_repository/basic/admin/addons/${name}/overrides/views/products/*" />
-        <include name="var/skins_repository/basic/admin/addons/${name}/overrides/views/products/components/*" />        
+        <include name="var/skins_repository/basic/admin/addons/${name}/overrides/views/products/components/*" /> 
+        <include name="var/skins_repository/basic/admin/addons/${name}/views/*" />        
+        <include name="var/skins_repository/basic/admin/addons/${name}/views/appointments/*" />        
+        <include name="var/skins_repository/basic/admin/addons/${name}/views/appointments/components/*" />                
+        
         <include name="var/skins_repository/basic/customer/addons/${name}/*" />
         <include name="var/skins_repository/basic/customer/addons/${name}/hooks/*" />
         <include name="var/skins_repository/basic/customer/addons/${name}/hooks/checkout/*" />
@@ -117,7 +130,8 @@
         <include name="var/skins_repository/basic/customer/addons/${name}/overrides/*" />
         <include name="var/skins_repository/basic/customer/addons/${name}/overrides/views/*" />
         <include name="var/skins_repository/basic/customer/addons/${name}/overrides/views/products/*" />
-        <include name="var/skins_repository/basic/customer/addons/${name}/overrides/views/products/components/*" />       
+        <include name="var/skins_repository/basic/customer/addons/${name}/overrides/views/products/components/*" /> 
+              
         <include name="var/skins_repository/basic/mail/addons/${name}/*" />
         <include name="var/skins_repository/basic/mail/addons/${name}/hooks/*" />
         <include name="var/skins_repository/basic/mail/addons/${name}/hooks/orders/*" />
@@ -281,7 +295,7 @@
             <fileset refid="basic_skin_files" />
         </copy>
         
-    	<!-- Copying to TEST project -->
+    	<!-- Copying to TEST project 
         <echo message="Copying ADDON files to TEST project..." />
         <copy todir="${test_site}/addons">
             <fileset refid="addonfiles" />
@@ -300,6 +314,7 @@
         <copy todir="${test_site}/var/skins_repository/lazygirlcreations">
             <fileset refid="basic_skin_files" />
         </copy>
+        -->
         	
         <!-- Copying to LIVE project -->
         <echo message="Copying ADDON files to LIVE project..." />
