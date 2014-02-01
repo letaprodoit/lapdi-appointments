@@ -4,9 +4,9 @@
  *
  * @package		TSP Appointments for CS-Cart
  * @filename	fun.appointments.php
- * @version		1.0.0
- * @author		Sharron Denice, The Software People, LLC on 2013/02/09
- * @copyright	Copyright Â© 2013 The Software People, LLC (www.thesoftwarepeople.com). All rights reserved
+ * @version		1.0.2
+ * @author		Sharron Denice, The Software People, LLC on 2014/02/01
+ * @copyright	Copyright © 2013 The Software People, LLC (www.thesoftwarepeople.com). All rights reserved
  * @license		Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported (http://creativecommons.org/licenses/by-nc-nd/3.0/)
  * @brief		Helper functions for addon
  * 
@@ -157,11 +157,11 @@ function fn_tspa_add_appointment_data_to_array(&$appointments,$key)
 	{	
 		$order_info = fn_get_order_info($appt['order_id']);
 		
+		$data = "";
+		
 		// Search through ordered items to find the product that has an appointment
 		foreach ($order_info['items'] as $order_id => $product)
 		{		
-			$data = "";
-			
 			// if the appointment product ID equals this product id and the product has options
 			// continue
 			if ($appt['product_id'] == $product['product_id'] && fn_tspa_product_contains_appointment($product['extra']['product_options']))
@@ -176,10 +176,9 @@ function fn_tspa_add_appointment_data_to_array(&$appointments,$key)
 				}//endforeach;
 			
 			}//endif
-			
-			$appointments[$appt_id][$key] = $data;
-								
 		}//endforeach;	
+		
+		$appointments[$appt_id][$key] = $data;
 		
 	}//endforeach;
 }
@@ -611,11 +610,11 @@ function fn_tspa_update_appointment_status($id, $status, $notify_user = 'N')
 	// if its not completed then null out the date completed
 	if ($status == 'C')
 	{
-		db_query("UPDATE ?:addon_tsp_appointments SET `date_completed` = ?i", time());
+		db_query("UPDATE ?:addon_tsp_appointments SET `date_completed` = ?i WHERE `id` = ?i", time(), $id);
 	}//endif
 	else
 	{
-		db_query("UPDATE ?:addon_tsp_appointments SET `date_completed` = ?i", $null);
+		db_query("UPDATE ?:addon_tsp_appointments SET `date_completed` = ?i WHERE `id` = ?i", $null, $id);
 	}//endelse
 	
 	if ($notify_user)

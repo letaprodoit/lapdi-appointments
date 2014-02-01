@@ -37,7 +37,7 @@
 	<td class="center">{if $appointments.date_completed}{$appointments.date_completed|date_format:"`$settings.Appearance.date_format` `$settings.Appearance.time_format`"}{/if}</td>
 	<td>
 		{assign var="notify" value=true}
-		{include file="addons/tsp_appointments/overrides/common_templates/select_popup.tpl" id=$appointments.id status=$appointments.status object_id_name="appointment_id" hide_for_vendor="COMPANY_ID"|defined update_controller="appointments" notify=$notify}
+		{include file="addons/tsp_appointments/views/appointments/components/select_popup.tpl" id=$appointments.id status=$appointments.status object_id_name="appointment_id" hide_for_vendor="COMPANY_ID"|defined update_controller="appointments" notify=$notify}
 	</td>
 	<td class="nowrap">
 		{capture name="tools_items"}
