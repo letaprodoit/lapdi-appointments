@@ -19,6 +19,12 @@
     <!-- Fileset for backend files -->
     <fileset dir="${project.basedir}/design/backend" id="backend_files">
         <include name="css/addons/${name}/*" />
+        <include name="mail/templates/addons/suppliers/overrides/common/*" />
+        <include name="mail/templates/addons/${name}/*" />
+        <include name="mail/templates/addons/${name}/hooks/*" />
+        <include name="mail/templates/addons/${name}/hooks/orders/*" />
+        <include name="mail/templates/addons/${name}/overrides/*" />
+        <include name="mail/templates/addons/${name}/overrides/common/*" />
         <include name="media/images/addons/${name}/*" />
         <include name="media/images/addons/${name}/icons/*" />
         <include name="media/images/addons/${name}/icons/menu/*" />
@@ -47,7 +53,7 @@
         <include name="basic/mail/templates/addons/${name}/hooks/*" />
         <include name="basic/mail/templates/addons/${name}/hooks/orders/*" />
         <include name="basic/mail/templates/addons/${name}/overrides/*" />
-        <include name="basic/mail/templates/addons/${name}/overrides/common/*" />
+        <include name="basic/mail/templates/addons/${name}/overrides/shipments/*" />
         <include name="basic/templates/addons/${name}/*" />
         <include name="basic/templates/addons/${name}/hooks/*" />
         <include name="basic/templates/addons/${name}/hooks/checkout/*" />
@@ -79,6 +85,12 @@
         <include name="app/addons/${name}/schemas/permissions/*" />
     	
         <include name="design/backend/css/addons/${name}/*" />
+        <include name="design/backend/mail/templates/addons/suppliers/overrides/common/*" />
+        <include name="design/backend/mail/templates/addons/${name}/*" />
+        <include name="design/backend/mail/templates/addons/${name}/hooks/*" />
+        <include name="design/backend/mail/templates/addons/${name}/hooks/orders/*" />
+        <include name="design/backend/mail/templates/addons/${name}/overrides/*" />
+        <include name="design/backend/mail/templates/addons/${name}/overrides/common/*" />
         <include name="design/backend/media/images/addons/${name}/*" />
         <include name="design/backend/media/images/addons/${name}/icons/*" />
         <include name="design/backend/media/images/addons/${name}/icons/menu/*" />
@@ -105,6 +117,7 @@
         <include name="design/themes/basic/mail/templates/addons/${name}/hooks/orders/*" />
         <include name="design/themes/basic/mail/templates/addons/${name}/overrides/*" />
         <include name="design/themes/basic/mail/templates/addons/${name}/overrides/common/*" />
+        <include name="design/themes/basic/mail/templates/addons/${name}/overrides/shipments/*" />
         <include name="design/themes/basic/templates/addons/${name}/*" />
         <include name="design/themes/basic/templates/addons/${name}/hooks/*" />
         <include name="design/themes/basic/templates/addons/${name}/hooks/checkout/*" />
@@ -128,6 +141,7 @@
         <include name="var/themes_repository/basic/mail/templates/addons/${name}/hooks/orders/*" />
         <include name="var/themes_repository/basic/mail/templates/addons/${name}/overrides/*" />
         <include name="var/themes_repository/basic/mail/templates/addons/${name}/overrides/common/*" />
+        <include name="var/themes_repository/basic/mail/templates/addons/${name}/overrides/shipments/*" />
         <include name="var/themes_repository/basic/templates/addons/${name}/*" />
         <include name="var/themes_repository/basic/templates/addons/${name}/hooks/*" />
         <include name="var/themes_repository/basic/templates/addons/${name}/hooks/checkout/*" />
@@ -188,8 +202,8 @@
         </copy>
     	
         <!-- Creating ZIP file -->
-        <delete file="../../${name}_4x.zip" />
-        <zip destfile="../../${name}_4x.zip">
+        <delete file="../../${name}_41x.zip" />
+        <zip destfile="../../${name}_41x.zip">
             <fileset refid="allfiles" />
         </zip>
     </target>
