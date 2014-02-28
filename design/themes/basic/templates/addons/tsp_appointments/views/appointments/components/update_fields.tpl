@@ -42,7 +42,7 @@
                     {/if}
                     
                     {if $field.icon}
-                        <div class="{$field.class} field_type_{$field.type}" style="cursor: pointer;" onclick="window.location='{$url|unescape}'">&nbsp;</div>
+                        <a href="{$url|unescape}" target="_blank"><div class="{$field.class} field_type_{$field.type}" style="cursor: pointer;">{$field.label}</div></a>
                     {else}
                         <div class="form-field {if $field.type == 'D'}clearfix{/if} product-list-field">
                             <label for="{if $field_id_prefix}{$field_id_prefix}{/if}{$type}_{$field.name}">{$field.title}:</label>
