@@ -3,11 +3,19 @@
 	<id>tsp_appointments</id>
 	<name>The Software People - Appointments</name>
 	<description>The Software People (TSP) Appointments allows you to add appointments to services in the store and allow you to monitor the appointments in the admin area. For more details visit us online at www.thesoftwarepeople.com</description>
-	<version>2.0.6</version>
-	<priority>1111000001</priority>
+	<version>2.0.7</version>
+	<priority>1111000207</priority>
 	<position>0</position>
 	<status>active</status>
 	<default_language>en</default_language>
+	<translations>
+        <item lang="es" for="name">Los software Gente - Nombramientos</item>
+        <item lang="el" for="name">Oi ánthro̱poi Logismikó - Diorismoí</item>
+        <item lang="fr" for="name">Les logiciels personnes - Nominations</item>
+        <item lang="es" for="description">Los Software People (PST) Nominaciones le permite añadir citas a los servicios en la tienda y le permiten supervisar las citas en el área de administración. Para más información visítenos en línea en www.thesoftwarepeople.com</item>
+        <item lang="el" for="description">Oi ánthro̱poi Logismikó (TSP) Diorismoí sas epitrépei na prosthésete synantí̱seis se ypi̱resíes sto katásti̱ma kai sas epitrépoun na parakolouthoún tis synantí̱seis sti̱n periochí̱ admin. Gia perissóteres pli̱roforíes episkefteíte mas sti̱n i̱lektronikí̱ diéf̱thynsi̱ www.thesoftwarepeople.com</item>
+        <item lang="fr" for="description">Les logiciels personnes (TSP) Nominations vous permet d'ajouter des rendez-vous aux services dans le magasin et vous permettent de surveiller les rendez-vous dans la zone d'administration. Pour plus de détails visitez notre site Internet www.thesoftwarepeople.com</item>
+	</translations>
 	<language_variables>
 		<item lang="en" id="tsp_appointments">The Software People - Appointments</item>	
 		<item lang="en" id="tspa_appointment">Appointment</item>	
@@ -180,15 +188,16 @@
 				PRIMARY KEY  (`id`)
 			) ENGINE=MyISAM DEFAULT CHARSET=UTF8
 		</item>
-		<item for="install" lang="en">REPLACE INTO ?:language_values (lang_code, name, value, original_value) VALUES ('en','privileges.manage_appointments', 'Manage appointments', 'Manage appointments');</item>
 		<item for="install">REPLACE INTO ?:privileges (privilege, is_default, section_id) VALUES ('manage_appointments', 'Y', 'addons');</item>
-		<item for="uninstall">DELETE FROM ?:privileges WHERE privilege = 'manage_appointments'</item>
-		<item for="uninstall">>DELETE FROM ?:language_values WHERE name = 'privileges.manage_appointments'</item>
+		
+        <item for="install" lang="en">REPLACE INTO ?:language_values (lang_code, name, value, original_value) VALUES ('en','privileges.manage_appointments', 'Manage appointments', 'Manage appointments');</item>
+		<item for="install" lang="es">REPLACE INTO ?:language_values (lang_code, name, value, original_value) VALUES ('es','privileges.manage_appointments', 'Administración de citas', 'Administración de citas');</item>
+        <item for="install" lang="el">REPLACE INTO ?:language_values (lang_code, name, value, original_value) VALUES ('el','privileges.manage_appointments', 'Diacheiristeíte ta rantevoú', 'Diacheiristeíte ta rantevoú');</item>
+        <item for="install" lang="fr">REPLACE INTO ?:language_values (lang_code, name, value, original_value) VALUES ('fr','privileges.manage_appointments', 'Gérer les rendez-vous', 'Gérer les rendez-vous');</item>
 
-        <item for="install" lang="es">REPLACE INTO ?:language_values (lang_code, name, value, original_value) VALUES ('en','privileges.manage_appointments', 'Administración de citas', 'Administración de citas');</item>
-        <item for="install" lang="el">REPLACE INTO ?:language_values (lang_code, name, value, original_value) VALUES ('en','privileges.manage_appointments', 'Diacheiristeíte ta rantevoú', 'Diacheiristeíte ta rantevoú');</item>
-        <item for="install" lang="fr">REPLACE INTO ?:language_values (lang_code, name, value, original_value) VALUES ('en','privileges.manage_appointments', 'Gérer les rendez-vous', 'Gérer les rendez-vous');</item>
-    </queries>
+        <item for="uninstall">DELETE FROM ?:privileges WHERE privilege = 'manage_appointments'</item>
+        <item for="uninstall">DELETE FROM ?:language_values WHERE name = 'privileges.manage_appointments'</item>
+        </queries>
 	<functions>
 		<item for="install">fn_tspa_install_product_fields</item>
 		<item for="uninstall">fn_tspa_uninstall_product_metadata</item>
