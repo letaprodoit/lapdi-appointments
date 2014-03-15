@@ -3,12 +3,19 @@
 	<id>tsp_appointments</id>
 	<name>The Software People - Appointments</name>
 	<description>The Software People (TSP) Appointments allows you to add appointments to services in the store and allow you to monitor the appointments in the admin area. For more details visit us online at www.thesoftwarepeople.com</description>
-	<version>1.0</version>
-	<priority>1111000001</priority>
+	<version>1.0.3</version>
+	<priority>1111002103</priority>
 	<position>0</position>
 	<status>active</status>
 	<default_language>EN</default_language>
-	<auto_install>COMMUNITY,PROFESSIONAL,MULTIVENDOR,ULTIMATE</auto_install>
+	<translations>
+        <item lang="EL" for="name">Oi ánthro̱poi Logismikó - Diorismoí</item>
+	    <item lang="ES" for="name">Los software Gente - Nombramientos</item>
+	    <item lang="FR" for="name">Les logiciels personnes - Nominations</item>
+        <item lang="EL" for="description">Oi ánthro̱poi Logismikó (TSP) Diorismoí sas epitrépei na prosthésete synantí̱seis se ypi̱resíes sto katásti̱ma kai sas epitrépoun na parakolouthoún tis synantí̱seis sti̱n periochí̱ admin. Gia perissóteres pli̱roforíes episkefteíte mas sti̱n i̱lektronikí̱ diéf̱thynsi̱ www.thesoftwarepeople.com</item>                      
+	    <item lang="ES" for="description">Los Software People (PST) Nominaciones le permite añadir citas a los servicios en la tienda y le permiten supervisar las citas en el área de administración. Para más información visítenos en línea en www.thesoftwarepeople.com</item>
+        <item lang="FR" for="description">Les logiciels personnes (TSP) Nominations vous permet d'ajouter des rendez-vous aux services dans le magasin et vous permettent de surveiller les rendez-vous dans la zone d'administration. Pour plus de détails visitez notre site Internet www.thesoftwarepeople.com</item>
+	</translations>
 	<language_variables>
 		<item lang="EN" id="tsp_appointments">The Software People - Appointments</item>	
 		<item lang="EN" id="tspa_appointment">Appointment</item>	
@@ -24,21 +31,54 @@
 		<item lang="EN" id="tspa_meeting_location">Meeting Location</item>
 		<item lang="EN" id="tspa_meeting_info">Additional Information</item>
 		<item lang="EN" id="tspa_scheduled">Scheduled</item>	
-	</language_variables>
+		<item lang="ES" id="tsp_appointments">Los Software People - Nombramientos</item>
+		<item lang="ES" id="tspa_appointment">cita</item>
+		<item lang="ES" id="tspa_appointment_notification">Notificación Nombramiento</item>
+		<item lang="ES" id="tspa_appointment_notification_msg">Queríamos informarle de que su situación contractual se ha actualizado a [ appointment_status ] para [ product_name ] ( Orden # [ order_id ] ) . Por favor, vea los detalles a continuación: [ appointment_info ]</item>
+		<item lang="ES" id="tspa_appointments">Nombramientos</item>
+		<item lang="ES" id="tspa_appointments_menu_description">Lista de citas creadas por sus clientes .</item>
+		<item lang="ES" id="tspa_editing_appointment">Edición cita</item>
+		<item lang="ES" id="tspa_meeting_details">detalles de la reunión</item>
+		<item lang="ES" id="tspa_meeting_date">Fecha de la reunión</item>
+		<item lang="ES" id="tspa_meeting_time">Tiempo Reunión</item>
+		<item lang="ES" id="tspa_meeting_duration">Duración de la reunión</item>
+		<item lang="ES" id="tspa_meeting_location">Lugar de la reunión</item>
+		<item lang="ES" id="tspa_meeting_info">Información adicional</item>
+		<item lang="ES" id="tspa_scheduled">Programado</item>
+		<item lang="FR" id="tsp_appointments"> Les logiciels personnes - Nominations </ item >
+		<item lang="FR" id="tspa_appointment">Nomination</item>
+		<item lang="FR" id="tspa_appointment_notification">Nomination notification</item>
+		<item lang="FR" id="tspa_appointment_notification_msg">Nous voulions vous informer que votre statut de rendez-vous a été mis à jour [ appointment_status ] pour [ product_name ] ( N ° de commande [ order_id ] ) . S'il vous plaît voir les détails ci-dessous : [ appointment_info ]</item>
+		<item lang="FR" id="tspa_appointments">nominations</item>
+		<item lang="FR" id="tspa_appointments_menu_description">Liste des rendez-vous créés par vos clients .</item>
+		<item lang="FR" id="tspa_editing_appointment">Montage Nomination</item>
+		<item lang="FR" id="tspa_meeting_details">Détails de la réunion</item>
+        <item lang="FR" id="tspa_meeting_date">date de la réunion</item>
+        <item lang="FR" id="tspa_meeting_time">Temps Réunion</item>
+        <item lang="FR" id="tspa_meeting_duration">Durée Réunion</item>
+		<item lang="FR" id="tspa_meeting_location">Lieu de la réunion</item>
+		<item lang="FR" id="tspa_meeting_info">Informations supplémentaires</item>
+		<item lang="FR" id="tspa_scheduled">prévue</item>
+   	</language_variables>
 	<settings>
 		<sections>
 			<section id="Settings">
 				<!-- Tab name in the default language -->
 				<name>Basic Settings</name>		
 				<translations>
-					<item lang="ES" for="name">Basic Settings</item>
-					<item lang="FR" for="name">Basic Settings</item>
-				</translations>
-	
+					<item lang="ES" for="name">Ajustes básicos</item>
+                    <item lang="EL" for="name">Vasikés rythmíseis</item>
+					<item lang="FR" for="name">Réglages de base</item>
+				</translations>	
 				<items>
 					<item id="delete_appointment_data">
 						<name>Delete Appointment Data on Uninstall</name>
-						<type>selectbox</type>
+		                <translations>
+		                    <item lang="ES" for="name">Eliminar datos de citas en Desinstalar</item>
+		                    <item lang="EL" for="name">Diagrafí̱ Dedoméno̱n Diorismós sto Uninstall</item>
+		                    <item lang="FR" for="name">Supprimer les données rendez-vous sur Désinstaller</item>
+		                </translations>						
+   						<type>selectbox</type>
 						<default_value>N</default_value>
 						<variants>
 							<item id="N">

@@ -1,4 +1,4 @@
-# Appointments (CS-Cart Addon) 1.0
+# Appointments (CS-Cart Addon)
 -------
 Appointments for CS-Cart software allows users to order services that require an appointment (ie Therapy Session, Spa Appointments, etc) and allow admins to create product/appointments for purchase (ie Webinars, Training, etc). Administrator can manage appointments and notify customers of appointment changes via email.
 
@@ -16,11 +16,9 @@ For up-to-date installation and setup notes, visit the FAQ:
 ## GENERAL INSTALLATION NOTES
 
 * Download from repository
-* Unzip the zip file
-* Open addons/ folder and copy the tsp_appointments to [your cscart install dir]/addons/
-* Open the basic/admin/addons/ folder and copy the tsp_appointments/ folder to [your cscart install dir]/var/skins_repository/basic/admin/addons/ folder
-* Open the basic/customer/addons/ folder and copy the tsp_appointments/ folder to [your cscart install dir]/var/skins_repository/basic/customer/addons/ folder
-* Open the basic/mail/addons/folder and copy the tsp_appointments/ folder to [your cscart install dir]/var/skins_repository/basic/mail/addons/ folder
+* Unzip the zip file in the directory where CS-Cart runs
+* If the zip creates a new directory called `tsp-appointments` you will need to run the install script, else you are done
+* If `tsp-appointments` folder was created by the zip, Navigate to the folder. Update the `$target_loc` and `$theme_folder_name` in the install.php and run its. Command: php install.php
 * Open CS-Cart Administration Control Panel
 * Navigate to Settings-> Addons
 * Find the "The Software People: Appointments" addon and click "Install"
@@ -73,7 +71,7 @@ In order to create a product that is an event you will need to perform the follo
 
 ## REPORTING ISSUES
 
-Thank you for downloading Appointments for CS-Cart 1.0
+Thank you for downloading Appointments for CS-Cart
 If you find any issues, please report them in the issue tracker on our website:
 [http://lab.thesoftwarepeople.com/tracker/cscart-apa](http://lab.thesoftwarepeople.com/tracker/cscart-apa)
 
