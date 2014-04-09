@@ -4,7 +4,7 @@
  *
  * @package		TSP Appointments for CS-Cart
  * @filename	products.post.php
- * @version		2.0.1
+ * @version		2.0.9
  * @author		Sharron Denice, The Software People, LLC on 2013/02/09
  * @copyright	Copyright © 2013 The Software People, LLC (www.thesoftwarepeople.com). All rights reserved
  * @license		Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported (http://creativecommons.org/licenses/by-nc-nd/3.0/)
@@ -33,8 +33,12 @@ if ($mode == 'view' && !empty($product_id))
 	
 	if (!empty($product_metadata))
 	{
-		Registry::get('view')->assign('tspa_has_data', true); // don't show blank fields in customer area
+		Registry::get('view')->assign('tspa_has_data', true);
 	}//endif
+	else // if there is no data to display set the flag to false
+	{
+		Registry::get('view')->assign('tspa_has_data', false);
+	}
 	
 	if (!empty($product_data))
 	{					
@@ -85,6 +89,10 @@ if ($mode == 'view' && !empty($product_id))
 		Registry::get('view')->assign('tspa_product_addon_fields', $product_addon_fields);
 		
 	}//endif
+	else  // if there is no data to display set the addon fields to null
+	{
+		Registry::get('view')->assign('tspa_product_addon_fields', null);
+	}
 
 }//endif
 ?>
