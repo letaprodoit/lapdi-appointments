@@ -1,4 +1,4 @@
-{if $tspa_has_data}
+{if $tspa_has_data[$product.product_id]}
 <fieldset>
 	<div class="product_appointment_box">
 		{include file="common_templates/subheader.tpl" title=$lang.tspa_meeting_details}

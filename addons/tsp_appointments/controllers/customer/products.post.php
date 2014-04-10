@@ -4,7 +4,7 @@
  *
  * @package		TSP Appointments for CS-Cart
  * @filename	products.post.php
- * @version		1.0.0
+ * @version		1.0.4
  * @author		Sharron Denice, The Software People, LLC on 2013/02/09
  * @copyright	Copyright © 2013 The Software People, LLC (www.thesoftwarepeople.com). All rights reserved
  * @license		Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported (http://creativecommons.org/licenses/by-nc-nd/3.0/)
@@ -29,10 +29,18 @@ if ($mode == 'view' && !empty($product_id))
 	$product_data = fn_get_product_data($product_id, $auth, DESCR_SL, '', true, true, true, true, false, true, false);
 	$product_metadata = db_get_hash_array("SELECT * FROM ?:addon_tsp_appointments_product_metadata WHERE `product_id` = $product_id", 'field_name');
 	
+	// Begin Fix for Ticket #APA-4
+	$tspa_has_data = array();
+	$tspa_has_data[$product_id] = false;
+	
 	if (!empty($product_metadata))
 	{
-		$view->assign('tspa_has_data', true); // don't show blank fields in customer area
+		$tspa_has_data[$product_id] = true;
 	}//endif
+	
+	$view->assign('tspa_product_addon_fields', null);
+	$view->assign('tspa_has_data', $tspa_has_data);
+	// End Fix for Ticket #APA-4
 	
 	if (!empty($product_data))
 	{					
