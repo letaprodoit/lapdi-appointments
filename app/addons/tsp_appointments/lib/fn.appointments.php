@@ -4,7 +4,7 @@
  *
  * @package		TSP Appointments for CS-Cart
  * @filename	fun.appointments.php
- * @version		2.0.4
+ * @version		2.1.1
  * @author		Sharron Denice, The Software People, LLC on 2013/02/09
  * @copyright	Copyright ¬© 2013 The Software People, LLC (www.thesoftwarepeople.com). All rights reserved
  * @license		Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported (http://creativecommons.org/licenses/by-nc-nd/3.0/)
@@ -826,7 +826,7 @@ function fn_tspa_update_appointment_status($id, $status, $notify_user = 'N')
 		}//endif
 		else
 		{
-			db_query("UPDATE ?:addon_tsp_appointments SET `date_completed` = ?i WHERE `id` = ?i", $null, $id);
+			db_query("UPDATE ?:addon_tsp_appointments SET `date_completed` = ?i WHERE `id` = ?i", null, $id);
 		}//endelse
 		
 		if ($notify_user == 'Y')
