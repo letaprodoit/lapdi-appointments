@@ -53,6 +53,7 @@
         <include name="basic/mail/templates/addons/${name}/hooks/*" />
         <include name="basic/mail/templates/addons/${name}/hooks/orders/*" />
         <include name="basic/mail/templates/addons/${name}/overrides/*" />
+        <include name="basic/mail/templates/addons/${name}/overrides/common/*" />
         <include name="basic/mail/templates/addons/${name}/overrides/shipments/*" />
         <include name="basic/templates/addons/${name}/*" />
         <include name="basic/templates/addons/${name}/hooks/*" />
@@ -91,6 +92,7 @@
         <include name="design/backend/mail/templates/addons/${name}/hooks/orders/*" />
         <include name="design/backend/mail/templates/addons/${name}/overrides/*" />
         <include name="design/backend/mail/templates/addons/${name}/overrides/common/*" />
+        <include name="design/backend/mail/templates/addons/${name}/overrides/shipments/*" />
         <include name="design/backend/media/images/addons/${name}/*" />
         <include name="design/backend/media/images/addons/${name}/icons/*" />
         <include name="design/backend/media/images/addons/${name}/icons/menu/*" />
