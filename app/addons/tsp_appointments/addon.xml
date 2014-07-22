@@ -3,7 +3,7 @@
 	<id>tsp_appointments</id>
 	<name>The Software People - Appointments</name>
 	<description>The Software People (TSP) Appointments allows you to add appointments to services in the store and allow you to monitor the appointments in the admin area. For more details visit us online at www.thesoftwarepeople.com</description>
-	<version>2.1.1</version>
+	<version>2.1.2</version>
 	<priority>1111000207</priority>
 	<position>0</position>
 	<status>active</status>
@@ -190,10 +190,10 @@
 		</item>
 		<item for="install">REPLACE INTO ?:privileges (privilege, is_default, section_id) VALUES ('manage_appointments', 'Y', 'addons');</item>
 		
-        <item for="install" lang="en">REPLACE INTO ?:language_values (lang_code, name, value, original_value) VALUES ('en','privileges.manage_appointments', 'Manage appointments', 'Manage appointments');</item>
-		<item for="install" lang="es">REPLACE INTO ?:language_values (lang_code, name, value, original_value) VALUES ('es','privileges.manage_appointments', 'Administración de citas', 'Administración de citas');</item>
-        <item for="install" lang="el">REPLACE INTO ?:language_values (lang_code, name, value, original_value) VALUES ('el','privileges.manage_appointments', 'Diacheiristeíte ta rantevoú', 'Diacheiristeíte ta rantevoú');</item>
-        <item for="install" lang="fr">REPLACE INTO ?:language_values (lang_code, name, value, original_value) VALUES ('fr','privileges.manage_appointments', 'Gérer les rendez-vous', 'Gérer les rendez-vous');</item>
+        <item for="install" lang="en">REPLACE INTO ?:language_values (lang_code, name, value) VALUES ('en','privileges.manage_appointments', 'Manage appointments');</item>
+		<item for="install" lang="es">REPLACE INTO ?:language_values (lang_code, name, value) VALUES ('es','privileges.manage_appointments', 'Administración de citas');</item>
+        <item for="install" lang="el">REPLACE INTO ?:language_values (lang_code, name, value) VALUES ('el','privileges.manage_appointments', 'Diacheiristeíte ta rantevoú');</item>
+        <item for="install" lang="fr">REPLACE INTO ?:language_values (lang_code, name, value) VALUES ('fr','privileges.manage_appointments', 'Gérer les rendez-vous');</item>
 
         <item for="uninstall">DELETE FROM ?:privileges WHERE privilege = 'manage_appointments'</item>
         <item for="uninstall">DELETE FROM ?:language_values WHERE name = 'privileges.manage_appointments'</item>
