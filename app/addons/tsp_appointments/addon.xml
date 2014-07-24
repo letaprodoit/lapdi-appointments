@@ -1,36 +1,36 @@
 <?xml version="1.0"?>
 <addon scheme="2.0">
-	<id>tsp_appointments</id>
-	<name>The Software People - Appointments</name>
-	<description>The Software People (TSP) Appointments allows you to add appointments to services in the store and allow you to monitor the appointments in the admin area. For more details visit us online at www.thesoftwarepeople.com</description>
-	<version>2.1.2</version>
-	<priority>1111000207</priority>
-	<position>0</position>
-	<status>active</status>
-	<default_language>en</default_language>
-	<translations>
+    <id>tsp_appointments</id>
+    <name>The Software People - Appointments</name>
+    <description>The Software People (TSP) Appointments allows you to add appointments to services in the store and allow you to monitor the appointments in the admin area. For more details visit us online at www.thesoftwarepeople.com</description>
+    <version>2.1.2</version>
+    <priority>1111000207</priority>
+    <position>0</position>
+    <status>active</status>
+    <default_language>en</default_language>
+    <translations>
         <item lang="es" for="name">Los software Gente - Nombramientos</item>
-        <item lang="el" for="name">Oi ánthro̱poi Logismikó - Diorismoí</item>
+        <item lang="el" for="name">Οι άνθρωποι Λογισμικό - Διορισμοί</item>
         <item lang="fr" for="name">Les logiciels personnes - Nominations</item>
         <item lang="es" for="description">Los Software People (PST) Nominaciones le permite añadir citas a los servicios en la tienda y le permiten supervisar las citas en el área de administración. Para más información visítenos en línea en www.thesoftwarepeople.com</item>
-        <item lang="el" for="description">Oi ánthro̱poi Logismikó (TSP) Diorismoí sas epitrépei na prosthésete synantí̱seis se ypi̱resíes sto katásti̱ma kai sas epitrépoun na parakolouthoún tis synantí̱seis sti̱n periochí̱ admin. Gia perissóteres pli̱roforíes episkefteíte mas sti̱n i̱lektronikí̱ diéf̱thynsi̱ www.thesoftwarepeople.com</item>
+        <item lang="el" for="description">Οι άνθρωποι Λογισμικό (TSP) Διορισμοί σας επιτρέπει να προσθέσετε συναντήσεις σε υπηρεσίες στο κατάστημα και σας επιτρέπουν να παρακολουθούν τις συναντήσεις στην περιοχή admin. Για περισσότερες πληροφορίες επισκεφτείτε μας στην ηλεκτρονική διεύθυνση www.thesoftwarepeople.com</item>
         <item lang="fr" for="description">Les logiciels personnes (TSP) Nominations vous permet d'ajouter des rendez-vous aux services dans le magasin et vous permettent de surveiller les rendez-vous dans la zone d'administration. Pour plus de détails visitez notre site Internet www.thesoftwarepeople.com</item>
-	</translations>
-	<language_variables>
-		<item lang="en" id="tsp_appointments">The Software People - Appointments</item>	
-		<item lang="en" id="tspa_appointment">Appointment</item>	
-        <item lang="en" id="tspa_appointment_add">Add Appointment</item>   
-		<item lang="en" id="tspa_appointment_notification">Appointment Notification</item>
-		<item lang="en" id="tspa_appointment_notification_msg">We wanted to inform you that your appointment status has been updated to [appointment_status] for [product_name] (Order #[order_id]). Please see details below: [appointment_info]</item>
-		<item lang="en" id="tspa_appointments">Appointments</item>	
-		<item lang="en" id="tspa_appointments_menu_description">List of appointments created by your clients.</item>	
-		<item lang="en" id="tspa_editing_appointment">Editing Appointment</item>
-		<item lang="en" id="tspa_meeting_details">Meeting Details</item>
-		<item lang="en" id="tspa_meeting_date">Meeting Date</item>
-		<item lang="en" id="tspa_meeting_time">Meeting Time</item>
-		<item lang="en" id="tspa_meeting_duration">Meeting Duration</item>
-		<item lang="en" id="tspa_meeting_location">Meeting Location</item>
-		<item lang="en" id="tspa_meeting_info">Additional Information</item>
+    </translations>
+    <language_variables>
+        <item lang="en" id="tsp_appointments">The Software People - Appointments</item> 
+        <item lang="en" id="tspa_appointment">Appointment</item>    
+        <item lang="en" id="tspa_appointment_add">Add Appointment</item>  
+        <item lang="en" id="tspa_appointment_notification">Appointment Notification</item>
+        <item lang="en" id="tspa_appointment_notification_msg">We wanted to inform you that your appointment status has been updated to [appointment_status] for [product_name] (Order #[order_id]). Please see details below: [appointment_info]</item>
+        <item lang="en" id="tspa_appointments">Appointments</item>  
+        <item lang="en" id="tspa_appointments_menu_description">List of appointments created by your clients.</item>    
+        <item lang="en" id="tspa_editing_appointment">Editing Appointment</item>
+        <item lang="en" id="tspa_meeting_details">Meeting Details</item>
+        <item lang="en" id="tspa_meeting_date">Meeting Date</item>
+        <item lang="en" id="tspa_meeting_time">Meeting Time</item>
+        <item lang="en" id="tspa_meeting_duration">Meeting Duration</item>
+        <item lang="en" id="tspa_meeting_location">Meeting Location</item>
+        <item lang="en" id="tspa_meeting_info">Additional Information</item>
         <item lang="en" id="tspa_appointment_date">Appointment Date</item>
         <item lang="en" id="tspa_appointment_date_comment">Enter in the date of the appointment</item>
         <item lang="en" id="tspa_appointment_time">Appointment Time</item>
@@ -41,22 +41,25 @@
         <item lang="en" id="tspa_appointment_location_comment">Where will this appointment take place?</item>
         <item lang="en" id="tspa_appointment_info">Appointment Additional Information</item>
         <item lang="en" id="tspa_appointment_info_comment">Enter in any additional information you wish to provide.</item>
-  		<item lang="en" id="tspa_scheduled">Scheduled</item>	
+        <item lang="en" id="tspa_scheduled">Scheduled</item>    
+        <item lang="en" id="tspa_open">Open</item>  
+        <item lang="en" id="tspa_canceled">Canceled</item>  
+        <item lang="en" id="tspa_completed">Completed</item>    
 
-		<item lang="es" id="tsp_appointments">Los Software People - Nombramientos</item>
-		<item lang="es" id="tspa_appointment">cita</item>
-		<item lang="es" id="tspa_appointment_add">Añadir cita</item>
-		<item lang="es" id="tspa_appointment_notification">Notificación Nombramiento</item>
-		<item lang="es" id="tspa_appointment_notification_msg">Queríamos informarle de que su situación contractual se ha actualizado a [ appointment_status ] para [ product_name ] ( Orden # [ order_id ] ) . Por favor, vea los detalles a continuación: [ appointment_info ]</item>
-		<item lang="es" id="tspa_appointments">Nombramientos</item>
-		<item lang="es" id="tspa_appointments_menu_description">Lista de citas creadas por sus clientes .</item>
-		<item lang="es" id="tspa_editing_appointment">Edición cita</item>
-		<item lang="es" id="tspa_meeting_details">detalles de la reunión</item>
-		<item lang="es" id="tspa_meeting_date">Fecha Reunión</item>
-		<item lang="es" id="tspa_meeting_time">Tiempo Reunión</item>
-		<item lang="es" id="tspa_meeting_duration">Duración de la reunión</item>
-		<item lang="es" id="tspa_meeting_location">Lugar de la reunión</item>
-		<item lang="es" id="tspa_meeting_info">Información adicional</item>
+        <item lang="es" id="tsp_appointments">Los Software People - Nombramientos</item>
+        <item lang="es" id="tspa_appointment">cita</item>
+        <item lang="es" id="tspa_appointment_add">Añadir cita</item>
+        <item lang="es" id="tspa_appointment_notification">Notificación Nombramiento</item>
+        <item lang="es" id="tspa_appointment_notification_msg">Queríamos informarle de que su situación contractual se ha actualizado a [ appointment_status ] para [ product_name ] ( Orden # [ order_id ] ) . Por favor, vea los detalles a continuación: [ appointment_info ]</item>
+        <item lang="es" id="tspa_appointments">Nombramientos</item>
+        <item lang="es" id="tspa_appointments_menu_description">Lista de citas creadas por sus clientes .</item>
+        <item lang="es" id="tspa_editing_appointment">Edición cita</item>
+        <item lang="es" id="tspa_meeting_details">detalles de la reunión</item>
+        <item lang="es" id="tspa_meeting_date">Fecha Reunión</item>
+        <item lang="es" id="tspa_meeting_time">Tiempo Reunión</item>
+        <item lang="es" id="tspa_meeting_duration">Duración de la reunión</item>
+        <item lang="es" id="tspa_meeting_location">Lugar de la reunión</item>
+        <item lang="es" id="tspa_meeting_info">Información adicional</item>
         <item lang="es" id="tspa_appointment_date">Fecha de la cita</item>
         <item lang="es" id="tspa_appointment_date_comment">ingresar en la fecha de la cita</item>
         <item lang="es" id="tspa_appointment_time">Tiempo de la cita</item>
@@ -67,22 +70,25 @@
         <item lang="es" id="tspa_appointment_location_comment">Dónde estará esta cita tenga lugar ?</item>
         <item lang="es" id="tspa_appointment_info">Nombramiento Información adicional</item>
         <item lang="es" id="tspa_appointment_info_comment">Introduzca cualquier información adicional que desee proporcionar.</item>
-        <item lang="es" id="tspa_scheduled">Programado</item> 		
-
-		<item lang="fr" id="tsp_appointments">Les logiciels personnes - Nominations</item>
-		<item lang="fr" id="tspa_appointment">Nomination</item>
-		<item lang="fr" id="tspa_appointment_add">Ajouter Nomination</item>
-		<item lang="fr" id="tspa_appointment_notification">notification de rendez-vous</item>
-		<item lang="fr" id="tspa_appointment_notification_msg">Nous voulions vous informer que votre statut de rendez-vous a été mis à jour [ appointment_status ] pour [ product_name ] ( N ° de commande [ order_id ] ) . S'il vous plaît voir les détails ci-dessous : [ appointment_info ]</item>
-		<item lang="fr" id="tspa_appointments">nominations</item>
-		<item lang="fr" id="tspa_appointments_menu_description">Liste des rendez-vous créés par vos clients .</item>
-		<item lang="fr" id="tspa_editing_appointment">Montage Nomination</item>
-		<item lang="fr" id="tspa_meeting_details">Détails de la réunion</item>
-		<item lang="fr" id="tspa_meeting_date">Réunion Date</item>
-		<item lang="fr" id="tspa_meeting_time">Réunion Temps</item>
-		<item lang="fr" id="tspa_meeting_duration">Durée de la réunion</item>
-		<item lang="fr" id="tspa_meeting_location">Lieu de la réunion</item>
-		<item lang="fr" id="tspa_meeting_info">Informations complémentaires</item>
+        <item lang="es" id="tspa_scheduled">Programado</item>       
+        <item lang="es" id="tspa_open">Abrir</item> 
+        <item lang="es" id="tspa_canceled">Cancelado</item> 
+        <item lang="es" id="tspa_completed">Completado</item>
+        
+        <item lang="fr" id="tsp_appointments">Les logiciels personnes - Nominations</item>
+        <item lang="fr" id="tspa_appointment">Nomination</item>
+        <item lang="fr" id="tspa_appointment_add">Ajouter Nomination</item>
+        <item lang="fr" id="tspa_appointment_notification">notification de rendez-vous</item>
+        <item lang="fr" id="tspa_appointment_notification_msg">Nous voulions vous informer que votre statut de rendez-vous a été mis à jour [ appointment_status ] pour [ product_name ] ( N ° de commande [ order_id ] ) . S'il vous plaît voir les détails ci-dessous : [ appointment_info ]</item>
+        <item lang="fr" id="tspa_appointments">nominations</item>
+        <item lang="fr" id="tspa_appointments_menu_description">Liste des rendez-vous créés par vos clients .</item>
+        <item lang="fr" id="tspa_editing_appointment">Montage Nomination</item>
+        <item lang="fr" id="tspa_meeting_details">Détails de la réunion</item>
+        <item lang="fr" id="tspa_meeting_date">Réunion Date</item>
+        <item lang="fr" id="tspa_meeting_time">Réunion Temps</item>
+        <item lang="fr" id="tspa_meeting_duration">Durée de la réunion</item>
+        <item lang="fr" id="tspa_meeting_location">Lieu de la réunion</item>
+        <item lang="fr" id="tspa_meeting_info">Informations complémentaires</item>
         <item lang="fr" id="tspa_appointment_date">Nomination</item>
         <item lang="fr" id="tspa_appointment_date_comment">Entrez la date du rendez-vous</item>
         <item lang="fr" id="tspa_appointment_time">Nomination Temps</item>
@@ -94,115 +100,121 @@
         <item lang="fr" id="tspa_appointment_info">Nomination Informations supplémentaires</item>
         <item lang="fr" id="tspa_appointment_info_comment">Entrez toute information supplémentaire que vous souhaitez offrir .</item>
         <item lang="fr" id="tspa_scheduled">prévue</item>
-
-		<item lang="el" id="tsp_appointments">Oi ánthro̱poi Logismikó - Diorismoí</item>
-		<item lang="el" id="tspa_appointment">Diorismós</item>
-		<item lang="el" id="tspa_appointment_add">Prosthí̱ki̱ Diorismós</item>
-		<item lang="el" id="tspa_appointment_notification">Diorismós Eidopoíi̱si̱</item>
-		<item lang="el" id="tspa_appointment_notification_msg">Thélame na sas eni̱meró̱soume óti to kathestó̱s rantevoú sas échei eni̱mero̱theí gia [ appointment_status ] gia [ product_name ] ( Order # [ order_id ] ) . Parakaló̱ deíte leptoméreies parakáto̱ :̱ [ appointment_info ]</item>
-		<item lang="el" id="tspa_appointments">Diorismoí</item>
-		<item lang="el" id="tspa_appointments_menu_description">Katálogos diorismó̱n pou di̱miourgoúntai apó tous pelátes sas .</item>
-		<item lang="el" id="tspa_editing_appointment">Epexergasía Diorismós</item>
-		<item lang="el" id="tspa_meeting_details">Leptoméreies sýskepsi̱s</item>
-		<item lang="el" id="tspa_meeting_date">I̱meromi̱nía synedríasi̱s</item>
-		<item lang="el" id="tspa_meeting_time">Ó̱ra synánti̱si̱s</item>
-		<item lang="el" id="tspa_meeting_duration">Synánti̱si̱ Diárkeia</item>
-		<item lang="el" id="tspa_meeting_location">Synánti̱si̱ Topothesía</item>
-		<item lang="el" id="tspa_meeting_info">Prósthetes pli̱roforíes</item>
-		<item lang="el" id="tspa_appointment_date">Diorismós I̱meromi̱nía</item>
-		<item lang="el" id="tspa_appointment_date_comment">Eiságete ti̱n i̱meromi̱nía diorismoú</item>
-		<item lang="el" id="tspa_appointment_time">Diorismós Ó̱ra</item>
-		<item lang="el" id="tspa_appointment_time_comment">Pli̱ktrologí̱ste sto chróno tou diorismoú ( format :̱ 19:̱00 EST )</item>
-		<item lang="el" id="tspa_appointment_duration">Diorismós Diárkeia</item>
-		<item lang="el" id="tspa_appointment_duration_comment">Eiságete ti̱ diárkeia tou diorismoú se leptá, ó̱res , i̱méres, evdomádes , mí̱nes í̱ chrónia ( morfí̱:̱ 1 ó̱ra , 10 leptá)</item>
-		<item lang="el" id="tspa_appointment_location">Diorismós Topothesía</item>
-		<item lang="el" id="tspa_appointment_location_comment">Poú tha lávei chó̱ra af̱tó to rantevoú?</item>
-		<item lang="el" id="tspa_appointment_info">Diorismós Prósthetes pli̱roforíes</item>
-		<item lang="el" id="tspa_appointment_info_comment">Eiságete opoiadí̱pote epipléon pli̱roforía epithymoún na paréchoun .</item>
-		<item lang="el" id="tspa_scheduled">Programmatisméni̱</item>
-  	</language_variables>
-	<tab_order>prepend</tab_order>
-	<settings>
-		<sections>
-			<section id="Settings">
-				<!-- Tab name in the default language -->
-				<name>Basic Settings</name>		
+        <item lang="fr" id="tspa_open">Ouvrir</item> 
+        <item lang="fr" id="tspa_canceled">Annulé</item> 
+        <item lang="fr" id="tspa_completed">Terminé</item>
+        
+        <item lang="el" id="tsp_appointments">Οι άνθρωποι Λογισμικό - Διορισμοί</item>
+        <item lang="el" id="tspa_appointment">Διορισμός</item>
+        <item lang="el" id="tspa_appointment_add">Προσθήκη Διορισμός</item>
+        <item lang="el" id="tspa_appointment_notification">Διορισμός Ειδοποίηση</item>
+        <item lang="el" id="tspa_appointment_notification_msg">Θέλαμε να σας ενημερώσουμε ότι το καθεστώς ραντεβού σας έχει ενημερωθεί για [appointment_status] για [product_name] (Order # [order_id]). Παρακαλώ δείτε λεπτομέρειες παρακάτω: [appointment_info]</item>
+        <item lang="el" id="tspa_appointments">Διορισμοί</item>
+        <item lang="el" id="tspa_appointments_menu_description">Κατάλογος διορισμών που δημιουργούνται από τους πελάτες σας.</item>
+        <item lang="el" id="tspa_editing_appointment">Επεξεργασία Διορισμός</item>
+        <item lang="el" id="tspa_meeting_details">Λεπτομέρειες σύσκεψης</item>
+        <item lang="el" id="tspa_meeting_date">Ημερομηνία συνεδρίασης</item>
+        <item lang="el" id="tspa_meeting_time">Ώρα συνάντησης</item>
+        <item lang="el" id="tspa_meeting_duration">Συνάντηση Διάρκεια</item>
+        <item lang="el" id="tspa_meeting_location">Συνάντηση Τοποθεσία</item>
+        <item lang="el" id="tspa_meeting_info">Πρόσθετες πληροφορίες</item>
+        <item lang="el" id="tspa_appointment_date">Διορισμός Ημερομηνία</item>
+        <item lang="el" id="tspa_appointment_date_comment">Εισάγετε την ημερομηνία διορισμού</item>
+        <item lang="el" id="tspa_appointment_time">Διορισμός Ώρα</item>
+        <item lang="el" id="tspa_appointment_time_comment">Πληκτρολογήστε στο χρόνο του διορισμού (format: 19:00 EST)</item>
+        <item lang="el" id="tspa_appointment_duration">Διορισμός Διάρκεια</item>
+        <item lang="el" id="tspa_appointment_duration_comment">Εισάγετε τη διάρκεια του διορισμού σε λεπτά, ώρες, ημέρες, εβδομάδες, μήνες ή χρόνια (μορφή: 1 ώρα, 10 λεπτά)</item>
+        <item lang="el" id="tspa_appointment_location">Διορισμός Τοποθεσία</item>
+        <item lang="el" id="tspa_appointment_location_comment">Πού θα λάβει χώρα αυτό το ραντεβού;</item>
+        <item lang="el" id="tspa_appointment_info">Διορισμός Πρόσθετες πληροφορίες</item>
+        <item lang="el" id="tspa_appointment_info_comment">Εισάγετε οποιαδήποτε επιπλέον πληροφορία επιθυμούν να παρέχουν.</item>
+        <item lang="el" id="tspa_scheduled">Προγραμματισμένη</item>
+        <item lang="el" id="tspa_open">ανοιχτό</item> 
+        <item lang="el" id="tspa_canceled">Ακυρώθηκε</item> 
+        <item lang="el" id="tspa_completed">Ολοκληρώθηκε</item>
+    </language_variables>
+    <tab_order>prepend</tab_order>
+    <settings>
+        <sections>
+            <section id="Settings">
+                <!-- Tab name in the default language -->
+                <name>Basic Settings</name>     
                 <translations>
                     <item lang="es" for="name">Ajustes básicos</item>
-                    <item lang="el" for="name">vasikés rythmíseis</item>
+                    <item lang="el" for="name">βασικές ρυθμίσεις</item>
                     <item lang="fr" for="name">Réglages de base</item>
                 </translations>
-				<items>
-					<item id="delete_appointment_data">
-						<name>Delete Appointment Data on Uninstall</name>
+                <items>
+                    <item id="delete_appointment_data">
+                        <name>Delete Appointment Data on Uninstall</name>
                         <translations>
                             <item lang="es" for="name">Eliminar Recordatorio datos sobre Desinstalar</item>
-                            <item lang="el" for="name">Diagrafí̱ Syndéseis dedoméno̱n gia apenkatástasi̱s</item>
+                            <item lang="el" for="name">Διαγραφή Δεδομένων Διορισμός στο Uninstall</item>
                             <item lang="fr" for="name">Supprimer Liens externes données sur Désinstaller</item>
-                        </translations>                                            
-  						<type>selectbox</type>
-						<default_value>N</default_value>
-						<variants>
-							<item id="N">
-								<name>No</name>
-							</item>
-							<item id="Y">
-								<name>Yes</name>
-							</item>
-						</variants>
-					</item>
-				</items>
-			</section>
-		</sections>
-	</settings>
-	<queries>
-		<!-- If parameter "for" equals "install" or is not set, the query is executed during the add-on installation -->
-		<!-- If the "editions" attribute is given, the request will be executed only for the editions that are defined in it (separated with commas) -->
-		<item for="install">
-			CREATE TABLE `?:addon_tsp_appointments`	(
-					`id` mediumint(8) NOT NULL AUTO_INCREMENT,
-					`status` char(1) NOT NULL DEFAULT 'O',
-					`company_id` mediumint(8) NOT NULL,
-					`order_id` mediumint(8) NOT NULL,
-					`product_id` mediumint(8) NOT NULL,
-					`user_id` mediumint(8) NOT NULL,
-					`date_created` int(11) NOT NULL,
-					`date_completed` int(11) DEFAULT NULL,
-				PRIMARY KEY (`id`)
-			) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-		</item>
-		<item for="install">
-			CREATE TABLE `?:addon_tsp_appointments_product_metadata`	(
-					`product_id` mediumint(8) NOT NULL,
-					`field_name` varchar(255) NOT NULL,
-					`value` text NOT NULL,
-				PRIMARY KEY (`product_id`,`field_name`)
-			) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-		</item>
-		<item for="install">
-			CREATE TABLE `?:addon_tsp_appointments_product_field_metadata` (
-				`id` mediumint NOT NULL auto_increment,
-				`key` varchar(255) NOT NULL,
-	  			`option_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
-	  			`variant_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
-				PRIMARY KEY  (`id`)
-			) ENGINE=MyISAM DEFAULT CHARSET=UTF8
-		</item>
-		<item for="install">REPLACE INTO ?:privileges (privilege, is_default, section_id) VALUES ('manage_appointments', 'Y', 'addons');</item>
-		
+                        </translations>                                           
+                        <type>selectbox</type>
+                        <default_value>N</default_value>
+                        <variants>
+                            <item id="N">
+                                <name>No</name>
+                            </item>
+                            <item id="Y">
+                                <name>Yes</name>
+                            </item>
+                        </variants>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+    <queries>
+        <!-- If parameter "for" equals "install" or is not set, the query is executed during the add-on installation -->
+        <!-- If the "editions" attribute is given, the request will be executed only for the editions that are defined in it (separated with commas) -->
+        <item for="install">
+            CREATE TABLE `?:addon_tsp_appointments` (
+                    `id` mediumint(8) NOT NULL AUTO_INCREMENT,
+                    `status` char(1) NOT NULL DEFAULT 'O',
+                    `company_id` mediumint(8) NOT NULL,
+                    `order_id` mediumint(8) NOT NULL,
+                    `product_id` mediumint(8) NOT NULL,
+                    `user_id` mediumint(8) NOT NULL,
+                    `date_created` int(11) NOT NULL,
+                    `date_completed` int(11) DEFAULT NULL,
+                PRIMARY KEY (`id`)
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+        </item>
+        <item for="install">
+            CREATE TABLE `?:addon_tsp_appointments_product_metadata`    (
+                    `product_id` mediumint(8) NOT NULL,
+                    `field_name` varchar(255) NOT NULL,
+                    `value` text NOT NULL,
+                PRIMARY KEY (`product_id`,`field_name`)
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+        </item>
+        <item for="install">
+            CREATE TABLE `?:addon_tsp_appointments_product_field_metadata` (
+                `id` mediumint NOT NULL auto_increment,
+                `key` varchar(255) NOT NULL,
+                `option_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
+                `variant_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
+                PRIMARY KEY  (`id`)
+            ) ENGINE=MyISAM DEFAULT CHARSET=UTF8
+        </item>
+        <item for="install">REPLACE INTO ?:privileges (privilege, is_default, section_id) VALUES ('manage_appointments', 'Y', 'addons');</item>
+        
         <item for="install" lang="en">REPLACE INTO ?:language_values (lang_code, name, value) VALUES ('en','privileges.manage_appointments', 'Manage appointments');</item>
-		<item for="install" lang="es">REPLACE INTO ?:language_values (lang_code, name, value) VALUES ('es','privileges.manage_appointments', 'Administración de citas');</item>
-        <item for="install" lang="el">REPLACE INTO ?:language_values (lang_code, name, value) VALUES ('el','privileges.manage_appointments', 'Diacheiristeíte ta rantevoú');</item>
+        <item for="install" lang="es">REPLACE INTO ?:language_values (lang_code, name, value) VALUES ('es','privileges.manage_appointments', 'Administración de citas');</item>
+        <item for="install" lang="el">REPLACE INTO ?:language_values (lang_code, name, value) VALUES ('el','privileges.manage_appointments', 'Διαχειριστείτε τα ραντεβού');</item>
         <item for="install" lang="fr">REPLACE INTO ?:language_values (lang_code, name, value) VALUES ('fr','privileges.manage_appointments', 'Gérer les rendez-vous');</item>
 
         <item for="uninstall">DELETE FROM ?:privileges WHERE privilege = 'manage_appointments'</item>
         <item for="uninstall">DELETE FROM ?:language_values WHERE name = 'privileges.manage_appointments'</item>
         </queries>
-	<functions>
-		<item for="install">fn_tspa_install_product_fields</item>
-		<item for="uninstall">fn_tspa_uninstall_product_metadata</item>
-		<item for="uninstall">fn_tspa_uninstall_product_field_metadata</item>
-		<item for="uninstall">fn_tspa_uninstall_languages</item>
-		<item for="uninstall">fn_tspa_uninstall_main</item>
-	</functions>
+    <functions>
+        <item for="install">fn_tspa_install_product_fields</item>
+        <item for="uninstall">fn_tspa_uninstall_product_metadata</item>
+        <item for="uninstall">fn_tspa_uninstall_product_field_metadata</item>
+        <item for="uninstall">fn_tspa_uninstall_languages</item>
+        <item for="uninstall">fn_tspa_uninstall_main</item>
+    </functions>
 </addon>

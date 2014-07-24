@@ -4,9 +4,9 @@
  *
  * @package		TSP Appointments for CS-Cart
  * @filename	config.php
- * @version		2.0.1
+ * @version		2.1.2
  * @author		Sharron Denice, The Software People, LLC on 2013/02/09
- * @copyright	Copyright Â© 2013 The Software People, LLC (www.thesoftwarepeople.com). All rights reserved
+ * @copyright	Copyright © 2013 The Software People, LLC (www.thesoftwarepeople.com). All rights reserved
  * @license		Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported (http://creativecommons.org/licenses/by-nc-nd/3.0/)
  * @brief		Configuration file for addon
  * 
@@ -66,10 +66,10 @@ Registry::set('tspa_appointment_statuses_long', array(
 ));
 
 Registry::set('tspa_appointment_statuses_short', array(
-		'O' => 'Open',
-		'S' => 'Scheduled',
-		'X' => 'Canceled',
-		'C' => 'Completed'
+		'O' => __("tspa_open"),
+		'S' => __("tspa_scheduled"),
+		'X' => __("tspa_canceled"),
+		'C' => __("tspa_completed")
 ));
 
 Registry::set('tspa_appointment_status_params', array(
