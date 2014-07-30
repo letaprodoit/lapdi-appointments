@@ -92,10 +92,10 @@ function fn_tspa_install_product_fields ()
 				db_query("INSERT INTO ?:addon_tsp_appointments_product_field_metadata (`key`,`option_id`) VALUES ('$option_field_key',$date_id)");
 				
 				// Install descriptions
-				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'en', 'option_id' => $date_id, 'option_name' => __("tspa_appointment_date"), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_date_comment"), 'inner_hint' => '', 'incorrect_message' => ''));
-				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'el', 'option_id' => $date_id, 'option_name' => __("tspa_appointment_date"), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_date_comment"), 'inner_hint' => '', 'incorrect_message' => ''));
-				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'es', 'option_id' => $date_id, 'option_name' => __("tspa_appointment_date"), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_date_comment"), 'inner_hint' => '', 'incorrect_message' => ''));
-				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'fr', 'option_id' => $date_id, 'option_name' => __("tspa_appointment_date"), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_date_comment"), 'inner_hint' => '', 'incorrect_message' => ''));
+				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'en', 'option_id' => $date_id, 'option_name' => __("tspa_appointment_date",array(),'en'), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_date_comment",array(),'en'), 'inner_hint' => '', 'incorrect_message' => ''));
+				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'el', 'option_id' => $date_id, 'option_name' => __("tspa_appointment_date",array(),'el'), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_date_comment",array(),'el'), 'inner_hint' => '', 'incorrect_message' => ''));
+				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'es', 'option_id' => $date_id, 'option_name' => __("tspa_appointment_date",array(),'es'), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_date_comment",array(),'es'), 'inner_hint' => '', 'incorrect_message' => ''));
+				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'fr', 'option_id' => $date_id, 'option_name' => __("tspa_appointment_date",array(),'fr'), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_date_comment",array(),'fr'), 'inner_hint' => '', 'incorrect_message' => ''));
 			}//end if
 			elseif ($option_field_key == 'tspa_product_option_time_field_id')
 			{
@@ -106,24 +106,30 @@ function fn_tspa_install_product_fields ()
 				db_query("INSERT INTO ?:addon_tsp_appointments_product_field_metadata (`key`,`option_id`) VALUES ('$option_field_key',$time_id)");
 				
 				// Install descriptions
-				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'en', 'option_id' => $time_id, 'option_name' => __("tspa_appointment_time"), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_time_comment"), 'inner_hint' => '12:00 AM EST', 'incorrect_message' => 'Incorrect format.'));				
-				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'el', 'option_id' => $time_id, 'option_name' => __("tspa_appointment_time"), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_time_comment"), 'inner_hint' => '12:00 AM EST', 'incorrect_message' => 'Λανθασμένη μορφή'));				
-				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'es', 'option_id' => $time_id, 'option_name' => __("tspa_appointment_time"), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_time_comment"), 'inner_hint' => '12:00 AM EST', 'incorrect_message' => 'formato incorrecto.'));				
-				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'fr', 'option_id' => $time_id, 'option_name' => __("tspa_appointment_time"), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_time_comment"), 'inner_hint' => '12:00 AM EST', 'incorrect_message' => 'Format incorrect.'));				
+				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'en', 'option_id' => $time_id, 'option_name' => __("tspa_appointment_time",array(),'en'), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_time_comment",array(),'en'), 'inner_hint' => '12:00 AM EST', 'incorrect_message' => __("tspa_incorrect_format",array(),'en')));				
+				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'el', 'option_id' => $time_id, 'option_name' => __("tspa_appointment_time",array(),'el'), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_time_comment",array(),'el'), 'inner_hint' => '12:00 AM EST', 'incorrect_message' => __("tspa_incorrect_format",array(),'el')));				
+				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'es', 'option_id' => $time_id, 'option_name' => __("tspa_appointment_time",array(),'es'), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_time_comment",array(),'es'), 'inner_hint' => '12:00 AM EST', 'incorrect_message' => __("tspa_incorrect_format",array(),'es')));				
+				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'fr', 'option_id' => $time_id, 'option_name' => __("tspa_appointment_time",array(),'fr'), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_time_comment",array(),'fr'), 'inner_hint' => '12:00 AM EST', 'incorrect_message' => __("tspa_incorrect_format",array(),'fr')));				
 			}//end if
 			elseif ($option_field_key == 'tspa_product_option_duration_field_id')
 			{
 				// Install the global option fields
-				$duration_id = db_query('INSERT INTO ?:product_options ?e', array('company_id' => 1, 'position' => 102, 'option_type' => 'I', 'inventory' => 'N', 'required' => 'Y', 'status' => 'A', 'regexp' => '(\\d+) ((Minutes|Hours|Days|Weeks|Months|Years)|(Λεπτά|Ώρες|Ημέρες|Εβδομάδες|Μήνες|Έτη)|(Minutos|Horario|Días|Semanas|Meses|Año)|(Minutes|Heures|Jours|Semaines|Mois|Années))'));				
+				$duration_id = db_query('INSERT INTO ?:product_options ?e', array('company_id' => 1, 'position' => 102, 
+						'option_type' => 'I', 'inventory' => 'N', 'required' => 'Y', 'status' => 'A', 
+						'regexp' => '(\\d+)' . '('. 
+						__("tspa_time_regexp",array(),'en') . '|' . 
+						__("tspa_time_regexp",array(),'el') . '|' . 
+						__("tspa_time_regexp",array(),'es') . '|' . 
+						__("tspa_time_regexp",array(),'fr') .')'));				
 				
 				// Store the global option fields
 				db_query("INSERT INTO ?:addon_tsp_appointments_product_field_metadata (`key`,`option_id`) VALUES ('$option_field_key',$duration_id)");
 				
 				// Install descriptions
-				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'en', 'option_id' => $duration_id, 'option_name' => __("tspa_appointment_duration"), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_duration_comment"), 'inner_hint' => '10 Minutes', 'incorrect_message' => 'Incorrect format.'));
-				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'el', 'option_id' => $duration_id, 'option_name' => __("tspa_appointment_duration"), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_duration_comment"), 'inner_hint' => '10 Λεπτά', 'incorrect_message' => 'Λανθασμένη μορφή'));
-				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'es', 'option_id' => $duration_id, 'option_name' => __("tspa_appointment_duration"), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_duration_comment"), 'inner_hint' => '10 Minutos', 'incorrect_message' => 'formato incorrecto.'));
-				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'fr', 'option_id' => $duration_id, 'option_name' => __("tspa_appointment_duration"), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_duration_comment"), 'inner_hint' => '10 Minutes', 'incorrect_message' => 'Format incorrect.'));
+				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'en', 'option_id' => $duration_id, 'option_name' => __("tspa_appointment_duration",array(),'en'), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_duration_comment",array(),'en'), 'inner_hint' => '10' . __("tspa_minutes",array(),'en'), 'incorrect_message' => __("tspa_incorrect_format",array(),'en')));
+				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'el', 'option_id' => $duration_id, 'option_name' => __("tspa_appointment_duration",array(),'el'), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_duration_comment",array(),'el'), 'inner_hint' => '10' . __("tspa_minutes",array(),'el'), 'incorrect_message' => __("tspa_incorrect_format",array(),'el')));
+				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'es', 'option_id' => $duration_id, 'option_name' => __("tspa_appointment_duration",array(),'es'), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_duration_comment",array(),'es'), 'inner_hint' => '10' . __("tspa_minutes",array(),'es'), 'incorrect_message' => __("tspa_incorrect_format",array(),'es')));
+				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'fr', 'option_id' => $duration_id, 'option_name' => __("tspa_appointment_duration",array(),'fr'), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_duration_comment",array(),'fr'), 'inner_hint' => '10' . __("tspa_minutes",array(),'fr'), 'incorrect_message' => __("tspa_incorrect_format",array(),'fr')));
 			}//end if
 			elseif ($option_field_key == 'tspa_product_option_location_field_id')
 			{
@@ -134,10 +140,10 @@ function fn_tspa_install_product_fields ()
 				db_query("INSERT INTO ?:addon_tsp_appointments_product_field_metadata (`key`,`option_id`) VALUES ('$option_field_key',$location_id)");
 				
 				// Install descriptions
-				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'en', 'option_id' => $location_id, 'option_name' => __("tspa_appointment_location"), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_location_comment"), 'inner_hint' => '', 'incorrect_message' => ''));
-				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'el', 'option_id' => $location_id, 'option_name' => __("tspa_appointment_location"), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_location_comment"), 'inner_hint' => '', 'incorrect_message' => ''));
-				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'es', 'option_id' => $location_id, 'option_name' => __("tspa_appointment_location"), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_location_comment"), 'inner_hint' => '', 'incorrect_message' => ''));
-				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'fr', 'option_id' => $location_id, 'option_name' => __("tspa_appointment_location"), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_location_comment"), 'inner_hint' => '', 'incorrect_message' => ''));
+				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'en', 'option_id' => $location_id, 'option_name' => __("tspa_appointment_location",array(),'en'), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_location_comment",array(),'en'), 'inner_hint' => '', 'incorrect_message' => ''));
+				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'el', 'option_id' => $location_id, 'option_name' => __("tspa_appointment_location",array(),'el'), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_location_comment",array(),'el'), 'inner_hint' => '', 'incorrect_message' => ''));
+				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'es', 'option_id' => $location_id, 'option_name' => __("tspa_appointment_location",array(),'es'), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_location_comment",array(),'es'), 'inner_hint' => '', 'incorrect_message' => ''));
+				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'fr', 'option_id' => $location_id, 'option_name' => __("tspa_appointment_location",array(),'fr'), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_location_comment",array(),'fr'), 'inner_hint' => '', 'incorrect_message' => ''));
 				
 				// Install option variants
 				$var1 = db_query('INSERT INTO ?:product_option_variants ?e', array('position' => 0, 'option_id' => $location_id, 'modifier' => 0.00));
@@ -149,14 +155,14 @@ function fn_tspa_install_product_fields ()
 				('tspa_product_option_location_field_vars',$location_id,$var2)");
 				
 				// Install option variant descriptions
-				db_query('INSERT INTO ?:product_option_variants_descriptions ?e', array('lang_code' => 'en', 'variant_id' => $var1, 'variant_name' => 'In-Home'));
-				db_query('INSERT INTO ?:product_option_variants_descriptions ?e', array('lang_code' => 'en', 'variant_id' => $var2, 'variant_name' => 'On-Site'));
-				db_query('INSERT INTO ?:product_option_variants_descriptions ?e', array('lang_code' => 'el', 'variant_id' => $var1, 'variant_name' => 'Στο σπίτι'));
-				db_query('INSERT INTO ?:product_option_variants_descriptions ?e', array('lang_code' => 'el', 'variant_id' => $var2, 'variant_name' => 'Στο Τοποθεσία'));
-				db_query('INSERT INTO ?:product_option_variants_descriptions ?e', array('lang_code' => 'es', 'variant_id' => $var1, 'variant_name' => 'Inicio'));
-				db_query('INSERT INTO ?:product_option_variants_descriptions ?e', array('lang_code' => 'es', 'variant_id' => $var2, 'variant_name' => 'On-Site'));
-				db_query('INSERT INTO ?:product_option_variants_descriptions ?e', array('lang_code' => 'fr', 'variant_id' => $var1, 'variant_name' => 'Accueil'));
-				db_query('INSERT INTO ?:product_option_variants_descriptions ?e', array('lang_code' => 'fr', 'variant_id' => $var2, 'variant_name' => 'sur le site'));
+				db_query('INSERT INTO ?:product_option_variants_descriptions ?e', array('lang_code' => 'en', 'variant_id' => $var1, 'variant_name' => __("tspa_in_home",array(),'en')));
+				db_query('INSERT INTO ?:product_option_variants_descriptions ?e', array('lang_code' => 'en', 'variant_id' => $var2, 'variant_name' => __("tspa_on_site",array(),'en')));
+				db_query('INSERT INTO ?:product_option_variants_descriptions ?e', array('lang_code' => 'el', 'variant_id' => $var1, 'variant_name' => __("tspa_in_home",array(),'el')));
+				db_query('INSERT INTO ?:product_option_variants_descriptions ?e', array('lang_code' => 'el', 'variant_id' => $var2, 'variant_name' => __("tspa_on_site",array(),'el')));
+				db_query('INSERT INTO ?:product_option_variants_descriptions ?e', array('lang_code' => 'es', 'variant_id' => $var1, 'variant_name' => __("tspa_in_home",array(),'es')));
+				db_query('INSERT INTO ?:product_option_variants_descriptions ?e', array('lang_code' => 'es', 'variant_id' => $var2, 'variant_name' => __("tspa_on_site",array(),'es')));
+				db_query('INSERT INTO ?:product_option_variants_descriptions ?e', array('lang_code' => 'fr', 'variant_id' => $var1, 'variant_name' => __("tspa_in_home",array(),'fr')));
+				db_query('INSERT INTO ?:product_option_variants_descriptions ?e', array('lang_code' => 'fr', 'variant_id' => $var2, 'variant_name' => __("tspa_on_site",array(),'fr')));
 				
 			}//end if
 			elseif ($option_field_key == 'tspa_product_option_additional_info_field_id')
@@ -168,7 +174,10 @@ function fn_tspa_install_product_fields ()
 				db_query("INSERT INTO ?:addon_tsp_appointments_product_field_metadata (`key`,`option_id`) VALUES ('$option_field_key',$info_id)");
 				
 				// Install descriptions
-				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'en', 'option_id' => $info_id, 'option_name' => __("tspa_appointment_info"), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_info_comment"), 'inner_hint' => '', 'incorrect_message' => ''));
+				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'en', 'option_id' => $info_id, 'option_name' => __("tspa_appointment_info",array(),'en'), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_info_comment",array(),'en'), 'inner_hint' => '', 'incorrect_message' => ''));
+				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'el', 'option_id' => $info_id, 'option_name' => __("tspa_appointment_info",array(),'el'), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_info_comment",array(),'el'), 'inner_hint' => '', 'incorrect_message' => ''));
+				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'es', 'option_id' => $info_id, 'option_name' => __("tspa_appointment_info",array(),'es'), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_info_comment",array(),'es'), 'inner_hint' => '', 'incorrect_message' => ''));
+				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'fr', 'option_id' => $info_id, 'option_name' => __("tspa_appointment_info",array(),'fr'), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_info_comment",array(),'fr'), 'inner_hint' => '', 'incorrect_message' => ''));
 				
 			}//end if
 		}//end if

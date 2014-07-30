@@ -44,8 +44,13 @@
         <item lang="en" id="tspa_scheduled">Scheduled</item>    
         <item lang="en" id="tspa_open">Open</item>  
         <item lang="en" id="tspa_canceled">Canceled</item>  
-        <item lang="en" id="tspa_completed">Completed</item>    
-
+        <item lang="en" id="tspa_completed">Completed</item>
+        <item lang="en" id="tspa_incorrect_format">Incorrect format</item>    
+        <item lang="en" id="tspa_minutes">Minutes</item>    
+        <item lang="en" id="tspa_time_regexp">(Minutes|Hours|Days|Weeks|Months|Years)</item>    
+        <item lang="en" id="tspa_in_home">In Home</item>    
+        <item lang="en" id="tspa_on_site">On Site</item>    
+        
         <item lang="es" id="tsp_appointments">Los Software People - Nombramientos</item>
         <item lang="es" id="tspa_appointment">cita</item>
         <item lang="es" id="tspa_appointment_add">Añadir cita</item>
@@ -74,6 +79,11 @@
         <item lang="es" id="tspa_open">Abrir</item> 
         <item lang="es" id="tspa_canceled">Cancelado</item> 
         <item lang="es" id="tspa_completed">Completado</item>
+        <item lang="es" id="tspa_incorrect_format">Formato incorrecto</item>    
+        <item lang="es" id="tspa_minutes">Minutos</item>    
+        <item lang="es" id="tspa_time_regexp">(Minutos|Horas|Días|Semanas|Meses|Años)</item>    
+        <item lang="es" id="tspa_in_home">Inicio</item>    
+        <item lang="es" id="tspa_on_site">On Site</item>    
         
         <item lang="fr" id="tsp_appointments">Les logiciels personnes - Nominations</item>
         <item lang="fr" id="tspa_appointment">Nomination</item>
@@ -103,6 +113,11 @@
         <item lang="fr" id="tspa_open">Ouvrir</item> 
         <item lang="fr" id="tspa_canceled">Annulé</item> 
         <item lang="fr" id="tspa_completed">Terminé</item>
+        <item lang="fr" id="tspa_incorrect_format">Format incorrect</item>    
+        <item lang="fr" id="tspa_minutes">Minutes</item>    
+        <item lang="fr" id="tspa_time_regexp">(Minutes|Heures|Jours|Semaines|Mois|Années)</item>    
+        <item lang="fr" id="tspa_in_home">Accueil</item>    
+        <item lang="fr" id="tspa_on_site">sur le site</item>    
         
         <item lang="el" id="tsp_appointments">Οι άνθρωποι Λογισμικό - Διορισμοί</item>
         <item lang="el" id="tspa_appointment">Διορισμός</item>
@@ -132,6 +147,11 @@
         <item lang="el" id="tspa_open">ανοιχτό</item> 
         <item lang="el" id="tspa_canceled">Ακυρώθηκε</item> 
         <item lang="el" id="tspa_completed">Ολοκληρώθηκε</item>
+        <item lang="el" id="tspa_incorrect_format">Λανθασμένη μορφή</item>    
+        <item lang="el" id="tspa_minutes">Λεπτά</item>    
+        <item lang="el" id="tspa_time_regexp">(Λεπτά|Ώρες|Ημέρες|Εβδομάδες|Μήνες|Έτη)</item>    
+        <item lang="el" id="tspa_in_home">Στο σπίτι</item>    
+        <item lang="el" id="tspa_on_site">On Site</item>    
     </language_variables>
     <tab_order>prepend</tab_order>
     <settings>
