@@ -76,4 +76,4 @@
     {include file="common/sidebox.tpl" content=$smarty.capture.content_sidebar title=__("settings")}
 {/capture}
 
-{include file="common/mainbox.tpl" title=__("tsp_appointments") content=$smarty.capture.mainbox buttons=$smarty.capture.buttons adv_buttons=$smarty.capture.adv_buttons sidebar=$smarty.capture.sidebar}
+{include file="common/mainbox.tpl" title=__("tspa_appointments_title") content=$smarty.capture.mainbox buttons=$smarty.capture.buttons adv_buttons=$smarty.capture.adv_buttons sidebar=$smarty.capture.sidebar}

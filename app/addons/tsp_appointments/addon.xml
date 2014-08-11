@@ -17,7 +17,7 @@
         <item lang="fr" for="description">Les logiciels personnes (TSP) Nominations vous permet d'ajouter des rendez-vous aux services dans le magasin et vous permettent de surveiller les rendez-vous dans la zone d'administration. Pour plus de détails visitez notre site Internet www.thesoftwarepeople.com</item>
     </translations>
     <language_variables>
-        <item lang="en" id="tspa_appointments">The Software People - Appointments</item>
+        <item lang="en" id="tspa_appointments_title">The Software People - Appointments</item>
         <item lang="en" id="tspa_appointment">Appointment</item>   
         <item lang="en" id="tspa_appointment_add">Add Appointment</item> 
         <item lang="en" id="tspa_appointment_notification">Appointment Notification</item>
@@ -64,7 +64,7 @@
         <item lang="en" id="tspa_call">Conference Call</item>   
         <item lang="en" id="tspa_class">Classroom</item>   
         
-        <item lang="es" id="tspa_appointments">Los Software People - Nombramientos</item>
+        <item lang="es" id="tspa_appointments_title">Los Software People - Nombramientos</item>
         <item lang="es" id="tspa_appointment">cita</item>
         <item lang="es" id="tspa_appointment_add">Añadir cita</item>
         <item lang="es" id="tspa_appointment_notification">Notificación Nombramiento</item>
@@ -110,7 +110,7 @@
 		<item lang="es" id="tspa_call">Conferencia Telefónica</item>
 		<item lang="es" id="tspa_class">Aula</item>
 		
-        <item lang="el" id="tspa_appointments">Οι άνθρωποι Λογισμικό - Διορισμοί</item>
+        <item lang="el" id="tspa_appointments_title">Οι άνθρωποι Λογισμικό - Διορισμοί</item>
         <item lang="el" id="tspa_appointment">Διορισμός</item>
         <item lang="el" id="tspa_appointment_add">Προσθήκη Διορισμός</item>
         <item lang="el" id="tspa_appointment_notification">Διορισμός Ειδοποίηση</item>
@@ -156,7 +156,7 @@
 		<item lang="el" id="tspa_call">Κλήση συνδιάσκεψης</item>
 		<item lang="el" id="tspa_class">διδασκαλίας</item>
 	
-        <item lang="fr" id="tspa_appointments">Les logiciels personnes - Nominations</item>
+        <item lang="fr" id="tspa_appointments_title">Les logiciels personnes - Nominations</item>
         <item lang="fr" id="tspa_appointment">Nomination</item>
         <item lang="fr" id="tspa_appointment_add">Ajouter Nomination</item>
         <item lang="fr" id="tspa_appointment_notification">notification de rendez-vous</item>
