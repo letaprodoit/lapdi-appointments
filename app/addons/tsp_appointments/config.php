@@ -6,7 +6,7 @@
  * @filename	config.php
  * @version		2.1.2
  * @author		Sharron Denice, The Software People, LLC on 2013/02/09
- * @copyright	Copyright © 2013 The Software People, LLC (www.thesoftwarepeople.com). All rights reserved
+ * @copyright	Copyright Â© 2014 The Software People, LLC (www.thesoftwarepeople.com). All rights reserved
  * @license		Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported (http://creativecommons.org/licenses/by-nc-nd/3.0/)
  * @brief		Configuration file for addon
  * 
@@ -18,6 +18,8 @@ use Tygh\Registry;
 
 require_once 'lib/fn.appointments.php';
 
+$store_lang = (DEFAULT_LANGUAGE != null) ? DEFAULT_LANGUAGE : CART_LANGUAGE;
+
 Registry::set('tspa_appointment_statuses_long', array(
 		'O' => array(
 			'status_id' 	=> 1,
@@ -25,10 +27,10 @@ Registry::set('tspa_appointment_statuses_long', array(
 			'color_status'	=> 'O',
 			'type' 			=> 'A',
 			'is_default' 	=> 'Y',
-			'description' 	=> 'Open',
-			'email_subj' 	=> 'has been created',
-			'email_header' 	=> 'Your appointment has been created successfully.',
-			'lang_code' 	=> 'en',
+			'description' 	=> __("tspa_open", array(), $store_lang),
+			'email_subj' 	=> __("tspa_open_email_subj", array(), $store_lang),
+			'email_header' 	=> __("tspa_open_email_header", array(), $store_lang),
+			'lang_code' 	=> $store_lang,
 		),
 		'S' => array(
 			'status_id' 	=> 2,
@@ -36,10 +38,10 @@ Registry::set('tspa_appointment_statuses_long', array(
 			'color_status'	=> 'B',
 			'type' 			=> 'A',
 			'is_default' 	=> 'Y',
-			'description' 	=> 'Scheduled',
-			'email_subj' 	=> 'has been scheduled',
-			'email_header' 	=> 'Your appointment has been scheduled successfully.',
-			'lang_code' 	=> 'en',
+			'description' 	=> __("tspa_scheduled", array(), $store_lang),
+			'email_subj' 	=> __("tspa_scheduled_email_subj", array(), $store_lang),
+			'email_header' 	=> __("tspa_scheduled_email_header", array(), $store_lang),
+			'lang_code' 	=> $store_lang,
 		),
 		'X' => array(
 			'status_id' 	=> 3,
@@ -47,10 +49,10 @@ Registry::set('tspa_appointment_statuses_long', array(
 			'color_status'	=> 'F',
 			'type' 			=> 'A',
 			'is_default' 	=> 'Y',
-			'description' 	=> 'Canceled',
-			'email_subj' 	=> 'has been canceled',
-			'email_header' 	=> 'Your appointment has been canceled successfully.',
-			'lang_code' 	=> 'en',
+			'description' 	=> __("tspa_canceled", array(), $store_lang),
+			'email_subj' 	=> __("tspa_canceled_email_subj", array(), $store_lang),
+			'email_header' 	=> __("tspa_canceled_email_header", array(), $store_lang),
+			'lang_code' 	=> $store_lang,
 		),
 		'C' => array(
 			'status_id' 	=> 4,
@@ -58,18 +60,18 @@ Registry::set('tspa_appointment_statuses_long', array(
 			'color_status'	=> 'P',
 			'type' 			=> 'A',
 			'is_default' 	=> 'Y',
-			'description' 	=> 'Completed',
-			'email_subj' 	=> 'has been completed',
-			'email_header' 	=> 'Your appointment has been completed successfully.',
-			'lang_code' 	=> 'en',
+			'description' 	=> __("tspa_completed", array(), $store_lang),
+			'email_subj' 	=> __("tspa_completed_email_subj", array(), $store_lang),
+			'email_header' 	=> __("tspa_completed_email_header", array(), $store_lang),
+			'lang_code' 	=> $store_lang,
 		),
 ));
 
 Registry::set('tspa_appointment_statuses_short', array(
-		'O' => __("tspa_open"),
-		'S' => __("tspa_scheduled"),
-		'X' => __("tspa_canceled"),
-		'C' => __("tspa_completed")
+		'O' => __("tspa_open", array(), $store_lang),
+		'S' => __("tspa_scheduled", array(), $store_lang),
+		'X' => __("tspa_canceled", array(), $store_lang),
+		'C' => __("tspa_completed", array(), $store_lang)
 ));
 
 Registry::set('tspa_appointment_status_params', array(
@@ -98,15 +100,15 @@ Registry::set('tspa_product_data_field_names', array(
 	),
 	'tspa_meeting_duration' => array(
 		'type' => 'I',
-		'hint' => '30 Minutes'
+		'hint' => '30 '.__("tspa_minutes", array(), $store_lang)
 	),
 	'tspa_meeting_location' => array(
 		'type' => 'S',
 		'options' => array(
-			'WebEx',
-			'Skype',
-			'Conference Call',
-			'Classroom'
+			__("tspa_webex", array(), $store_lang),
+			__("tspa_skype", array(), $store_lang),
+			__("tspa_call", array(), $store_lang),
+			__("tspa_class", array(), $store_lang)
 		)
 	),
 	'tspa_meeting_info' => array(

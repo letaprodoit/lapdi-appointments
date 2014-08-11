@@ -17,13 +17,13 @@
         <item lang="fr" for="description">Les logiciels personnes (TSP) Nominations vous permet d'ajouter des rendez-vous aux services dans le magasin et vous permettent de surveiller les rendez-vous dans la zone d'administration. Pour plus de détails visitez notre site Internet www.thesoftwarepeople.com</item>
     </translations>
     <language_variables>
-        <item lang="en" id="tsp_appointments">The Software People - Appointments</item> 
-        <item lang="en" id="tspa_appointment">Appointment</item>    
-        <item lang="en" id="tspa_appointment_add">Add Appointment</item>  
+        <item lang="en" id="tspa_appointments">The Software People - Appointments</item>
+        <item lang="en" id="tspa_appointment">Appointment</item>   
+        <item lang="en" id="tspa_appointment_add">Add Appointment</item> 
         <item lang="en" id="tspa_appointment_notification">Appointment Notification</item>
         <item lang="en" id="tspa_appointment_notification_msg">We wanted to inform you that your appointment status has been updated to [appointment_status] for [product_name] (Order #[order_id]). Please see details below: [appointment_info]</item>
-        <item lang="en" id="tspa_appointments">Appointments</item>  
-        <item lang="en" id="tspa_appointments_menu_description">List of appointments created by your clients.</item>    
+        <item lang="en" id="tspa_appointments">Appointments</item> 
+        <item lang="en" id="tspa_appointments_menu_description">List of appointments created by your clients.</item>   
         <item lang="en" id="tspa_editing_appointment">Editing Appointment</item>
         <item lang="en" id="tspa_meeting_details">Meeting Details</item>
         <item lang="en" id="tspa_meeting_date">Meeting Date</item>
@@ -41,17 +41,30 @@
         <item lang="en" id="tspa_appointment_location_comment">Where will this appointment take place?</item>
         <item lang="en" id="tspa_appointment_info">Appointment Additional Information</item>
         <item lang="en" id="tspa_appointment_info_comment">Enter in any additional information you wish to provide.</item>
-        <item lang="en" id="tspa_scheduled">Scheduled</item>    
-        <item lang="en" id="tspa_open">Open</item>  
-        <item lang="en" id="tspa_canceled">Canceled</item>  
+        <item lang="en" id="tspa_scheduled">Scheduled</item>   
+        <item lang="en" id="tspa_open">Open</item> 
+        <item lang="en" id="tspa_canceled">Canceled</item> 
         <item lang="en" id="tspa_completed">Completed</item>
-        <item lang="en" id="tspa_incorrect_format">Incorrect format</item>    
-        <item lang="en" id="tspa_minutes">Minutes</item>    
-        <item lang="en" id="tspa_time_regexp">(Minutes|Hours|Days|Weeks|Months|Years)</item>    
-        <item lang="en" id="tspa_in_home">In Home</item>    
-        <item lang="en" id="tspa_on_site">On Site</item>    
+        <item lang="en" id="tspa_incorrect_format">Incorrect format</item>   
+        <item lang="en" id="tspa_minutes">Minutes</item>   
+        <item lang="en" id="tspa_time_regexp">(Minutes|Hours|Days|Weeks|Months|Years)</item>   
+        <item lang="en" id="tspa_in_home">In Home</item>   
+        <item lang="en" id="tspa_on_site">On Site</item>   
+        <item lang="en" id="tspa_open_email_subj">has been created</item>   
+        <item lang="en" id="tspa_open_email_header">Your appointment has been created successfully.</item>   
+        <item lang="en" id="tspa_scheduled_email_subj">has been scheduled</item>   
+        <item lang="en" id="tspa_scheduled_email_header">Your appointment has been scheduled successfully.</item>   
+        <item lang="en" id="tspa_canceled_email_subj">has been canceled</item>   
+        <item lang="en" id="tspa_canceled_email_header">Your appointment has been canceled successfully.</item>   
+        <item lang="en" id="tspa_completed_email_subj">has been completed</item>   
+        <item lang="en" id="tspa_completed_email_header">Your appointment has been completed successfully.</item>   
+        <item lang="en" id="tspa_minutes">Minutes</item>   
+        <item lang="en" id="tspa_webex">WebEx</item>   
+        <item lang="en" id="tspa_skype">Skype</item>   
+        <item lang="en" id="tspa_call">Conference Call</item>   
+        <item lang="en" id="tspa_class">Classroom</item>   
         
-        <item lang="es" id="tsp_appointments">Los Software People - Nombramientos</item>
+        <item lang="es" id="tspa_appointments">Los Software People - Nombramientos</item>
         <item lang="es" id="tspa_appointment">cita</item>
         <item lang="es" id="tspa_appointment_add">Añadir cita</item>
         <item lang="es" id="tspa_appointment_notification">Notificación Nombramiento</item>
@@ -75,17 +88,75 @@
         <item lang="es" id="tspa_appointment_location_comment">Dónde estará esta cita tenga lugar ?</item>
         <item lang="es" id="tspa_appointment_info">Nombramiento Información adicional</item>
         <item lang="es" id="tspa_appointment_info_comment">Introduzca cualquier información adicional que desee proporcionar.</item>
-        <item lang="es" id="tspa_scheduled">Programado</item>       
-        <item lang="es" id="tspa_open">Abrir</item> 
-        <item lang="es" id="tspa_canceled">Cancelado</item> 
+        <item lang="es" id="tspa_scheduled">Programado</item>      
+        <item lang="es" id="tspa_open">Abrir</item>
+        <item lang="es" id="tspa_canceled">Cancelado</item>
         <item lang="es" id="tspa_completed">Completado</item>
-        <item lang="es" id="tspa_incorrect_format">Formato incorrecto</item>    
-        <item lang="es" id="tspa_minutes">Minutos</item>    
-        <item lang="es" id="tspa_time_regexp">(Minutos|Horas|Días|Semanas|Meses|Años)</item>    
-        <item lang="es" id="tspa_in_home">Inicio</item>    
-        <item lang="es" id="tspa_on_site">On Site</item>    
-        
-        <item lang="fr" id="tsp_appointments">Les logiciels personnes - Nominations</item>
+        <item lang="es" id="tspa_incorrect_format">Formato incorrecto</item>   
+        <item lang="es" id="tspa_minutes">Minutos</item>   
+        <item lang="es" id="tspa_time_regexp">(Minutos|Horas|Días|Semanas|Meses|Años)</item>   
+        <item lang="es" id="tspa_in_home">Inicio</item>   
+        <item lang="es" id="tspa_on_site">On Site</item>   
+		<item lang="es" id="tspa_open_email_subj">ha creado</item>
+		<item lang="es" id="tspa_open_email_header">Su nombramiento ha sido creado con éxito.</item>
+		<item lang="es" id="tspa_scheduled_email_subj">se ha programado</item>
+		<item lang="es" id="tspa_scheduled_email_header">Su cita ha sido programada con éxito.</item>
+		<item lang="es" id="tspa_canceled_email_subj">ha sido cancelado</item>
+		<item lang="es" id="tspa_canceled_email_header">Su cita ha sido cancelada exitosamente.</item>
+		<item lang="es" id="tspa_completed_email_subj">ha completado</item>
+		<item lang="es" id="tspa_completed_email_header">Su nombramiento ha sido completada con éxito.</item>
+		<item lang="es" id="tspa_webex">WebEx</item>
+		<item lang="es" id="tspa_skype">Skype</item>
+		<item lang="es" id="tspa_call">Conferencia Telefónica</item>
+		<item lang="es" id="tspa_class">Aula</item>
+		
+        <item lang="el" id="tspa_appointments">Οι άνθρωποι Λογισμικό - Διορισμοί</item>
+        <item lang="el" id="tspa_appointment">Διορισμός</item>
+        <item lang="el" id="tspa_appointment_add">Προσθήκη Διορισμός</item>
+        <item lang="el" id="tspa_appointment_notification">Διορισμός Ειδοποίηση</item>
+        <item lang="el" id="tspa_appointment_notification_msg">Θέλαμε να σας ενημερώσουμε ότι το καθεστώς ραντεβού σας έχει ενημερωθεί για [appointment_status] για [product_name] (Order # [order_id]). Παρακαλώ δείτε λεπτομέρειες παρακάτω: [appointment_info]</item>
+        <item lang="el" id="tspa_appointments">Διορισμοί</item>
+        <item lang="el" id="tspa_appointments_menu_description">Κατάλογος διορισμών που δημιουργούνται από τους πελάτες σας.</item>
+        <item lang="el" id="tspa_editing_appointment">Επεξεργασία Διορισμός</item>
+        <item lang="el" id="tspa_meeting_details">Λεπτομέρειες σύσκεψης</item>
+        <item lang="el" id="tspa_meeting_date">Ημερομηνία συνεδρίασης</item>
+        <item lang="el" id="tspa_meeting_time">Ώρα συνάντησης</item>
+        <item lang="el" id="tspa_meeting_duration">Συνάντηση Διάρκεια</item>
+        <item lang="el" id="tspa_meeting_location">Συνάντηση Τοποθεσία</item>
+        <item lang="el" id="tspa_meeting_info">Πρόσθετες πληροφορίες</item>
+        <item lang="el" id="tspa_appointment_date">Διορισμός Ημερομηνία</item>
+        <item lang="el" id="tspa_appointment_date_comment">Εισάγετε την ημερομηνία διορισμού</item>
+        <item lang="el" id="tspa_appointment_time">Διορισμός Ώρα</item>
+        <item lang="el" id="tspa_appointment_time_comment">Πληκτρολογήστε στο χρόνο του διορισμού (Μορφή: 19:00 EST)</item>
+        <item lang="el" id="tspa_appointment_duration">Διορισμός Διάρκεια</item>
+        <item lang="el" id="tspa_appointment_duration_comment">Εισάγετε τη διάρκεια του διορισμού σε λεπτά, ώρες, ημέρες, εβδομάδες, μήνες ή χρόνια (μορφή: 1 ώρα, 10 λεπτά)</item>
+        <item lang="el" id="tspa_appointment_location">Διορισμός Τοποθεσία</item>
+        <item lang="el" id="tspa_appointment_location_comment">Πού θα λάβει χώρα αυτό το ραντεβού;</item>
+        <item lang="el" id="tspa_appointment_info">Διορισμός Πρόσθετες πληροφορίες</item>
+        <item lang="el" id="tspa_appointment_info_comment">Εισάγετε οποιαδήποτε επιπλέον πληροφορία επιθυμούν να παρέχουν.</item>
+        <item lang="el" id="tspa_scheduled">Προγραμματισμένη</item>
+        <item lang="el" id="tspa_open">ανοιχτό</item>
+        <item lang="el" id="tspa_canceled">Ακυρώθηκε</item>
+        <item lang="el" id="tspa_completed">Ολοκληρώθηκε</item>
+        <item lang="el" id="tspa_incorrect_format">Λανθασμένη μορφή</item>   
+        <item lang="el" id="tspa_minutes">Λεπτά</item>   
+        <item lang="el" id="tspa_time_regexp">(Λεπτά|Ώρες|Ημέρες|Εβδομάδες|Μήνες|Έτη)</item>   
+        <item lang="el" id="tspa_in_home">Στο σπίτι</item>   
+        <item lang="el" id="tspa_on_site">Στην τοποθεσία</item>   		
+		<item lang="el" id="tspa_open_email_subj">έχει δημιουργηθεί</item>
+		<item lang="el" id="tspa_open_email_header">διορισμός σας έχει δημιουργηθεί επιτυχώς.</item>
+		<item lang="el" id="tspa_scheduled_email_subj">έχει προγραμματιστεί</item>
+		<item lang="el" id="tspa_scheduled_email_header">διορισμός σας έχει προγραμματίσει επιτυχώς.</item>
+		<item lang="el" id="tspa_canceled_email_subj">έχει ακυρωθεί</item>
+		<item lang="el" id="tspa_canceled_email_header">ο διορισμός έχει ακυρωθεί με επιτυχία.</item>
+		<item lang="el" id="tspa_completed_email_subj">έχει ολοκληρωθεί</item>
+		<item lang="el" id="tspa_completed_email_header">διορισμός σας έχει ολοκληρωθεί με επιτυχία.</item>
+		<item lang="el" id="tspa_webex">WebEx</item>
+		<item lang="el" id="tspa_skype">Skype</item>
+		<item lang="el" id="tspa_call">Κλήση συνδιάσκεψης</item>
+		<item lang="el" id="tspa_class">διδασκαλίας</item>
+	
+        <item lang="fr" id="tspa_appointments">Les logiciels personnes - Nominations</item>
         <item lang="fr" id="tspa_appointment">Nomination</item>
         <item lang="fr" id="tspa_appointment_add">Ajouter Nomination</item>
         <item lang="fr" id="tspa_appointment_notification">notification de rendez-vous</item>
@@ -110,55 +181,33 @@
         <item lang="fr" id="tspa_appointment_info">Nomination Informations supplémentaires</item>
         <item lang="fr" id="tspa_appointment_info_comment">Entrez toute information supplémentaire que vous souhaitez offrir .</item>
         <item lang="fr" id="tspa_scheduled">prévue</item>
-        <item lang="fr" id="tspa_open">Ouvrir</item> 
-        <item lang="fr" id="tspa_canceled">Annulé</item> 
+        <item lang="fr" id="tspa_open">Ouvrir</item>
+        <item lang="fr" id="tspa_canceled">Annulé</item>
         <item lang="fr" id="tspa_completed">Terminé</item>
-        <item lang="fr" id="tspa_incorrect_format">Format incorrect</item>    
-        <item lang="fr" id="tspa_minutes">Minutes</item>    
-        <item lang="fr" id="tspa_time_regexp">(Minutes|Heures|Jours|Semaines|Mois|Années)</item>    
-        <item lang="fr" id="tspa_in_home">Accueil</item>    
-        <item lang="fr" id="tspa_on_site">sur le site</item>    
-        
-        <item lang="el" id="tsp_appointments">Οι άνθρωποι Λογισμικό - Διορισμοί</item>
-        <item lang="el" id="tspa_appointment">Διορισμός</item>
-        <item lang="el" id="tspa_appointment_add">Προσθήκη Διορισμός</item>
-        <item lang="el" id="tspa_appointment_notification">Διορισμός Ειδοποίηση</item>
-        <item lang="el" id="tspa_appointment_notification_msg">Θέλαμε να σας ενημερώσουμε ότι το καθεστώς ραντεβού σας έχει ενημερωθεί για [appointment_status] για [product_name] (Order # [order_id]). Παρακαλώ δείτε λεπτομέρειες παρακάτω: [appointment_info]</item>
-        <item lang="el" id="tspa_appointments">Διορισμοί</item>
-        <item lang="el" id="tspa_appointments_menu_description">Κατάλογος διορισμών που δημιουργούνται από τους πελάτες σας.</item>
-        <item lang="el" id="tspa_editing_appointment">Επεξεργασία Διορισμός</item>
-        <item lang="el" id="tspa_meeting_details">Λεπτομέρειες σύσκεψης</item>
-        <item lang="el" id="tspa_meeting_date">Ημερομηνία συνεδρίασης</item>
-        <item lang="el" id="tspa_meeting_time">Ώρα συνάντησης</item>
-        <item lang="el" id="tspa_meeting_duration">Συνάντηση Διάρκεια</item>
-        <item lang="el" id="tspa_meeting_location">Συνάντηση Τοποθεσία</item>
-        <item lang="el" id="tspa_meeting_info">Πρόσθετες πληροφορίες</item>
-        <item lang="el" id="tspa_appointment_date">Διορισμός Ημερομηνία</item>
-        <item lang="el" id="tspa_appointment_date_comment">Εισάγετε την ημερομηνία διορισμού</item>
-        <item lang="el" id="tspa_appointment_time">Διορισμός Ώρα</item>
-        <item lang="el" id="tspa_appointment_time_comment">Πληκτρολογήστε στο χρόνο του διορισμού (format: 19:00 EST)</item>
-        <item lang="el" id="tspa_appointment_duration">Διορισμός Διάρκεια</item>
-        <item lang="el" id="tspa_appointment_duration_comment">Εισάγετε τη διάρκεια του διορισμού σε λεπτά, ώρες, ημέρες, εβδομάδες, μήνες ή χρόνια (μορφή: 1 ώρα, 10 λεπτά)</item>
-        <item lang="el" id="tspa_appointment_location">Διορισμός Τοποθεσία</item>
-        <item lang="el" id="tspa_appointment_location_comment">Πού θα λάβει χώρα αυτό το ραντεβού;</item>
-        <item lang="el" id="tspa_appointment_info">Διορισμός Πρόσθετες πληροφορίες</item>
-        <item lang="el" id="tspa_appointment_info_comment">Εισάγετε οποιαδήποτε επιπλέον πληροφορία επιθυμούν να παρέχουν.</item>
-        <item lang="el" id="tspa_scheduled">Προγραμματισμένη</item>
-        <item lang="el" id="tspa_open">ανοιχτό</item> 
-        <item lang="el" id="tspa_canceled">Ακυρώθηκε</item> 
-        <item lang="el" id="tspa_completed">Ολοκληρώθηκε</item>
-        <item lang="el" id="tspa_incorrect_format">Λανθασμένη μορφή</item>    
-        <item lang="el" id="tspa_minutes">Λεπτά</item>    
-        <item lang="el" id="tspa_time_regexp">(Λεπτά|Ώρες|Ημέρες|Εβδομάδες|Μήνες|Έτη)</item>    
-        <item lang="el" id="tspa_in_home">Στο σπίτι</item>    
-        <item lang="el" id="tspa_on_site">On Site</item>    
+        <item lang="fr" id="tspa_incorrect_format">Format incorrect</item>   
+        <item lang="fr" id="tspa_minutes">Minutos</item>   
+        <item lang="fr" id="tspa_time_regexp">(Minutes|Heures|Jours|Semaines|Mois|Années)</item>   
+        <item lang="fr" id="tspa_in_home">Accueil</item>   
+        <item lang="fr" id="tspa_on_site">sur le site</item>  
+		<item lang="fr" id="tspa_open_email_subj">a été créé</item> 
+		<item lang="fr" id="tspa_open_email_header">Votre rendez-vous a été créé avec succès.</item> 
+		<item lang="fr" id="tspa_scheduled_email_subj">a été prévu</item> 
+		<item lang="fr" id="tspa_scheduled_email_header">Votre rendez-vous a été programmé avec succès.</item> 
+		<item lang="fr" id="tspa_canceled_email_subj">a été annulée</item> 
+		<item lang="fr" id="tspa_canceled_email_header">Votre rendez-vous a été annulé avec succès.</item> 
+		<item lang="fr" id="tspa_completed_email_subj">a été terminée</item> 
+		<item lang="fr" id="tspa_completed_email_header">Votre nomination a été effectuée avec succès.</item> 
+		<item lang="fr" id="tspa_webex">WebEx</item> 
+		<item lang="fr" id="tspa_skype">Skype</item> 
+		<item lang="fr" id="tspa_call">Conférence téléphonique</item> 
+		<item lang="fr" id="tspa_class">classe</item>
     </language_variables>
     <tab_order>prepend</tab_order>
     <settings>
         <sections>
             <section id="Settings">
                 <!-- Tab name in the default language -->
-                <name>Basic Settings</name>     
+                <name>Basic Settings</name>    
                 <translations>
                     <item lang="es" for="name">Ajustes básicos</item>
                     <item lang="el" for="name">βασικές ρυθμίσεις</item>
@@ -171,7 +220,7 @@
                             <item lang="es" for="name">Eliminar Recordatorio datos sobre Desinstalar</item>
                             <item lang="el" for="name">Διαγραφή Δεδομένων Διορισμός στο Uninstall</item>
                             <item lang="fr" for="name">Supprimer Liens externes données sur Désinstaller</item>
-                        </translations>                                           
+                        </translations>                                          
                         <type>selectbox</type>
                         <default_value>N</default_value>
                         <variants>

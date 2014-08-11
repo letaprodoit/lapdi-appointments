@@ -29,37 +29,7 @@ use Tygh\Navigation\LastView;
  ***********/
 function fn_tspa_uninstall_languages ()
 {
-	$names = array(
-		'tsp_appointments',
-		'tspa_appointment',
-		'tspa_appointment_notification',
-		'tspa_appointment_notification_msg',
-		'tspa_appointments',
-		'tspa_appointments_menu_description',
-		'tspa_editing_appointment',
-		'tspa_meeting_details',
-		'tspa_meeting_date',
-		'tspa_meeting_time',
-		'tspa_meeting_location',
-		'tspa_meeting_duration',
-		'tspa_meeting_info',
-		'tspa_appointment_date',
-		'tspa_appointment_date_comment',
-		'tspa_appointment_time',
-		'tspa_appointment_time_comment',
-		'tspa_appointment_location',
-		'tspa_appointment_location_comment',
-		'tspa_appointment_duration',
-		'tspa_appointment_duration_comment',
-		'tspa_appointment_info',
-		'tspa_appointment_info_comment',
-		'tspa_scheduled'
-	);
-	
-	if (!empty($names)) 
-	{
-		db_query("DELETE FROM ?:language_values WHERE name IN (?a)", $names);
-	}//endif
+	db_query("DELETE FROM ?:language_values WHERE name LIKE 'tspa_%'");
 }//end fn_tspa_uninstall_languages
 
 /***********
