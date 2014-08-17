@@ -6,7 +6,7 @@
  * @filename	fun.appointments.php
  * @version		2.1.2
  * @author		Sharron Denice, The Software People, LLC on 2013/02/09
- * @copyright	Copyright © 2013 The Software People, LLC (www.thesoftwarepeople.com). All rights reserved
+ * @copyright	Copyright © 2014 The Software People, LLC (www.thesoftwarepeople.com). All rights reserved
  * @license		Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported (http://creativecommons.org/licenses/by-nc-nd/3.0/)
  * @brief		Helper functions for addon
  * 
@@ -86,20 +86,16 @@ function fn_tspa_install_product_fields ()
 				// Install the global option fields
 				$duration_id = db_query('INSERT INTO ?:product_options ?e', array('company_id' => 1, 'position' => 102, 
 						'option_type' => 'I', 'inventory' => 'N', 'required' => 'Y', 'status' => 'A', 
-						'regexp' => '(\\d+)' . '('. 
-						__("tspa_time_regexp",array(),'en') . '|' . 
-						__("tspa_time_regexp",array(),'el') . '|' . 
-						__("tspa_time_regexp",array(),'es') . '|' . 
-						__("tspa_time_regexp",array(),'fr') .')'));				
+						'regexp' => '(\\d+)(\\s)(\\w+)'));				
 				
 				// Store the global option fields
 				db_query("INSERT INTO ?:addon_tsp_appointments_product_field_metadata (`key`,`option_id`) VALUES ('$option_field_key',$duration_id)");
 				
 				// Install descriptions
-				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'en', 'option_id' => $duration_id, 'option_name' => __("tspa_appointment_duration",array(),'en'), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_duration_comment",array(),'en'), 'inner_hint' => '10' . __("tspa_minutes",array(),'en'), 'incorrect_message' => __("tspa_incorrect_format",array(),'en')));
-				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'el', 'option_id' => $duration_id, 'option_name' => __("tspa_appointment_duration",array(),'el'), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_duration_comment",array(),'el'), 'inner_hint' => '10' . __("tspa_minutes",array(),'el'), 'incorrect_message' => __("tspa_incorrect_format",array(),'el')));
-				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'es', 'option_id' => $duration_id, 'option_name' => __("tspa_appointment_duration",array(),'es'), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_duration_comment",array(),'es'), 'inner_hint' => '10' . __("tspa_minutes",array(),'es'), 'incorrect_message' => __("tspa_incorrect_format",array(),'es')));
-				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'fr', 'option_id' => $duration_id, 'option_name' => __("tspa_appointment_duration",array(),'fr'), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_duration_comment",array(),'fr'), 'inner_hint' => '10' . __("tspa_minutes",array(),'fr'), 'incorrect_message' => __("tspa_incorrect_format",array(),'fr')));
+				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'en', 'option_id' => $duration_id, 'option_name' => __("tspa_appointment_duration",array(),'en'), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_duration_comment",array(),'en'), 'inner_hint' => '10 ' . __("tspa_minutes",array(),'en'), 'incorrect_message' => __("tspa_incorrect_format",array(),'en')));
+				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'el', 'option_id' => $duration_id, 'option_name' => __("tspa_appointment_duration",array(),'el'), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_duration_comment",array(),'el'), 'inner_hint' => '10 ' . __("tspa_minutes",array(),'el'), 'incorrect_message' => __("tspa_incorrect_format",array(),'el')));
+				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'es', 'option_id' => $duration_id, 'option_name' => __("tspa_appointment_duration",array(),'es'), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_duration_comment",array(),'es'), 'inner_hint' => '10 ' . __("tspa_minutes",array(),'es'), 'incorrect_message' => __("tspa_incorrect_format",array(),'es')));
+				db_query('INSERT INTO ?:product_options_descriptions ?e', array('lang_code' => 'fr', 'option_id' => $duration_id, 'option_name' => __("tspa_appointment_duration",array(),'fr'), 'option_text' => '', 'description' => '', 'comment' => __("tspa_appointment_duration_comment",array(),'fr'), 'inner_hint' => '10 ' . __("tspa_minutes",array(),'fr'), 'incorrect_message' => __("tspa_incorrect_format",array(),'fr')));
 			}//end if
 			elseif ($option_field_key == 'tspa_product_option_location_field_id')
 			{
@@ -616,15 +612,16 @@ function fn_tspa_get_product_option_data($order_id, $product_id, $option_id, $va
  ***********/
 function fn_tspa_get_product_option_info($option_id, $option_value, $value_only = false) 
 {
-
-	$desc = db_get_field("SELECT `option_name` FROM ?:product_options_descriptions WHERE `option_id` = ?i", $option_id);
+	$store_lang = (DEFAULT_LANGUAGE != null) ? DEFAULT_LANGUAGE : CART_LANGUAGE;
+	
+	$desc = db_get_field("SELECT `option_name` FROM ?:product_options_descriptions WHERE `option_id` = ?i AND `lang_code` = ?s", $option_id, $store_lang);
 	$val = $option_value;
 	
 	$option_type = db_get_field("SELECT `option_type` FROM ?:product_options WHERE `option_id` = ?i", $option_id);
 
 	if ($option_type == 'S' && !$value_only)
 	{
-		$val = db_get_field("SELECT opt_desc.variant_name FROM ?:product_option_variants_descriptions AS opt_desc LEFT JOIN ?:product_option_variants AS opt_var ON opt_desc.variant_id = opt_var.variant_id WHERE opt_var.option_id = ?i AND opt_var.variant_id = ?i", $option_id,$option_value);
+		$val = db_get_field("SELECT opt_desc.variant_name FROM ?:product_option_variants_descriptions AS opt_desc LEFT JOIN ?:product_option_variants AS opt_var ON opt_desc.variant_id = opt_var.variant_id WHERE opt_var.option_id = ?i AND opt_var.variant_id = ?i AND opt_desc.lang_code = ?s", $option_id, $option_value, $store_lang);
 	}//endif
 
 	return array($desc,$val);
@@ -637,10 +634,11 @@ function fn_tspa_get_product_option_info($option_id, $option_value, $value_only 
  ***********/
 function fn_tspa_get_product_option_select_values($option_id,$key)
 {
-
+	$store_lang = (DEFAULT_LANGUAGE != null) ? DEFAULT_LANGUAGE : CART_LANGUAGE;
+	
 	return db_get_hash_array("SELECT opt_desc.* FROM ?:product_option_variants_descriptions AS opt_desc 
 	LEFT JOIN ?:product_option_variants AS opt_var ON opt_desc.variant_id = opt_var.variant_id 
-	WHERE opt_var.option_id = $option_id",$key);
+	WHERE opt_var.option_id = $option_id AND opt_desc.lang_code = '$store_lang'",$key);
 }//end fn_tspa_get_product_option_select_values
 
 
