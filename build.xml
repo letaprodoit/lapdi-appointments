@@ -184,25 +184,7 @@
         <copy todir="${test_site}/var/themes_repository">
             <fileset refid="frontend_files" />
         </copy>
-    	
-        <!-- Copying to LIVE project -->
-        <echo message="Copying ADDON files to LIVE project..." />
-        <copy todir="${live_site}/app/addons">
-            <fileset refid="addonfiles" />
-        </copy>
-        <echo message="Copying BACKEND files to LIVE project..." />
-        <copy todir="${live_site}/design/backend">
-            <fileset refid="backend_files" />
-        </copy>
-        <echo message="Copying FRONTEND files to LIVE project..." />
-        <copy todir="${live_site}/design/themes">
-            <fileset refid="frontend_files" />
-        </copy>
-        <echo message="Copying FRONTEND files to var/ dir of LIVE project..." />
-        <copy todir="${live_site}/var/themes_repository">
-            <fileset refid="frontend_files" />
-        </copy>
-    	
+    	    	
         <!-- Creating ZIP file -->
         <delete file="../../${name}_4x.zip" />
         <zip destfile="../../${name}_4x.zip">

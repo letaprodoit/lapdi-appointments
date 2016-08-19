@@ -31,8 +31,7 @@
         <input type="checkbox" name="appointment_ids[]" value="{$appointment.id}" class="cm-item cm-item-status-{$appointment.status|lower}" /></td>
     <td>
         <a href="{"appointments.update?appointment_id=`$appointment.id`"|fn_url}">
-        <span style="color:black;"><strong>{__("order")} #{$appointment.order_id}:</strong></span> Apppointment set for <strong>{$appointment.data.date}</strong> at <strong>{$appointment.data.time}</strong> for <strong>{$appointment.data.duration}</strong>. Location will be <strong>{$appointment.data.location}</strong>.
-                        <br><strong>Note: </strong>{$appointment.data.additional_info|default:'None'}
+        <span style="color:black;"><strong>{__("order")} #{$appointment.order_id}:</strong></span> Appointment set for <strong>{$appointment.data.date}</strong> at <strong>{$appointment.data.time}</strong> for <strong>{$appointment.data.duration}</strong>. Location will be <strong>{$appointment.data.location}</strong>.
         </a>
         {include file="views/companies/components/company_name.tpl" object=$appointment}
     </td>

@@ -4,9 +4,9 @@
  *
  * @package		TSP Appointments for CS-Cart
  * @filename	config.php
- * @version		2.1.2
+ * @version		2.1.4
  * @author		Sharron Denice, The Software People, LLC on 2013/02/09
- * @copyright	Copyright © 2014 The Software People, LLC (www.thesoftwarepeople.com). All rights reserved
+ * @copyright	Copyright © 2016 The Software People, LLC (www.thesoftwarepeople.com). All rights reserved
  * @license		Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported (http://creativecommons.org/licenses/by-nc-nd/3.0/)
  * @brief		Configuration file for addon
  * 

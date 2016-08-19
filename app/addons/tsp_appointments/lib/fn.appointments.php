@@ -803,9 +803,9 @@ function fn_tspa_update_appointment_status($id, $status, $notify_user = 'N')
 		}//endif
 		else
 		{
-			db_query("UPDATE ?:addon_tsp_appointments SET `date_completed` = ?i WHERE `id` = ?i", null, $id);
+			db_query("UPDATE ?:addon_tsp_appointments SET `date_completed` = ?i WHERE `id` = ?i", 0, $id);
 		}//endelse
-		
+
 		if ($notify_user == 'Y')
 		{
 			fn_tspa_notify_user($id);
