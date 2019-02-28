@@ -10,7 +10,7 @@ Appointments for CS-Cart software allows users to order services that require an
 * Admins can notify customers of appoiintment changes.
 
 For up-to-date installation and setup notes, visit the FAQ:
-[http://lab.thesoftwarepeople.com/tracker/wiki/Cscart-apa:MainPage](http://lab.thesoftwarepeople.com/tracker/wiki/Cscart-apa:MainPage)
+[http://lab.letaprodoit.com/public/wiki/Cscart-apa:MainPage](https://lab.letaprodoit.com/public/wiki/Cscart-apa:MainPage)
 
 
 ## GENERAL INSTALLATION NOTES
@@ -80,7 +80,7 @@ In order to create a product that is an event you will need to perform the follo
 
 Thank you for downloading Appointments for CS-Cart
 If you find any issues, please report them in the issue tracker on our website:
-[http://lab.thesoftwarepeople.com/tracker/cscart-apa](http://lab.thesoftwarepeople.com/tracker/cscart-apa)
+[http://lab.letaprodoit.com/public/cscart-apa](http://lab.letaprodoit.com/public/cscart-apa)
 
 ## COPYRIGHT AND LICENSE
 
