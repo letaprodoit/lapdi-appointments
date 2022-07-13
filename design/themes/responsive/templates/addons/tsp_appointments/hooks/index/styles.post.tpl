@@ -1,0 +1,1 @@
+{style src="addons/tsp_appointments/styles.less"}

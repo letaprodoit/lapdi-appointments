@@ -68,7 +68,29 @@
         <include name="basic/templates/addons/${name}/views/*" />
         <include name="basic/templates/addons/${name}/views/appointments/*" />
         <include name="basic/templates/addons/${name}/views/appointments/components/*" />
-    </fileset>
+
+        <include name="responsive/css/addons/${name}/*" />
+        <include name="responsive/mail/templates/addons/${name}/*" />
+        <include name="responsive/mail/templates/addons/${name}/hooks/*" />
+        <include name="responsive/mail/templates/addons/${name}/hooks/orders/*" />
+        <include name="responsive/mail/templates/addons/${name}/overrides/*" />
+        <include name="responsive/mail/templates/addons/${name}/overrides/common/*" />
+        <include name="responsive/mail/templates/addons/${name}/overrides/shipments/*" />
+        <include name="responsive/templates/addons/${name}/*" />
+        <include name="responsive/templates/addons/${name}/hooks/*" />
+        <include name="responsive/templates/addons/${name}/hooks/checkout/*" />
+        <include name="responsive/templates/addons/${name}/hooks/index/*" />
+        <include name="responsive/templates/addons/${name}/hooks/orders/*" />
+        <include name="responsive/templates/addons/${name}/hooks/products/*" />
+        <include name="responsive/templates/addons/${name}/overrides/*" />
+        <include name="responsive/templates/addons/${name}/overrides/views/*" />
+        <include name="responsive/templates/addons/${name}/overrides/views/products/*" />
+        <include name="responsive/templates/addons/${name}/overrides/views/products/components/*" />
+        <include name="responsive/templates/addons/${name}/views/*" />
+        <include name="responsive/templates/addons/${name}/views/appointments/*" />
+        <include name="responsive/templates/addons/${name}/views/appointments/components/*" />
+        
+   </fileset>
 
 
     <!-- Fileset for all files -->
@@ -134,6 +156,28 @@
         <include name="design/themes/basic/templates/addons/${name}/views/appointments/*" />
         <include name="design/themes/basic/templates/addons/${name}/views/appointments/components/*" />
    	
+        <include name="design/themes/responsive/css/addons/${name}/*" />
+        <include name="design/themes/responsive/mail/templates/addons/${name}/*" />
+        <include name="design/themes/responsive/mail/templates/addons/${name}/hooks/*" />
+        <include name="design/themes/responsive/mail/templates/addons/${name}/hooks/orders/*" />
+        <include name="design/themes/responsive/mail/templates/addons/${name}/overrides/*" />
+        <include name="design/themes/responsive/mail/templates/addons/${name}/overrides/common/*" />
+        <include name="design/themes/responsive/mail/templates/addons/${name}/overrides/shipments/*" />
+        <include name="design/themes/responsive/templates/addons/${name}/*" />
+        <include name="design/themes/responsive/templates/addons/${name}/hooks/*" />
+        <include name="design/themes/responsive/templates/addons/${name}/hooks/checkout/*" />
+        <include name="design/themes/responsive/templates/addons/${name}/hooks/index/*" />
+        <include name="design/themes/responsive/templates/addons/${name}/hooks/orders/*" />
+        <include name="design/themes/responsive/templates/addons/${name}/hooks/products/*" />
+        <include name="design/themes/responsive/templates/addons/${name}/overrides/*" />
+        <include name="design/themes/responsive/templates/addons/${name}/overrides/views/*" />
+        <include name="design/themes/responsive/templates/addons/${name}/overrides/views/products/*" />
+        <include name="design/themes/responsive/templates/addons/${name}/overrides/views/products/components/*" />
+        <include name="design/themes/responsive/templates/addons/${name}/views/*" />
+        <include name="design/themes/responsive/templates/addons/${name}/views/appointments/*" />
+        <include name="design/themes/responsive/templates/addons/${name}/views/appointments/components/*" />
+        
+        
         <include name="var/*" />
         <include name="var/themes_repository/*" />
         <include name="var/themes_repository/basic/*" />
@@ -157,6 +201,28 @@
         <include name="var/themes_repository/basic/templates/addons/${name}/views/*" />
         <include name="var/themes_repository/basic/templates/addons/${name}/views/appointments/*" />
         <include name="var/themes_repository/basic/templates/addons/${name}/views/appointments/components/*" />
+
+        <include name="var/themes_repository/responsive/*" />
+        <include name="var/themes_repository/responsive/css/addons/${name}/*" />
+        <include name="var/themes_repository/responsive/mail/templates/addons/${name}/*" />
+        <include name="var/themes_repository/responsive/mail/templates/addons/${name}/hooks/*" />
+        <include name="var/themes_repository/responsive/mail/templates/addons/${name}/hooks/orders/*" />
+        <include name="var/themes_repository/responsive/mail/templates/addons/${name}/overrides/*" />
+        <include name="var/themes_repository/responsive/mail/templates/addons/${name}/overrides/common/*" />
+        <include name="var/themes_repository/responsive/mail/templates/addons/${name}/overrides/shipments/*" />
+        <include name="var/themes_repository/responsive/templates/addons/${name}/*" />
+        <include name="var/themes_repository/responsive/templates/addons/${name}/hooks/*" />
+        <include name="var/themes_repository/responsive/templates/addons/${name}/hooks/checkout/*" />
+        <include name="var/themes_repository/responsive/templates/addons/${name}/hooks/index/*" />
+        <include name="var/themes_repository/responsive/templates/addons/${name}/hooks/orders/*" />
+        <include name="var/themes_repository/responsive/templates/addons/${name}/hooks/products/*" />
+        <include name="var/themes_repository/responsive/templates/addons/${name}/overrides/*" />
+        <include name="var/themes_repository/responsive/templates/addons/${name}/overrides/views/*" />
+        <include name="var/themes_repository/responsive/templates/addons/${name}/overrides/views/products/*" />
+        <include name="var/themes_repository/responsive/templates/addons/${name}/overrides/views/products/components/*" />
+        <include name="var/themes_repository/responsive/templates/addons/${name}/views/*" />
+        <include name="var/themes_repository/responsive/templates/addons/${name}/views/appointments/*" />
+        <include name="var/themes_repository/responsive/templates/addons/${name}/views/appointments/components/*" />
     </fileset>
 
     <!-- copy_all Target -->
